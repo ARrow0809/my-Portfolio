@@ -11,8 +11,18 @@ import { Menu, X, ExternalLink, Mail, ArrowRight, Video, ImageIcon, Cpu, Layout,
 const SmartImage = ({ src, alt, className, style }: { src: string, alt: string, className?: string, style?: React.CSSProperties, key?: React.Key }) => {
   const baseUrl = import.meta.env.BASE_URL || '/';
   const resolveSrc = (value: string) => {
-    if (/^(https?:)?\\/\\//.test(value) || value.startsWith('data:')) return value;
-    return `${baseUrl}${value}`.replace(/\\/+/, '/');
+    if (
+      value.startsWith('http://') ||
+      value.startsWith('https://') ||
+      value.startsWith('//') ||
+      value.startsWith('data:')
+    ) {
+      return value;
+    }
+    let merged = `${baseUrl}${value}`;
+    // Collapse duplicate slashes without using regex to avoid esbuild parsing issues.
+    while (merged.includes('//')) merged = merged.replace('//', '/');
+    return merged;
   };
   const [currentSrc, setCurrentSrc] = useState(resolveSrc(src));
   const [retryCount, setRetryCount] = useState(0);
