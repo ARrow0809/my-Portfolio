@@ -9,12 +9,17 @@ import { Menu, X, ExternalLink, Mail, ArrowRight, Video, ImageIcon, Cpu, Layout,
  */
 // Fix: Added key?: React.Key to prop type to allow passing key in lists, resolving TS error at line 416
 const SmartImage = ({ src, alt, className, style }: { src: string, alt: string, className?: string, style?: React.CSSProperties, key?: React.Key }) => {
-  const [currentSrc, setCurrentSrc] = useState(src);
+  const baseUrl = import.meta.env.BASE_URL || '/';
+  const resolveSrc = (value: string) => {
+    if (/^(https?:)?\\/\\//.test(value) || value.startsWith('data:')) return value;
+    return `${baseUrl}${value}`.replace(/\\/+/, '/');
+  };
+  const [currentSrc, setCurrentSrc] = useState(resolveSrc(src));
   const [retryCount, setRetryCount] = useState(0);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    setCurrentSrc(src);
+    setCurrentSrc(resolveSrc(src));
     setRetryCount(0);
     setIsError(false);
   }, [src]);
