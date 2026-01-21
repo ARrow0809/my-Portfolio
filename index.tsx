@@ -566,7 +566,7 @@ const VibeCoding = () => (
   <section id="vibecoding" className="py-24 bg-gray-900/30 border-y border-gray-800/50">
     <div className="max-w-7xl mx-auto px-6">
       <div className="mb-20 text-center md:text-left">
-        <h2 className="text-4xl md:text-6xl font-black text-white mb-4 tracking-tighter uppercase">08_バイブコーディング</h2>
+        <h2 className="text-4xl md:text-6xl font-black text-white mb-4 tracking-tighter uppercase">バイブコーディング</h2>
         <p className="text-gray-500 text-lg font-medium">ノーコード開発 × 生成AIによる次世代プロダクト</p>
         <div className="w-16 h-1.5 bg-orange-500 mt-6 rounded-full hidden md:block"></div>
       </div>
@@ -623,7 +623,7 @@ const AIVideos = () => {
     <section id="aivideos" className="py-24 bg-gray-950">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-20 text-center">
-          <h2 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tighter uppercase">09_AI動画コレクション</h2>
+          <h2 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tighter uppercase">AI動画コレクション</h2>
           <p className="text-gray-500 text-lg">生成AIが織りなす映像美のフロンティア</p>
         </div>
 
