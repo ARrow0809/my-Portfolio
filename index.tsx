@@ -91,6 +91,53 @@ const SmartImage = ({ src, alt, className, style }: { src: string, alt: string, 
   );
 };
 
+// --- 多言語対応 ---
+
+type Language = 'ja' | 'en' | 'zh';
+
+const translations = {
+  nav: {
+    ja: { about: 'ABOUT', aiManga: 'AI漫画', aiVideo: 'AI動画', portfolio: '作品紹介', vibeCoding: 'バイブコーディング' },
+    en: { about: 'ABOUT', aiManga: 'AI MANGA', aiVideo: 'AI VIDEO', portfolio: 'PORTFOLIO', vibeCoding: 'VIBE CODING' },
+    zh: { about: '关于', aiManga: 'AI漫画', aiVideo: 'AI视频', portfolio: '作品集', vibeCoding: '氛围编程' }
+  },
+  hero: {
+    ja: { title: 'Design Quest AI', subtitle: 'デザイン × AI で未来を創る', description: 'クリエイティブとテクノロジーの融合で、新しい価値を生み出すデザイナー' },
+    en: { title: 'Design Quest AI', subtitle: 'Creating the Future with Design × AI', description: 'A designer creating new value through the fusion of creativity and technology' },
+    zh: { title: 'Design Quest AI', subtitle: '用设计 × AI 创造未来', description: '通过创意与技术的融合创造新价值的设计师' }
+  },
+  about: {
+    ja: { title: 'ABOUT ME', role: 'AI Designer / Creative Technologist', mainTools: '主な使用ツール', aiTools: '使用AI', fonts: '使用フォント', imageGen: '画像生成', videoGen: '動画生成' },
+    en: { title: 'ABOUT ME', role: 'AI Designer / Creative Technologist', mainTools: 'Main Tools', aiTools: 'AI Tools', fonts: 'Fonts', imageGen: 'Image Generation', videoGen: 'Video Generation' },
+    zh: { title: '关于我', role: 'AI设计师 / 创意技术专家', mainTools: '主要工具', aiTools: 'AI工具', fonts: '字体', imageGen: '图像生成', videoGen: '视频生成' }
+  },
+  aiManga: {
+    ja: { title: 'AI MANGA SERIES', viewManga: 'View Manga', closeManga: 'Close Manga' },
+    en: { title: 'AI MANGA SERIES', viewManga: 'View Manga', closeManga: 'Close Manga' },
+    zh: { title: 'AI漫画系列', viewManga: '查看漫画', closeManga: '关闭漫画' }
+  },
+  portfolio: {
+    ja: { title: '作品紹介', subtitle: 'デザインの力で、ビジネスに価値を', all: 'すべて' },
+    en: { title: 'PORTFOLIO', subtitle: 'Adding Value to Business Through Design', all: 'All' },
+    zh: { title: '作品集', subtitle: '通过设计为商业增值', all: '全部' }
+  },
+  vibeCoding: {
+    ja: { title: 'バイブコーディング', subtitle: 'ノーコード開発 × 生成AIによる次世代プロダクト', viewProject: 'View Project' },
+    en: { title: 'VIBE CODING', subtitle: 'Next-Gen Products with No-Code × Generative AI', viewProject: 'View Project' },
+    zh: { title: '氛围编程', subtitle: '无代码开发 × 生成AI的下一代产品', viewProject: '查看项目' }
+  },
+  aiVideo: {
+    ja: { title: 'AI動画コレクション', subtitle: '生成AIが織りなす映像美のフロンティア' },
+    en: { title: 'AI VIDEO COLLECTION', subtitle: 'Frontier of Visual Beauty Woven by Generative AI' },
+    zh: { title: 'AI视频集', subtitle: '生成AI编织的视觉美学前沿' }
+  },
+  contact: {
+    ja: { title: 'CONTACT', subtitle: 'お気軽にお問い合わせください', email: 'メールを送る' },
+    en: { title: 'CONTACT', subtitle: 'Feel free to contact me', email: 'Send Email' },
+    zh: { title: '联系方式', subtitle: '欢迎随时联系', email: '发送邮件' }
+  }
+};
+
 // --- データ定義 ---
 
 const categories = [
@@ -233,7 +280,7 @@ const aiVideoData = [
 
 // --- コンポーネント ---
 
-const Navigation = () => {
+const Navigation = ({ language, setLanguage }: { language: Language, setLanguage: (lang: Language) => void }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -243,12 +290,13 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const t = translations.nav[language];
   const links = [
-    { name: 'ABOUT', href: '#about' },
-    { name: 'AI漫画', href: '#aimanga' },
-    { name: 'AI動画', href: '#aivideos' },
-    { name: '作品紹介', href: '#portfolio' },
-    { name: 'バイブコーディング', href: '#vibecoding' },
+    { name: t.about, href: '#about' },
+    { name: t.aiManga, href: '#aimanga' },
+    { name: t.aiVideo, href: '#aivideos' },
+    { name: t.portfolio, href: '#portfolio' },
+    { name: t.vibeCoding, href: '#vibecoding' },
   ];
 
   return (
@@ -259,15 +307,32 @@ const Navigation = () => {
           <span className="text-orange-500">AI</span>
         </a>
 
-        <div className="hidden md:flex space-x-8">
+        <div className="hidden md:flex items-center space-x-8">
           {links.map((link) => (
-            <a key={link.name} href={link.href} className="text-sm font-medium text-gray-300 hover:text-orange-500 transition-colors">
+            <a key={link.href} href={link.href} className="text-gray-400 hover:text-white transition-colors font-medium text-sm uppercase tracking-wider">
               {link.name}
             </a>
           ))}
+          
+          {/* Language Switcher */}
+          <div className="flex items-center gap-2 ml-4 border-l border-gray-700 pl-4">
+            {(['ja', 'en', 'zh'] as Language[]).map((lang) => (
+              <button
+                key={lang}
+                onClick={() => setLanguage(lang)}
+                className={`px-2 py-1 text-xs font-bold uppercase tracking-wider transition-all ${
+                  language === lang 
+                    ? 'text-orange-500 border-b-2 border-orange-500' 
+                    : 'text-gray-500 hover:text-gray-300'
+                }`}
+              >
+                {lang}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <button className="md:hidden text-gray-300 p-2 hover:bg-gray-800 rounded-lg" onClick={() => setIsOpen(!isOpen)}>
+        <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-white">
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
@@ -275,10 +340,25 @@ const Navigation = () => {
       {isOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-gray-950 border-b border-gray-800 p-6 flex flex-col space-y-4 shadow-2xl">
           {links.map((link) => (
-            <a key={link.name} href={link.href} className="text-lg font-medium text-gray-300 hover:text-orange-500" onClick={() => setIsOpen(false)}>
+            <a key={link.href} href={link.href} className="text-lg font-medium text-gray-300 hover:text-orange-500" onClick={() => setIsOpen(false)}>
               {link.name}
             </a>
           ))}
+          <div className="flex justify-center gap-4 pt-4 border-t border-gray-800">
+            {(['ja', 'en', 'zh'] as Language[]).map((lang) => (
+              <button
+                key={lang}
+                onClick={() => { setLanguage(lang); setIsOpen(false); }}
+                className={`px-3 py-1 text-sm font-bold uppercase tracking-wider transition-all ${
+                  language === lang 
+                    ? 'text-orange-500 border-b-2 border-orange-500' 
+                    : 'text-gray-500 hover:text-gray-300'
+                }`}
+              >
+                {lang}
+              </button>
+            ))}
+          </div>
         </div>
       )}
     </nav>
@@ -301,11 +381,6 @@ const Hero = () => (
         AIと共創する未来のデザイン。従来の概念を破壊し、<br className="hidden md:block" />
         テクノロジーの力で新たな美学を定義する。
       </p>
-      <div className="flex flex-col sm:flex-row justify-center gap-4">
-        <a href="#portfolio" className="px-12 py-5 bg-red-600 hover:bg-red-700 text-white rounded-xl font-black text-sm tracking-widest transition-all transform hover:scale-105 shadow-2xl shadow-red-900/40 flex items-center justify-center gap-3">
-          作品紹介を見る <ArrowRight size={20} />
-        </a>
-      </div>
     </div>
   </section>
 );
@@ -720,49 +795,34 @@ const PromotionLinks = () => (
   </section>
 );
 
-const App = () => (
-  <div className="bg-gray-950 min-h-screen text-gray-100 selection:bg-red-600/50 font-sans">
-    <Navigation />
-    <main>
-      <Hero />
-      <About />
-      <AIManga />
-      <AIVideos />
-      <Portfolio />
-      <VibeCoding />
-      <PromotionLinks />
-      <section id="contact" className="py-40 bg-gray-950 text-center relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-red-600 to-transparent"></div>
-        <div className="max-w-4xl mx-auto px-6 flex flex-col items-center">
-          <h2 className="text-5xl md:text-8xl font-black text-white mb-16 tracking-tighter uppercase">GET IN TOUCH</h2>
-          <a href="mailto:info@dq-l.com" className="inline-flex items-center gap-6 px-16 py-8 bg-white text-black hover:bg-red-600 hover:text-white rounded-[2rem] font-black text-lg md:text-2xl transition-all shadow-2xl hover:-translate-y-4 hover:rotate-2 mb-20">
-            <Mail size={32} /> メールで問い合わせ
-          </a>
-          
-          <div className="mt-12 group">
-            <div className="p-4 bg-white rounded-3xl inline-block shadow-2xl shadow-white/10 transform transition-transform group-hover:scale-105">
-              <SmartImage 
-                src="img/Xgd_9gp1F.png" 
-                alt="QR Code" 
-                className="w-32 h-32 md:w-48 md:h-48"
-              />
-            </div>
-            <p className="mt-6 text-gray-600 text-[10px] font-black tracking-widest uppercase">Connect via QR</p>
-          </div>
+const App = () => {
+  const [language, setLanguage] = useState<Language>('ja');
 
-          <div className="mt-32 w-full border-t border-gray-900 pt-12 flex flex-col md:flex-row justify-between items-center gap-8">
-            <p className="text-gray-700 text-[10px] font-black tracking-[0.5em] uppercase">© {new Date().getFullYear()} DESIGN QUEST AI | CRAFTED BY AI</p>
-            <div className="flex gap-8 text-gray-700 text-xs font-bold uppercase tracking-widest">
-              <a href="#" className="hover:text-red-500 transition-colors">Twitter</a>
-              <a href="#" className="hover:text-red-500 transition-colors">Instagram</a>
-              <a href="#" className="hover:text-red-500 transition-colors">Vimeo</a>
-            </div>
+  return (
+    <div className="bg-gray-950 min-h-screen text-gray-100 selection:bg-red-600/50 font-sans">
+      <Navigation language={language} setLanguage={setLanguage} />
+      <main>
+        <Hero language={language} />
+        <About language={language} />
+        <AIManga language={language} />
+        <AIVideos language={language} />
+        <Portfolio language={language} />
+        <VibeCoding language={language} />
+        <PromotionLinks />
+        <section id="contact" className="py-40 bg-gray-950 text-center relative overflow-hidden">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-red-600 to-transparent"></div>
+          <div className="max-w-4xl mx-auto px-6 flex flex-col items-center">
+            <h2 className="text-5xl md:text-8xl font-black text-white mb-16 tracking-tighter uppercase">{translations.contact[language].title}</h2>
+            <a href="mailto:info@dq-l.com" className="inline-flex items-center gap-6 px-16 py-8 bg-white text-black hover:bg-red-600 hover:text-white rounded-[2rem] font-black text-lg md:text-2xl transition-all shadow-2xl hover:-translate-y-4 hover:rotate-2 mb-20">
+              <Mail size={32} /> {translations.contact[language].email}
+            </a>
+            <p className="text-gray-600 text-sm">© 2026 Design Quest AI. All rights reserved.</p>
           </div>
-        </div>
-      </section>
-    </main>
-  </div>
-);
+        </section>
+      </main>
+    </div>
+  );
+};
 
 const root = createRoot(document.getElementById('root')!);
 root.render(<App />);
