@@ -248,73 +248,189 @@ const mangaPages = [
   '00_ai_manga/06_page.jpeg'
 ];
 
-const portfolioItems = [
-  // 01_DTP Design
-  { id: 101, category: '01_dtp', title: '東公園パンフレット', src: '01_dtp_design/09_higashi_park.jpeg' },
-  { id: 102, category: '01_dtp', title: 'ローター工業パンフレット', src: '01_dtp_design/10_rotor_industry.jpeg' },
-  { id: 103, category: '01_dtp', title: 'SCN会社案内', src: '01_dtp_design/11_scn_company.jpeg' },
-  { id: 104, category: '01_dtp', title: 'kaoriパンフレット', src: '01_dtp_design/12_kaori.jpeg' },
-  { id: 105, category: '01_dtp', title: 'ぎょしょうリーフレット', src: '01_dtp_design/13_gyosho_leaf.jpeg' },
-  { id: 106, category: '01_dtp', title: 'イベントガイド', src: '01_dtp_design/14_event_guide.jpeg' },
-  { id: 107, category: '01_dtp', title: '豪円とうふプレゼン', src: '01_dtp_design/15_goen_tofu.jpeg' },
-  { id: 108, category: '01_dtp', title: '豪円湯院GOENプリン', src: '01_dtp_design/16_goen_pudding.jpeg' },
-  { id: 109, category: '01_dtp', title: '燻製豆腐リーフレット', src: '01_dtp_design/17_goen_smoked_tofu.jpeg' },
-  { id: 110, category: '01_dtp', title: 'バレエ団パンフレット', src: '01_dtp_design/18_ballet.jpeg' },
-  { id: 111, category: '01_dtp', title: '春の出店展示会', src: '01_dtp_design/19_spring_exhibition.jpeg' },
-  
-  // 02_GAINA Soul
-  { id: 201, category: '02_gaina', title: 'GAINA魂ロゴ', src: '02_gaina_soul/01_logo.jpeg' },
-  { id: 202, category: '02_gaina', title: 'GAINA魂ロゴイメージ', src: '02_gaina_soul/02_logo_image.jpeg' },
-  { id: 203, category: '02_gaina', title: 'GAINA魂ポスター', src: '02_gaina_soul/03_poster.jpeg' },
-  { id: 204, category: '02_gaina', title: 'GAINA魂パンフレット', src: '02_gaina_soul/04_pamphlet.jpeg' },
-  { id: 205, category: '02_gaina', title: 'GAINA魂チケット', src: '02_gaina_soul/05_tickets.jpeg' },
-  { id: 206, category: '02_gaina', title: 'GAINA魂SNS', src: '02_gaina_soul/06_sns.jpeg' },
-  { id: 207, category: '02_gaina', title: 'GAINA魂ボードデザイン', src: '02_gaina_soul/07_board_design.jpeg' },
-  { id: 208, category: '02_gaina', title: 'GAINA魂米子ジム名刺', src: '02_gaina_soul/08_business_card.jpeg' },
-  
-  // 03_Logo Design
-  { id: 301, category: '03_logo', title: 'ロゴコンタクトシート', src: '03_logo_design/logo_contact_sheet.jpeg' },
-  { id: 302, category: '03_logo', title: 'ガイナ魂ロゴ', src: '03_logo_design/gaina_soul.jpeg' },
-  { id: 303, category: '03_logo', title: '皮膚科ロゴ', src: '03_logo_design/dermatology.jpeg' },
-  { id: 304, category: '03_logo', title: '駅なかマルシェロゴ', src: '03_logo_design/station_marche.jpeg' },
-  { id: 305, category: '03_logo', title: 'Swanロゴ', src: '03_logo_design/swan.jpeg' },
-  
-  // 04_Kindle Cover
-  { id: 401, category: '04_kindle', title: 'Kindle表紙 01', src: '04_kindle_cover/00001_cover_a.jpeg' },
-  { id: 402, category: '04_kindle', title: 'Kindle表紙 02', src: '04_kindle_cover/00002_cover_a.jpeg' },
-  { id: 403, category: '04_kindle', title: 'Kindle表紙 03', src: '04_kindle_cover/00003_cover_a.jpeg' },
-  { id: 404, category: '04_kindle', title: 'Kindle表紙 04', src: '04_kindle_cover/00004_cover_a.jpeg' },
-  { id: 405, category: '04_kindle', title: 'Kindle表紙 05', src: '04_kindle_cover/00005_cover_a.jpeg' },
-  { id: 406, category: '04_kindle', title: 'Kindle表紙 06', src: '04_kindle_cover/00006_cover_a.jpeg' },
-  { id: 407, category: '04_kindle', title: 'Kindle表紙 07', src: '04_kindle_cover/00007_cover_a.jpeg' },
-  { id: 408, category: '04_kindle', title: 'Kindle表紙 08', src: '04_kindle_cover/00008_cover_a.jpeg' },
-  { id: 409, category: '04_kindle', title: 'Kindle表紙 09', src: '04_kindle_cover/00009_cover_b.jpeg' },
-  { id: 410, category: '04_kindle', title: 'Kindle表紙 10', src: '04_kindle_cover/00010_cover_b.jpeg' },
-  { id: 411, category: '04_kindle', title: 'Kindle表紙 11', src: '04_kindle_cover/00011_cover_b.jpeg' },
-  { id: 412, category: '04_kindle', title: 'Kindle表紙 12', src: '04_kindle_cover/00012_cover_b.jpeg' },
-  { id: 413, category: '04_kindle', title: 'Kindle表紙 13', src: '04_kindle_cover/00013_cover_b.jpeg' },
-  { id: 414, category: '04_kindle', title: 'Kindle表紙 14', src: '04_kindle_cover/00014_cover_b.jpeg' },
-  { id: 415, category: '04_kindle', title: 'Kindle表紙 15', src: '04_kindle_cover/00015_cover_b.jpeg' },
-  
-  // 05_AI Generation
-  { id: 501, category: '05_ai', title: 'AI画像生成 01', src: '05_ai_generation/portfolio_01.jpeg' },
-  { id: 502, category: '05_ai', title: 'AI画像生成 02', src: '05_ai_generation/portfolio_02.jpeg' },
-  { id: 503, category: '05_ai', title: 'AI画像生成 03', src: '05_ai_generation/portfolio_03.jpeg' },
-  { id: 504, category: '05_ai', title: 'AI画像生成 04', src: '05_ai_generation/portfolio_04.jpeg' },
-  { id: 505, category: '05_ai', title: 'AI画像生成 05', src: '05_ai_generation/portfolio_05.jpeg' },
-  { id: 506, category: '05_ai', title: 'AI画像生成 06', src: '05_ai_generation/portfolio_06.jpeg' },
-  
-  // 06_Thumbnails
-  { id: 601, category: '06_thumb', title: 'DQXシールモンスター採用おすもっこり', src: '06_thumbnails/20_dqx_seal_monster.jpeg' },
-  { id: 602, category: '06_thumb', title: 'YouTubeサムネイル', src: '06_thumbnails/21_youtube_thumbnail.jpeg' },
-  { id: 603, category: '06_thumb', title: 'バナー広告', src: '06_thumbnails/22_banner_ad.jpeg' },
-  
-  // 07_Design Reviews
-  { id: 701, category: '07_reviews', title: '実績・感想 03', src: '07_design_reviews/achievement_03.jpg' },
-  { id: 702, category: '07_reviews', title: '評価 01', src: '07_design_reviews/review_01.jpg' },
-  { id: 703, category: '07_reviews', title: '評価 02', src: '07_design_reviews/review_02.jpg' },
-  { id: 704, category: '07_reviews', title: '評価 03', src: '07_design_reviews/review_03.jpg' },
-];
+const getPortfolioItems = (language: Language) => {
+  const titles = {
+    ja: {
+      101: '東公園パンフレット',
+      102: 'ローター工業パンフレット',
+      103: 'SCN会社案内',
+      104: 'kaoriパンフレット',
+      105: 'ぎょしょうリーフレット',
+      106: 'イベントガイド',
+      107: '豪円とうふプレゼン',
+      108: '豪円湯院GOENプリン',
+      109: '燻製豆腐リーフレット',
+      110: 'バレエ団パンフレット',
+      111: '春の出店展示会',
+      201: 'GAINA魂ロゴ',
+      202: 'GAINA魂ロゴイメージ',
+      203: 'GAINA魂ポスター',
+      204: 'GAINA魂パンフレット',
+      205: 'GAINA魂チケット',
+      206: 'GAINA魂SNS',
+      207: 'GAINA魂ボードデザイン',
+      208: 'GAINA魂米子ジム名刺',
+      301: 'ロゴコンタクトシート',
+      302: 'ガイナ魂ロゴ',
+      303: '皮膚科ロゴ',
+      304: '駅なかマルシェロゴ',
+      305: 'Swanロゴ',
+      401: 'Kindle表紙 01', 402: 'Kindle表紙 02', 403: 'Kindle表紙 03', 404: 'Kindle表紙 04', 405: 'Kindle表紙 05',
+      406: 'Kindle表紙 06', 407: 'Kindle表紙 07', 408: 'Kindle表紙 08', 409: 'Kindle表紙 09', 410: 'Kindle表紙 10',
+      411: 'Kindle表紙 11', 412: 'Kindle表紙 12', 413: 'Kindle表紙 13', 414: 'Kindle表紙 14', 415: 'Kindle表紙 15',
+      501: 'AI画像生成 01', 502: 'AI画像生成 02', 503: 'AI画像生成 03', 504: 'AI画像生成 04', 505: 'AI画像生成 05', 506: 'AI画像生成 06',
+      601: 'DQXシールモンスター採用おすもっこり',
+      602: 'YouTubeサムネイル',
+      603: 'バナー広告',
+      701: '実績・感想 03',
+      702: '評価 01',
+      703: '評価 02',
+      704: '評価 03'
+    },
+    en: {
+      101: 'Higashi Park Brochure',
+      102: 'Rotor Industry Brochure',
+      103: 'SCN Company Profile',
+      104: 'Kaori Brochure',
+      105: 'Gyosho Leaflet',
+      106: 'Event Guide',
+      107: 'Goen Tofu Presentation',
+      108: 'Goen Yuin GOEN Pudding',
+      109: 'Smoked Tofu Leaflet',
+      110: 'Ballet Company Brochure',
+      111: 'Spring Store Exhibition',
+      201: 'GAINA Soul Logo',
+      202: 'GAINA Soul Logo Image',
+      203: 'GAINA Soul Poster',
+      204: 'GAINA Soul Brochure',
+      205: 'GAINA Soul Tickets',
+      206: 'GAINA Soul SNS',
+      207: 'GAINA Soul Board Design',
+      208: 'GAINA Soul Yonago Gym Business Card',
+      301: 'Logo Contact Sheet',
+      302: 'Gaina Soul Logo',
+      303: 'Dermatology Logo',
+      304: 'Station Marche Logo',
+      305: 'Swan Logo',
+      401: 'Kindle Cover 01', 402: 'Kindle Cover 02', 403: 'Kindle Cover 03', 404: 'Kindle Cover 04', 405: 'Kindle Cover 05',
+      406: 'Kindle Cover 06', 407: 'Kindle Cover 07', 408: 'Kindle Cover 08', 409: 'Kindle Cover 09', 410: 'Kindle Cover 10',
+      411: 'Kindle Cover 11', 412: 'Kindle Cover 12', 413: 'Kindle Cover 13', 414: 'Kindle Cover 14', 415: 'Kindle Cover 15',
+      501: 'AI Generation 01', 502: 'AI Generation 02', 503: 'AI Generation 03', 504: 'AI Generation 04', 505: 'AI Generation 05', 506: 'AI Generation 06',
+      601: 'DQX Seal Monster Adoption',
+      602: 'YouTube Thumbnail',
+      603: 'Banner Ad',
+      701: 'Achievement & Review 03',
+      702: 'Review 01',
+      703: 'Review 02',
+      704: 'Review 03'
+    },
+    zh: {
+      101: '东公园宣传册',
+      102: '转子工业宣传册',
+      103: 'SCN公司介绍',
+      104: 'Kaori宣传册',
+      105: '渔业宣传单',
+      106: '活动指南',
+      107: '豪圆豆腐演示',
+      108: '豪圆温泉GOEN布丁',
+      109: '烟熏豆腐宣传单',
+      110: '芭蕾舞团宣传册',
+      111: '春季店铺展览会',
+      201: 'GAINA魂标志',
+      202: 'GAINA魂标志图像',
+      203: 'GAINA魂海报',
+      204: 'GAINA魂宣传册',
+      205: 'GAINA魂门票',
+      206: 'GAINA魂SNS',
+      207: 'GAINA魂板设计',
+      208: 'GAINA魂米子健身房名片',
+      301: '标志联系表',
+      302: '盖纳魂标志',
+      303: '皮肤科标志',
+      304: '车站市场标志',
+      305: 'Swan标志',
+      401: 'Kindle封面 01', 402: 'Kindle封面 02', 403: 'Kindle封面 03', 404: 'Kindle封面 04', 405: 'Kindle封面 05',
+      406: 'Kindle封面 06', 407: 'Kindle封面 07', 408: 'Kindle封面 08', 409: 'Kindle封面 09', 410: 'Kindle封面 10',
+      411: 'Kindle封面 11', 412: 'Kindle封面 12', 413: 'Kindle封面 13', 414: 'Kindle封面 14', 415: 'Kindle封面 15',
+      501: 'AI图像生成 01', 502: 'AI图像生成 02', 503: 'AI图像生成 03', 504: 'AI图像生成 04', 505: 'AI图像生成 05', 506: 'AI图像生成 06',
+      601: 'DQX印章怪物采用',
+      602: 'YouTube缩略图',
+      603: '横幅广告',
+      701: '成果·感想 03',
+      702: '评价 01',
+      703: '评价 02',
+      704: '评价 03'
+    }
+  };
+
+  return [
+    // 01_DTP Design
+    { id: 101, category: '01_dtp', title: titles[language][101], src: '01_dtp_design/09_higashi_park.jpeg' },
+    { id: 102, category: '01_dtp', title: titles[language][102], src: '01_dtp_design/10_rotor_industry.jpeg' },
+    { id: 103, category: '01_dtp', title: titles[language][103], src: '01_dtp_design/11_scn_company.jpeg' },
+    { id: 104, category: '01_dtp', title: titles[language][104], src: '01_dtp_design/12_kaori.jpeg' },
+    { id: 105, category: '01_dtp', title: titles[language][105], src: '01_dtp_design/13_gyosho_leaf.jpeg' },
+    { id: 106, category: '01_dtp', title: titles[language][106], src: '01_dtp_design/14_event_guide.jpeg' },
+    { id: 107, category: '01_dtp', title: titles[language][107], src: '01_dtp_design/15_goen_tofu.jpeg' },
+    { id: 108, category: '01_dtp', title: titles[language][108], src: '01_dtp_design/16_goen_pudding.jpeg' },
+    { id: 109, category: '01_dtp', title: titles[language][109], src: '01_dtp_design/17_goen_smoked_tofu.jpeg' },
+    { id: 110, category: '01_dtp', title: titles[language][110], src: '01_dtp_design/18_ballet.jpeg' },
+    { id: 111, category: '01_dtp', title: titles[language][111], src: '01_dtp_design/19_spring_exhibition.jpeg' },
+    
+    // 02_GAINA Soul
+    { id: 201, category: '02_gaina', title: titles[language][201], src: '02_gaina_soul/01_logo.jpeg' },
+    { id: 202, category: '02_gaina', title: titles[language][202], src: '02_gaina_soul/02_logo_image.jpeg' },
+    { id: 203, category: '02_gaina', title: titles[language][203], src: '02_gaina_soul/03_poster.jpeg' },
+    { id: 204, category: '02_gaina', title: titles[language][204], src: '02_gaina_soul/04_pamphlet.jpeg' },
+    { id: 205, category: '02_gaina', title: titles[language][205], src: '02_gaina_soul/05_tickets.jpeg' },
+    { id: 206, category: '02_gaina', title: titles[language][206], src: '02_gaina_soul/06_sns.jpeg' },
+    { id: 207, category: '02_gaina', title: titles[language][207], src: '02_gaina_soul/07_board_design.jpeg' },
+    { id: 208, category: '02_gaina', title: titles[language][208], src: '02_gaina_soul/08_business_card.jpeg' },
+    
+    // 03_Logo Design
+    { id: 301, category: '03_logo', title: titles[language][301], src: '03_logo_design/logo_contact_sheet.jpeg' },
+    { id: 302, category: '03_logo', title: titles[language][302], src: '03_logo_design/gaina_soul.jpeg' },
+    { id: 303, category: '03_logo', title: titles[language][303], src: '03_logo_design/dermatology.jpeg' },
+    { id: 304, category: '03_logo', title: titles[language][304], src: '03_logo_design/station_marche.jpeg' },
+    { id: 305, category: '03_logo', title: titles[language][305], src: '03_logo_design/swan.jpeg' },
+    
+    // 04_Kindle Cover
+    { id: 401, category: '04_kindle', title: titles[language][401], src: '04_kindle_cover/00001_cover_a.jpeg' },
+    { id: 402, category: '04_kindle', title: titles[language][402], src: '04_kindle_cover/00002_cover_a.jpeg' },
+    { id: 403, category: '04_kindle', title: titles[language][403], src: '04_kindle_cover/00003_cover_a.jpeg' },
+    { id: 404, category: '04_kindle', title: titles[language][404], src: '04_kindle_cover/00004_cover_a.jpeg' },
+    { id: 405, category: '04_kindle', title: titles[language][405], src: '04_kindle_cover/00005_cover_a.jpeg' },
+    { id: 406, category: '04_kindle', title: titles[language][406], src: '04_kindle_cover/00006_cover_a.jpeg' },
+    { id: 407, category: '04_kindle', title: titles[language][407], src: '04_kindle_cover/00007_cover_a.jpeg' },
+    { id: 408, category: '04_kindle', title: titles[language][408], src: '04_kindle_cover/00008_cover_a.jpeg' },
+    { id: 409, category: '04_kindle', title: titles[language][409], src: '04_kindle_cover/00009_cover_b.jpeg' },
+    { id: 410, category: '04_kindle', title: titles[language][410], src: '04_kindle_cover/00010_cover_b.jpeg' },
+    { id: 411, category: '04_kindle', title: titles[language][411], src: '04_kindle_cover/00011_cover_b.jpeg' },
+    { id: 412, category: '04_kindle', title: titles[language][412], src: '04_kindle_cover/00012_cover_b.jpeg' },
+    { id: 413, category: '04_kindle', title: titles[language][413], src: '04_kindle_cover/00013_cover_b.jpeg' },
+    { id: 414, category: '04_kindle', title: titles[language][414], src: '04_kindle_cover/00014_cover_b.jpeg' },
+    { id: 415, category: '04_kindle', title: titles[language][415], src: '04_kindle_cover/00015_cover_b.jpeg' },
+    
+    // 05_AI Generation
+    { id: 501, category: '05_ai', title: titles[language][501], src: '05_ai_generation/portfolio_01.jpeg' },
+    { id: 502, category: '05_ai', title: titles[language][502], src: '05_ai_generation/portfolio_02.jpeg' },
+    { id: 503, category: '05_ai', title: titles[language][503], src: '05_ai_generation/portfolio_03.jpeg' },
+    { id: 504, category: '05_ai', title: titles[language][504], src: '05_ai_generation/portfolio_04.jpeg' },
+    { id: 505, category: '05_ai', title: titles[language][505], src: '05_ai_generation/portfolio_05.jpeg' },
+    { id: 506, category: '05_ai', title: titles[language][506], src: '05_ai_generation/portfolio_06.jpeg' },
+    
+    // 06_Thumbnails
+    { id: 601, category: '06_thumb', title: titles[language][601], src: '06_thumbnails/20_dqx_seal_monster.jpeg' },
+    { id: 602, category: '06_thumb', title: titles[language][602], src: '06_thumbnails/21_youtube_thumbnail.jpeg' },
+    { id: 603, category: '06_thumb', title: titles[language][603], src: '06_thumbnails/22_banner_ad.jpeg' },
+    
+    // 07_Design Reviews
+    { id: 701, category: '07_reviews', title: titles[language][701], src: '07_design_reviews/achievement_03.jpg' },
+    { id: 702, category: '07_reviews', title: titles[language][702], src: '07_design_reviews/review_01.jpg' },
+    { id: 703, category: '07_reviews', title: titles[language][703], src: '07_design_reviews/review_02.jpg' },
+    { id: 704, category: '07_reviews', title: titles[language][704], src: '07_design_reviews/review_03.jpg' },
+  ];
+};
 
 const getVibeCodingProjects = (language: Language) => {
   const projectsData = {
@@ -723,6 +839,7 @@ const Portfolio = ({ language }: { language: Language }) => {
   const t = translations.portfolio[language];
   const [activeTab, setActiveTab] = useState('all');
   const [selectedItem, setSelectedItem] = useState<any | null>(null);
+  const portfolioItems = getPortfolioItems(language);
   
   const filteredItems = activeTab === 'all' 
     ? portfolioItems 
