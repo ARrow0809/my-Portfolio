@@ -353,13 +353,13 @@ const About = () => (
               <h4 className="flex items-center gap-3 justify-center lg:justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
                  <Layout size={14} strokeWidth={3} /> 主な使用ツール
               </h4>
-              <p className="text-white text-xs md:text-sm font-bold">Illustrator(Adobe Fonts) / Photoshop / Premiere Pro</p>
+              <p className="text-white text-xs md:text-sm font-bold">Illustrator / Photoshop / Premiere Proなど</p>
             </div>
             <div>
               <h4 className="flex items-center gap-3 justify-center lg:justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
                  <Cpu size={14} strokeWidth={3} /> 使用AI
               </h4>
-              <p className="text-white text-xs md:text-sm leading-relaxed font-bold">ChatGPT / codex CLI / Antigravity / Google AI Studio / Gemini / NotebookLM</p>
+              <p className="text-white text-xs md:text-sm leading-relaxed font-bold">ChatGPT / codex CLI / Antigravity / Google AI Studio / Gemini / NotebookLMなど</p>
             </div>
           </div>
           <div className="space-y-6">
@@ -367,13 +367,13 @@ const About = () => (
               <h4 className="flex items-center gap-3 justify-center lg:justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
                  <span className="text-lg font-black italic">F</span> 使用フォント
               </h4>
-              <p className="text-white text-xs md:text-sm font-bold">Adobeフォント</p>
+              <p className="text-white text-xs md:text-sm font-bold">Adobeフォントなど</p>
             </div>
             <div>
               <h4 className="flex items-center gap-3 justify-center lg:justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
                  <ImageIcon size={14} strokeWidth={3} /> 画像生成
               </h4>
-              <p className="text-white text-xs md:text-sm font-bold">NanobananaPro / StableDiffusion</p>
+              <p className="text-white text-xs md:text-sm font-bold">NanobananaPro / StableDiffusionなど</p>
             </div>
           </div>
           <div className="space-y-6">
@@ -381,7 +381,7 @@ const About = () => (
               <h4 className="flex items-center gap-3 justify-center lg:justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
                  <Video size={14} strokeWidth={3} /> 動画生成
               </h4>
-              <p className="text-white text-xs md:text-sm font-bold">Sora2 / Animon AI / Wan2.2</p>
+              <p className="text-white text-xs md:text-sm font-bold">Sora2 / Wan2.2など</p>
             </div>
           </div>
         </div>
