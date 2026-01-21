@@ -517,8 +517,8 @@ const About = ({ language }: { language: Language }) => {
       </div>
     </div>
   </section>
-);
-
+  );
+};
 const AIManga = ({ language }: { language: Language }) => {
   const t = translations.aiManga[language];
   const [isOpen, setIsOpen] = useState(false);
