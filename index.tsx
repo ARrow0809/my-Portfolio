@@ -95,13 +95,13 @@ const SmartImage = ({ src, alt, className, style }: { src: string, alt: string, 
 
 const categories = [
   { id: 'all', name: 'すべて' },
-  { id: '01_dtp', name: '01_DTPデザイン' },
-  { id: '02_gaina', name: '02_GAINA魂' },
-  { id: '03_logo', name: '03_ロゴデザイン' },
-  { id: '04_kindle', name: '04_kindle表紙' },
-  { id: '05_ai', name: '05_AI画像生成' },
-  { id: '06_thumb', name: '06_サムネなど' },
-  { id: '07_reviews', name: '07_デザイン講座評価' },
+  { id: '01_dtp', name: 'DTPデザイン' },
+  { id: '02_gaina', name: 'GAINA魂' },
+  { id: '03_logo', name: 'ロゴデザイン' },
+  { id: '04_kindle', name: 'Kindle表紙' },
+  { id: '05_ai', name: 'AI画像生成' },
+  { id: '06_thumb', name: 'サムネなど' },
+  { id: '07_reviews', name: 'デザイン講座評価' },
 ];
 
 const mangaPages = [
@@ -205,10 +205,11 @@ const vibeCodingProjects = [
 
 // AI動画データ - 日時降順（Status IDが大きい順）でソート
 const aiVideoData = [
-  { title: "アニモン動画チャレンジ：フレーム抽出・切り抜き機能登場！", url: "https://x.com/ARrow25989974/status/2000872251089105122/video/1" },
-  { title: "アニモン動画チャレンジ：15秒CM「新モデル＆大型アップデート」", url: "https://x.com/ARrow25989974/status/1996874239379673494?s=20" },
-  { title: "あなたの市場価値、もうゼロになりますよ？―デザイナーの気づき", url: "https://x.com/i/status/1993896080162029641" },
-  { title: "アニモンニュース：APIプラットフォーム正式リリース", url: "https://x.com/i/status/1991162516550873523" },
+  { title: "アニモン動画チャレンジ:新モデル登場!", url: "https://x.com/ARrow25989974/status/2013537013883097376" },
+  { title: "アニモン動画チャレンジ:フレーム抽出・切り抜き機能登場!", url: "https://x.com/ARrow25989974/status/2000872251089105122/video/1" },
+  { title: "アニモン動画チャレンジ:15秒CM「新モデル＆大型アップデート」", url: "https://x.com/ARrow25989974/status/1996874239379673494?s=20" },
+  { title: "あなたの市場価値、もうゼロになりますよ?―デザイナーの気づき", url: "https://x.com/i/status/1993896080162029641" },
+  { title: "アニモンニュース:APIプラットフォーム正式リリース", url: "https://x.com/i/status/1991162516550873523" },
   { title: "アニモン banana登場", url: "https://x.com/ARrow25989974/status/1970635643949850761/video/1" },
   { title: "ちゃっちぱい「学園モチーフ」", url: "https://x.com/ARrow25989974/status/1961406607054799279/video/1" },
   { title: "ルーター攻撃", url: "https://x.com/ARrow25989974/status/1960726834204827922/video/1" },
@@ -218,15 +219,15 @@ const aiVideoData = [
   { title: "ふくぎょう物語テーマ", url: "https://x.com/ARrow25989974/status/1915256448382353733/video/1" },
   { title: "近未来マネタイズ少女", url: "https://x.com/ARrow25989974/status/1892505972783935836/video/1" },
   { title: "「シティーハンター」と「Get Wild」の深い絆", url: "https://x.com/i/status/1790776395083510023" },
-  { title: "スヌーピーファミリーのオラフ：自己否定せずに生きることの大切さ", url: "https://x.com/i/status/1790031826997682486" },
-  { title: "プロレスラー大岩選手のBLから学ぶ：裏切りを乗り越える心理テクニック", url: "https://x.com/i/status/1789658408905568703" },
+  { title: "スヌーピーファミリーのオラフ:自己否定せずに生きることの大切さ", url: "https://x.com/i/status/1790031826997682486" },
+  { title: "プロレスラー大岩選手のBLから学ぶ:裏切りを乗り越える心理テクニック", url: "https://x.com/i/status/1789658408905568703" },
   { title: "AI副業での挫折を乗り越え、成功へ導く方法", url: "https://x.com/i/status/1788592514691420539" },
-  { title: "新型 Switchとマリオと共に未来へジャンプ：任天堂の戦略", url: "https://x.com/i/status/1788236161787498663" },
-  { title: "マクロスの歌姫から学ぶ：歌詞が記憶に刻む感情の力", url: "https://x.com/i/status/1787855899681489148" },
-  { title: "中学生でも理解できる！究極のターゲットオーディエンス明確化方法", url: "https://x.com/i/status/1784560592101240883" },
-  { title: "アルミンに学ぶ！頭脳派の副業戦略", url: "https://x.com/i/status/1777349276882116673" },
-  { title: "山の頂上で瞑想：AIによるディープフェイク表現", url: "https://x.com/i/status/1769009441066881332" },
-  { title: "ディープフェイクダンス完成！", url: "https://x.com/i/status/1762397789261283597" },
+  { title: "新型 Switchとマリオと共に未来へジャンプ:任天堂の戦略", url: "https://x.com/i/status/1788236161787498663" },
+  { title: "マクロスの歌姫から学ぶ:歌詞が記憶に刻む感情の力", url: "https://x.com/i/status/1787855899681489148" },
+  { title: "中学生でも理解できる!究極のターゲットオーディエンス明確化方法", url: "https://x.com/i/status/1784560592101240883" },
+  { title: "アルミンに学ぶ!頭脳派の副業戦略", url: "https://x.com/i/status/1777349276882116673" },
+  { title: "山の頂上で瞑想:AIによるディープフェイク表現", url: "https://x.com/i/status/1769009441066881332" },
+  { title: "ディープフェイクダンス完成!", url: "https://x.com/i/status/1762397789261283597" },
   { title: "ダンス元画像比較", url: "https://x.com/i/status/1762150135101096436" }
 ];
 
@@ -245,9 +246,9 @@ const Navigation = () => {
   const links = [
     { name: 'ABOUT', href: '#about' },
     { name: 'AI漫画', href: '#aimanga' },
+    { name: 'AI動画', href: '#aivideos' },
     { name: '作品紹介', href: '#portfolio' },
     { name: 'バイブコーディング', href: '#vibecoding' },
-    { name: 'AI動画', href: '#aivideos' },
   ];
 
   return (
@@ -726,9 +727,9 @@ const App = () => (
       <Hero />
       <About />
       <AIManga />
+      <AIVideos />
       <Portfolio />
       <VibeCoding />
-      <AIVideos />
       <PromotionLinks />
       <section id="contact" className="py-40 bg-gray-950 text-center relative overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-red-600 to-transparent"></div>
