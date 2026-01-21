@@ -388,7 +388,6 @@ const Hero = ({ language }: { language: Language }) => {
     </section>
   );
 };
-};
 
 const About = ({ language }: { language: Language }) => {
   const t = translations.about[language];
