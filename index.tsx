@@ -107,9 +107,54 @@ const translations = {
     zh: { title: 'Design Quest AI', subtitle: '用设计 × AI 创造未来', description: '通过创意与技术的融合创造新价值的设计师' }
   },
   about: {
-    ja: { title: 'ABOUT ME', role: 'AI Designer / Creative Technologist', mainTools: '主な使用ツール', aiTools: '使用AI', fonts: '使用フォント', imageGen: '画像生成', videoGen: '動画生成' },
-    en: { title: 'ABOUT ME', role: 'AI Designer / Creative Technologist', mainTools: 'Main Tools', aiTools: 'AI Tools', fonts: 'Fonts', imageGen: 'Image Generation', videoGen: 'Video Generation' },
-    zh: { title: '关于我', role: 'AI设计师 / 创意技术专家', mainTools: '主要工具', aiTools: 'AI工具', fonts: '字体', imageGen: '图像生成', videoGen: '视频生成' }
+    ja: { 
+      title: 'ABOUT ME', 
+      bio1: 'AI×デザインの力で、クリエイターの収益化を支援するデザイナーです。1,000件以上の案件を通じて培った経験で、あなたのアイデアを収益に変えるお手伝いをします。',
+      bio2: 'グラフィックデザインをはじめ、Kindle出版、YouTubeサムネイルなど、幅広いジャンルでの制作実績があります。AIツールを活用した効率的なワークフローで、高品質な作品を短期間で制作いたします。',
+      lab: 'Design Quest AIは、デザインとAIの共生を目指すクリエイティブ・ラボです。最高峰の生成AI技術を使いこなし、想像の限界を拡張します。',
+      mainTools: '主な使用ツール', 
+      aiTools: '使用AI', 
+      fonts: '使用フォント', 
+      imageGen: '画像生成', 
+      videoGen: '動画生成',
+      toolsList: 'Illustrator / Photoshop / Premiere Proなど',
+      aiToolsList: 'ChatGPT / codex CLI / Antigravity / Google AI Studio / Gemini / NotebookLMなど',
+      fontsList: 'Adobeフォントなど',
+      imageGenList: 'NanobananaPro / StableDiffusionなど',
+      videoGenList: 'Sora2 / Wan2.2など'
+    },
+    en: { 
+      title: 'ABOUT ME', 
+      bio1: 'I am a designer who supports creator monetization through the power of AI and design. With experience gained through over 1,000 projects, I help turn your ideas into revenue.',
+      bio2: 'I have a track record in a wide range of genres, including graphic design, Kindle publishing, and YouTube thumbnails. I produce high-quality work in a short period through efficient workflows utilizing AI tools.',
+      lab: 'Design Quest AI is a creative lab aiming for the symbiosis of design and AI. We master the latest generative AI technologies to expand the limits of imagination.',
+      mainTools: 'Main Tools', 
+      aiTools: 'AI Tools', 
+      fonts: 'Fonts', 
+      imageGen: 'Image Generation', 
+      videoGen: 'Video Generation',
+      toolsList: 'Illustrator / Photoshop / Premiere Pro etc.',
+      aiToolsList: 'ChatGPT / codex CLI / Antigravity / Google AI Studio / Gemini / NotebookLM etc.',
+      fontsList: 'Adobe Fonts etc.',
+      imageGenList: 'NanobananaPro / StableDiffusion etc.',
+      videoGenList: 'Sora2 / Wan2.2 etc.'
+    },
+    zh: { 
+      title: '关于我', 
+      bio1: '我是一名通过 AI 和设计的力量支持创作者变现的设计师。凭借在 1,000 多个项目中的经验，我能帮助您将想法转化为收益。',
+      bio2: '我在平面设计、Kindle 出版和 YouTube 缩略图等多个领域均有丰富的制作经验。通过利用 AI 工具的高效工作流程，我能在短时间内创作出高质量的作品。',
+      lab: 'Design Quest AI 是一个旨在实现设计与 AI 共生的创意实验室。我们熟练运用最顶尖的生成式 AI 技术，拓宽想象力的边界。',
+      mainTools: '主要工具', 
+      aiTools: 'AI工具', 
+      fonts: '字体', 
+      imageGen: '图像生成', 
+      videoGen: '视频生成',
+      toolsList: 'Illustrator / Photoshop / Premiere Pro 等',
+      aiToolsList: 'ChatGPT / codex CLI / Antigravity / Google AI Studio / Gemini / NotebookLM 等',
+      fontsList: 'Adobe 字体等',
+      imageGenList: 'NanobananaPro / StableDiffusion 等',
+      videoGenList: 'Sora2 / Wan2.2 等'
+    }
   },
   aiManga: {
     ja: { title: 'AI MANGA SERIES', viewManga: 'View Manga', closeManga: 'Close Manga' },
@@ -130,6 +175,11 @@ const translations = {
     ja: { title: 'AI動画コレクション', subtitle: '生成AIが織りなす映像美のフロンティア' },
     en: { title: 'AI VIDEO COLLECTION', subtitle: 'Frontier of Visual Beauty Woven by Generative AI' },
     zh: { title: 'AI视频集', subtitle: '生成AI编织的视觉美学前沿' }
+  },
+  promotions: {
+    ja: { promo1Title: 'GAINA魂 2022 詳細', promo1Label: 'Promotion Details', promo2Title: 'My ホームページ', promo2Label: 'Official Identity' },
+    en: { promo1Title: 'GAINA Soul 2022 Details', promo1Label: 'Promotion Details', promo2Title: 'My Homepage', promo2Label: 'Official Identity' },
+    zh: { promo1Title: 'GAINA魂 2022 详情', promo1Label: '推广详情', promo2Title: '我的主页', promo2Label: '官方身份' }
   },
   contact: {
     ja: { title: 'CONTACT', subtitle: 'お気軽にお問い合わせください', email: 'メールを送る' },
@@ -412,18 +462,15 @@ const About = ({ language }: { language: Language }) => {
           
           <div className="max-w-4xl space-y-8">
             <p className="text-lg md:text-2xl text-white font-bold leading-snug tracking-tight">
-              AI×デザインの力で、クリエイターの収益化を支援するデザイナーです。<br />
-              1,000件以上の案件を通じて培った経験で、あなたのアイデアを収益に変えるお手伝いをします。
+              {t.bio1}
             </p>
             <p className="text-sm md:text-lg text-gray-400 leading-relaxed font-light">
-              グラフィックデザインをはじめ、Kindle出版、YouTubeサムネイルなど、幅広いジャンルでの制作実績があります。<br className="hidden lg:block" /> 
-              AIツールを活用した効率的なワークフローで、高品質な作品を短期間で制作いたします。
+              {t.bio2}
             </p>
             
             <div className="pt-8 max-w-3xl mx-auto">
               <p className="text-gray-300 font-bold text-sm md:text-base leading-relaxed border-t border-gray-800 pt-8">
-                Design Quest AIは、デザインとAIの共生を目指すクリエイティブ・ラボです。<br />
-                最高峰の生成AI技術を使いこなし、想像の限界を拡張します。
+                {t.lab}
               </p>
             </div>
           </div>
@@ -435,13 +482,13 @@ const About = ({ language }: { language: Language }) => {
               <h4 className="flex items-center gap-3 justify-center lg:justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
                  <Layout size={14} strokeWidth={3} /> {t.mainTools}
               </h4>
-              <p className="text-white text-xs md:text-sm font-bold">Illustrator / Photoshop / Premiere Proなど</p>
+              <p className="text-white text-xs md:text-sm font-bold">{t.toolsList}</p>
             </div>
             <div>
               <h4 className="flex items-center gap-3 justify-center lg:justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
                  <Cpu size={14} strokeWidth={3} /> {t.aiTools}
               </h4>
-              <p className="text-white text-xs md:text-sm leading-relaxed font-bold">ChatGPT / codex CLI / Antigravity / Google AI Studio / Gemini / NotebookLMなど</p>
+              <p className="text-white text-xs md:text-sm leading-relaxed font-bold">{t.aiToolsList}</p>
             </div>
           </div>
           <div className="space-y-6">
@@ -449,13 +496,13 @@ const About = ({ language }: { language: Language }) => {
               <h4 className="flex items-center gap-3 justify-center lg:justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
                  <span className="text-lg font-black italic">F</span> {t.fonts}
               </h4>
-              <p className="text-white text-xs md:text-sm font-bold">Adobeフォントなど</p>
+              <p className="text-white text-xs md:text-sm font-bold">{t.fontsList}</p>
             </div>
             <div>
               <h4 className="flex items-center gap-3 justify-center lg:justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
                  <ImageIcon size={14} strokeWidth={3} /> {t.imageGen}
               </h4>
-              <p className="text-white text-xs md:text-sm font-bold">NanobananaPro / StableDiffusionなど</p>
+              <p className="text-white text-xs md:text-sm font-bold">{t.imageGenList}</p>
             </div>
           </div>
           <div className="space-y-6">
@@ -463,7 +510,7 @@ const About = ({ language }: { language: Language }) => {
               <h4 className="flex items-center gap-3 justify-center lg:justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
                  <Video size={14} strokeWidth={3} /> {t.videoGen}
               </h4>
-              <p className="text-white text-xs md:text-sm font-bold">Sora2 / Wan2.2など</p>
+              <p className="text-white text-xs md:text-sm font-bold">{t.videoGenList}</p>
             </div>
           </div>
         </div>
@@ -782,26 +829,30 @@ const AIVideos = ({ language }: { language: Language }) => {
   );
 };
 
-const PromotionLinks = () => (
+const PromotionLinks = ({ language }: { language: Language }) => {
+  const t = translations.promotions[language];
+  
+  return (
   <section className="py-24 bg-gray-950">
     <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-8">
       <a href="https://pf01.dq-l.com/" target="_blank" rel="noopener" className="group p-10 bg-gray-900 hover:bg-gray-800 rounded-[2.5rem] text-white font-bold flex flex-col justify-between transition-all shadow-2xl border border-gray-800 h-48">
-        <span className="text-[10px] uppercase font-black tracking-widest opacity-70 text-red-500">10_Promotion Details</span>
+        <span className="text-[10px] uppercase font-black tracking-widest opacity-70 text-red-500">{t.promo1Label}</span>
         <div className="flex justify-between items-end">
-          <span className="text-2xl md:text-3xl tracking-tighter group-hover:text-red-500 transition-colors">GAINA魂 2022 詳細</span>
+          <span className="text-2xl md:text-3xl tracking-tighter group-hover:text-red-500 transition-colors">{t.promo1Title}</span>
           <ArrowRight size={32} className="group-hover:translate-x-3 transition-transform text-white" />
         </div>
       </a>
       <a href="https://dq-l.com/" target="_blank" rel="noopener" className="group p-10 bg-gray-900 hover:bg-gray-800 rounded-[2.5rem] text-white font-bold flex flex-col justify-between transition-all border border-gray-800 h-48 shadow-2xl">
-        <span className="text-[10px] uppercase font-black tracking-widest opacity-50 text-orange-500">11_Official Identity</span>
+        <span className="text-[10px] uppercase font-black tracking-widest opacity-50 text-orange-500">{t.promo2Label}</span>
         <div className="flex justify-between items-end">
-          <span className="text-2xl md:text-3xl tracking-tighter group-hover:text-orange-500 transition-colors">My ホームページ</span>
+          <span className="text-2xl md:text-3xl tracking-tighter group-hover:text-orange-500 transition-colors">{t.promo2Title}</span>
           <ExternalLink size={32} className="opacity-30 group-hover:opacity-100 transition-opacity" />
         </div>
       </a>
     </div>
   </section>
-);
+  );
+};
 
 const App = () => {
   const [language, setLanguage] = useState<Language>('ja');
@@ -816,7 +867,7 @@ const App = () => {
         <AIVideos language={language} />
         <Portfolio language={language} />
         <VibeCoding language={language} />
-        <PromotionLinks />
+        <PromotionLinks language={language} />
         <section id="contact" className="py-40 bg-gray-950 text-center relative overflow-hidden">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-red-600 to-transparent"></div>
           <div className="max-w-4xl mx-auto px-6 flex flex-col items-center">
