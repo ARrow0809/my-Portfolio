@@ -166,15 +166,52 @@ const translations = {
     en: { title: 'PORTFOLIO', subtitle: 'Adding Value to Business Through Design', all: 'All' },
     zh: { title: '作品集', subtitle: '通过设计为商业增值', all: '全部' }
   },
+  categories: {
+    ja: { 
+      all: 'すべて',
+      dtp: 'DTPデザイン',
+      gaina: 'GAINA魂',
+      logo: 'ロゴデザイン',
+      kindle: 'Kindle表紙',
+      ai: 'AI画像生成',
+      thumb: 'サムネなど',
+      reviews: 'デザイン講座評価'
+    },
+    en: { 
+      all: 'All',
+      dtp: 'DTP Design',
+      gaina: 'GAINA Soul',
+      logo: 'Logo Design',
+      kindle: 'Kindle Cover',
+      ai: 'AI Generation',
+      thumb: 'Thumbnails',
+      reviews: 'Design Reviews'
+    },
+    zh: { 
+      all: '全部',
+      dtp: 'DTP设计',
+      gaina: 'GAINA魂',
+      logo: '标志设计',
+      kindle: 'Kindle封面',
+      ai: 'AI图像生成',
+      thumb: '缩略图',
+      reviews: '设计评价'
+    }
+  },
   vibeCoding: {
-    ja: { title: 'バイブコーディング', subtitle: 'ノーコード開発 × 生成AIによる次世代プロダクト', viewProject: 'View Project' },
-    en: { title: 'VIBE CODING', subtitle: 'Next-Gen Products with No-Code × Generative AI', viewProject: 'View Project' },
-    zh: { title: '氛围编程', subtitle: '无代码开发 × 生成AI的下一代产品', viewProject: '查看项目' }
+    ja: { title: 'バイブコーディング', subtitle: 'ノーコード開発 × 生成AIによる次世代プロダクト', viewProject: 'View Project', launchProject: 'LAUNCH PROJECT' },
+    en: { title: 'VIBE CODING', subtitle: 'Next-Gen Products with No-Code × Generative AI', viewProject: 'View Project', launchProject: 'LAUNCH PROJECT' },
+    zh: { title: '氛围编程', subtitle: '无代码开发 × 生成AI的下一代产品', viewProject: '查看项目', launchProject: '启动项目' }
   },
   aiVideo: {
-    ja: { title: 'AI動画コレクション', subtitle: '生成AIが織りなす映像美のフロンティア' },
-    en: { title: 'AI VIDEO COLLECTION', subtitle: 'Frontier of Visual Beauty Woven by Generative AI' },
-    zh: { title: 'AI视频集', subtitle: '生成AI编织的视觉美学前沿' }
+    ja: { title: 'AI動画コレクション', subtitle: '生成AIが織りなす映像美のフロンティア', watchVideo: 'Watch Video', aiVideoLabel: 'AI Video' },
+    en: { title: 'AI VIDEO COLLECTION', subtitle: 'Frontier of Visual Beauty Woven by Generative AI', watchVideo: 'Watch Video', aiVideoLabel: 'AI Video' },
+    zh: { title: 'AI视频集', subtitle: '生成AI编织的视觉美学前沿', watchVideo: '观看视频', aiVideoLabel: 'AI视频' }
+  },
+  portfolioDetail: {
+    ja: { detail: 'Portfolio Detail', category: 'Category', projectTitle: 'Project Title', closeWindow: 'Close Window' },
+    en: { detail: 'Portfolio Detail', category: 'Category', projectTitle: 'Project Title', closeWindow: 'Close Window' },
+    zh: { detail: '作品详情', category: '类别', projectTitle: '项目标题', closeWindow: '关闭窗口' }
   },
   promotions: {
     ja: { promo1Title: 'GAINA魂 2022 詳細', promo1Label: 'Promotion Details', promo2Title: 'My ホームページ', promo2Label: 'Official Identity' },
@@ -191,14 +228,14 @@ const translations = {
 // --- データ定義 ---
 
 const categories = [
-  { id: 'all', name: 'すべて' },
-  { id: '01_dtp', name: 'DTPデザイン' },
-  { id: '02_gaina', name: 'GAINA魂' },
-  { id: '03_logo', name: 'ロゴデザイン' },
-  { id: '04_kindle', name: 'Kindle表紙' },
-  { id: '05_ai', name: 'AI画像生成' },
-  { id: '06_thumb', name: 'サムネなど' },
-  { id: '07_reviews', name: 'デザイン講座評価' },
+  { id: 'all', key: 'all' },
+  { id: '01_dtp', key: 'dtp' },
+  { id: '02_gaina', key: 'gaina' },
+  { id: '03_logo', key: 'logo' },
+  { id: '04_kindle', key: 'kindle' },
+  { id: '05_ai', key: 'ai' },
+  { id: '06_thumb', key: 'thumb' },
+  { id: '07_reviews', key: 'reviews' },
 ];
 
 const mangaPages = [
@@ -279,54 +316,156 @@ const portfolioItems = [
   { id: 704, category: '07_reviews', title: '評価 03', src: '07_design_reviews/review_03.jpg' },
 ];
 
-const vibeCodingProjects = [
-  {
-    title: "AI美女ポートフォリオサイト",
-    url: "https://aap-coral.vercel.app/",
-    desc: "AI画像生成によるハイエンドな美女ポートフォリオ。洗練されたビジュアル表現を追求。",
-    tags: ["AI画像生成", "Web開発"]
-  },
-  {
-    title: "画像から3面図作成 (youware)",
-    url: "https://youware.app/project/8n6f9cenc3?enter_from=share&screen_status=2",
-    desc: "nanobananaを活用し、1つのキャラクターから精密な3面図を自動生成するプロジェクト。",
-    tags: ["nanobanana", "Vibe Coding"]
-  },
-  {
-    title: "nanobananaで漫画を作成 (youware)",
-    url: "https://youware.app/project/l81ty32lam?enter_from=share&screen_status=2",
-    desc: "AI生成画像を用いたストーリーテリングと、ノーコード環境による漫画制作フロー。",
-    tags: ["漫画制作", "ノーコード"]
-  }
-];
+const getVibeCodingProjects = (language: Language) => {
+  const projectsData = {
+    ja: [
+      {
+        title: "AI美女ポートフォリオサイト",
+        url: "https://aap-coral.vercel.app/",
+        desc: "AI画像生成によるハイエンドな美女ポートフォリオ。洗練されたビジュアル表現を追求。",
+        tags: ["AI画像生成", "Web開発"]
+      },
+      {
+        title: "画像から3面図作成 (youware)",
+        url: "https://youware.app/project/8n6f9cenc3?enter_from=share&screen_status=2",
+        desc: "nanobananaを活用し、1つのキャラクターから精密な3面図を自動生成するプロジェクト。",
+        tags: ["nanobanana", "Vibe Coding"]
+      },
+      {
+        title: "nanobananaで漫画を作成 (youware)",
+        url: "https://youware.app/project/l81ty32lam?enter_from=share&screen_status=2",
+        desc: "AI生成画像を用いたストーリーテリングと、ノーコード環境による漫画制作フロー。",
+        tags: ["漫画制作", "ノーコード"]
+      }
+    ],
+    en: [
+      {
+        title: "AI Beauty Portfolio Site",
+        url: "https://aap-coral.vercel.app/",
+        desc: "High-end beauty portfolio using AI image generation. Pursuing refined visual expression.",
+        tags: ["AI Generation", "Web Dev"]
+      },
+      {
+        title: "3-View Drawing from Image (youware)",
+        url: "https://youware.app/project/8n6f9cenc3?enter_from=share&screen_status=2",
+        desc: "Project to automatically generate precise 3-view drawings from a single character using nanobanana.",
+        tags: ["nanobanana", "Vibe Coding"]
+      },
+      {
+        title: "Create Manga with nanobanana (youware)",
+        url: "https://youware.app/project/l81ty32lam?enter_from=share&screen_status=2",
+        desc: "Storytelling using AI-generated images and manga production flow in a no-code environment.",
+        tags: ["Manga Creation", "No-Code"]
+      }
+    ],
+    zh: [
+      {
+        title: "AI美女作品集网站",
+        url: "https://aap-coral.vercel.app/",
+        desc: "使用AI图像生成的高端美女作品集。追求精致的视觉表现。",
+        tags: ["AI图像生成", "Web开发"]
+      },
+      {
+        title: "从图像创建三视图 (youware)",
+        url: "https://youware.app/project/8n6f9cenc3?enter_from=share&screen_status=2",
+        desc: "利用nanobanana从单个角色自动生成精确三视图的项目。",
+        tags: ["nanobanana", "Vibe Coding"]
+      },
+      {
+        title: "使用nanobanana创作漫画 (youware)",
+        url: "https://youware.app/project/l81ty32lam?enter_from=share&screen_status=2",
+        desc: "使用AI生成图像进行故事讲述，以及在无代码环境中的漫画制作流程。",
+        tags: ["漫画创作", "无代码"]
+      }
+    ]
+  };
+  return projectsData[language];
+};
 
 // AI動画データ - 日時降順（Status IDが大きい順）でソート
-const aiVideoData = [
-  { title: "アニモン動画チャレンジ:新モデル登場!", url: "https://x.com/ARrow25989974/status/2013537013883097376" },
-  { title: "アニモン動画チャレンジ:フレーム抽出・切り抜き機能登場!", url: "https://x.com/ARrow25989974/status/2000872251089105122/video/1" },
-  { title: "アニモン動画チャレンジ:15秒CM「新モデル＆大型アップデート」", url: "https://x.com/ARrow25989974/status/1996874239379673494?s=20" },
-  { title: "あなたの市場価値、もうゼロになりますよ?―デザイナーの気づき", url: "https://x.com/i/status/1993896080162029641" },
-  { title: "アニモンニュース:APIプラットフォーム正式リリース", url: "https://x.com/i/status/1991162516550873523" },
-  { title: "アニモン banana登場", url: "https://x.com/ARrow25989974/status/1970635643949850761/video/1" },
-  { title: "ちゃっちぱい「学園モチーフ」", url: "https://x.com/ARrow25989974/status/1961406607054799279/video/1" },
-  { title: "ルーター攻撃", url: "https://x.com/ARrow25989974/status/1960726834204827922/video/1" },
-  { title: "みちぽっぽ", url: "https://x.com/ARrow25989974/status/1945170933490106776/video/1" },
-  { title: "「ドラグーンクエストzero」 #ViduGameShow", url: "https://x.com/i/status/1944091331946791330" },
-  { title: "もふたんラジオ", url: "https://x.com/ARrow25989974/status/1926330046676959698/video/1" },
-  { title: "ふくぎょう物語テーマ", url: "https://x.com/ARrow25989974/status/1915256448382353733/video/1" },
-  { title: "近未来マネタイズ少女", url: "https://x.com/ARrow25989974/status/1892505972783935836/video/1" },
-  { title: "「シティーハンター」と「Get Wild」の深い絆", url: "https://x.com/i/status/1790776395083510023" },
-  { title: "スヌーピーファミリーのオラフ:自己否定せずに生きることの大切さ", url: "https://x.com/i/status/1790031826997682486" },
-  { title: "プロレスラー大岩選手のBLから学ぶ:裏切りを乗り越える心理テクニック", url: "https://x.com/i/status/1789658408905568703" },
-  { title: "AI副業での挫折を乗り越え、成功へ導く方法", url: "https://x.com/i/status/1788592514691420539" },
-  { title: "新型 Switchとマリオと共に未来へジャンプ:任天堂の戦略", url: "https://x.com/i/status/1788236161787498663" },
-  { title: "マクロスの歌姫から学ぶ:歌詞が記憶に刻む感情の力", url: "https://x.com/i/status/1787855899681489148" },
-  { title: "中学生でも理解できる!究極のターゲットオーディエンス明確化方法", url: "https://x.com/i/status/1784560592101240883" },
-  { title: "アルミンに学ぶ!頭脳派の副業戦略", url: "https://x.com/i/status/1777349276882116673" },
-  { title: "山の頂上で瞑想:AIによるディープフェイク表現", url: "https://x.com/i/status/1769009441066881332" },
-  { title: "ディープフェイクダンス完成!", url: "https://x.com/i/status/1762397789261283597" },
-  { title: "ダンス元画像比較", url: "https://x.com/i/status/1762150135101096436" }
-];
+const getAIVideoData = (language: Language) => {
+  const videoData = {
+    ja: [
+      { title: "アニモン動画チャレンジ:新モデル登場!", url: "https://x.com/ARrow25989974/status/2013537013883097376" },
+      { title: "アニモン動画チャレンジ:フレーム抽出・切り抜き機能登場!", url: "https://x.com/ARrow25989974/status/2000872251089105122/video/1" },
+      { title: "アニモン動画チャレンジ:15秒CM「新モデル＆大型アップデート」", url: "https://x.com/ARrow25989974/status/1996874239379673494?s=20" },
+      { title: "あなたの市場価値、もうゼロになりますよ?―デザイナーの気づき", url: "https://x.com/i/status/1993896080162029641" },
+      { title: "アニモンニュース:APIプラットフォーム正式リリース", url: "https://x.com/i/status/1991162516550873523" },
+      { title: "アニモン banana登場", url: "https://x.com/ARrow25989974/status/1970635643949850761/video/1" },
+      { title: "ちゃっちぱい「学園モチーフ」", url: "https://x.com/ARrow25989974/status/1961406607054799279/video/1" },
+      { title: "ルーター攻撃", url: "https://x.com/ARrow25989974/status/1960726834204827922/video/1" },
+      { title: "みちぽっぽ", url: "https://x.com/ARrow25989974/status/1945170933490106776/video/1" },
+      { title: "「ドラグーンクエストzero」 #ViduGameShow", url: "https://x.com/i/status/1944091331946791330" },
+      { title: "もふたんラジオ", url: "https://x.com/ARrow25989974/status/1926330046676959698/video/1" },
+      { title: "ふくぎょう物語テーマ", url: "https://x.com/ARrow25989974/status/1915256448382353733/video/1" },
+      { title: "近未来マネタイズ少女", url: "https://x.com/ARrow25989974/status/1892505972783935836/video/1" },
+      { title: "「シティーハンター」と「Get Wild」の深い絆", url: "https://x.com/i/status/1790776395083510023" },
+      { title: "スヌーピーファミリーのオラフ:自己否定せずに生きることの大切さ", url: "https://x.com/i/status/1790031826997682486" },
+      { title: "プロレスラー大岩選手のBLから学ぶ:裏切りを乗り越える心理テクニック", url: "https://x.com/i/status/1789658408905568703" },
+      { title: "AI副業での挫折を乗り越え、成功へ導く方法", url: "https://x.com/i/status/1788592514691420539" },
+      { title: "新型 Switchとマリオと共に未来へジャンプ:任天堂の戦略", url: "https://x.com/i/status/1788236161787498663" },
+      { title: "マクロスの歌姫から学ぶ:歌詞が記憶に刻む感情の力", url: "https://x.com/i/status/1787855899681489148" },
+      { title: "中学生でも理解できる!究極のターゲットオーディエンス明確化方法", url: "https://x.com/i/status/1784560592101240883" },
+      { title: "アルミンに学ぶ!頭脳派の副業戦略", url: "https://x.com/i/status/1777349276882116673" },
+      { title: "山の頂上で瞑想:AIによるディープフェイク表現", url: "https://x.com/i/status/1769009441066881332" },
+      { title: "ディープフェイクダンス完成!", url: "https://x.com/i/status/1762397789261283597" },
+      { title: "ダンス元画像比較", url: "https://x.com/i/status/1762150135101096436" }
+    ],
+    en: [
+      { title: "Animon Video Challenge: New Model Released!", url: "https://x.com/ARrow25989974/status/2013537013883097376" },
+      { title: "Animon Video Challenge: Frame Extraction & Cutout Feature!", url: "https://x.com/ARrow25989974/status/2000872251089105122/video/1" },
+      { title: "Animon Video Challenge: 15s CM 'New Model & Major Update'", url: "https://x.com/ARrow25989974/status/1996874239379673494?s=20" },
+      { title: "Your Market Value Will Be Zero - Designer's Realization", url: "https://x.com/i/status/1993896080162029641" },
+      { title: "Animon News: API Platform Official Release", url: "https://x.com/i/status/1991162516550873523" },
+      { title: "Animon Banana Debut", url: "https://x.com/ARrow25989974/status/1970635643949850761/video/1" },
+      { title: "Chatchipai 'School Motif'", url: "https://x.com/ARrow25989974/status/1961406607054799279/video/1" },
+      { title: "Router Attack", url: "https://x.com/ARrow25989974/status/1960726834204827922/video/1" },
+      { title: "Michipoppo", url: "https://x.com/ARrow25989974/status/1945170933490106776/video/1" },
+      { title: "'Dragoon Quest Zero' #ViduGameShow", url: "https://x.com/i/status/1944091331946791330" },
+      { title: "Mofutan Radio", url: "https://x.com/ARrow25989974/status/1926330046676959698/video/1" },
+      { title: "Side Business Story Theme", url: "https://x.com/ARrow25989974/status/1915256448382353733/video/1" },
+      { title: "Near-Future Monetization Girl", url: "https://x.com/ARrow25989974/status/1892505972783935836/video/1" },
+      { title: "Deep Bond Between 'City Hunter' and 'Get Wild'", url: "https://x.com/i/status/1790776395083510023" },
+      { title: "Olaf from Snoopy Family: Importance of Living Without Self-Denial", url: "https://x.com/i/status/1790031826997682486" },
+      { title: "Learning from Wrestler Oiwa's BL: Psychological Techniques to Overcome Betrayal", url: "https://x.com/i/status/1789658408905568703" },
+      { title: "Overcoming Setbacks in AI Side Business and Leading to Success", url: "https://x.com/i/status/1788592514691420539" },
+      { title: "Jumping to the Future with New Switch and Mario: Nintendo's Strategy", url: "https://x.com/i/status/1788236161787498663" },
+      { title: "Learning from Macross Divas: The Power of Lyrics to Engrave Emotions in Memory", url: "https://x.com/i/status/1787855899681489148" },
+      { title: "Even Middle Schoolers Can Understand! Ultimate Target Audience Clarification Method", url: "https://x.com/i/status/1784560592101240883" },
+      { title: "Learning from Armin! Intellectual Side Business Strategy", url: "https://x.com/i/status/1777349276882116673" },
+      { title: "Meditation on Mountain Peak: AI Deepfake Expression", url: "https://x.com/i/status/1769009441066881332" },
+      { title: "Deepfake Dance Complete!", url: "https://x.com/i/status/1762397789261283597" },
+      { title: "Original Dance Image Comparison", url: "https://x.com/i/status/1762150135101096436" }
+    ],
+    zh: [
+      { title: "Animon视频挑战：新模型登场！", url: "https://x.com/ARrow25989974/status/2013537013883097376" },
+      { title: "Animon视频挑战：帧提取·剪切功能登场！", url: "https://x.com/ARrow25989974/status/2000872251089105122/video/1" },
+      { title: "Animon视频挑战：15秒CM「新模型&大型更新」", url: "https://x.com/ARrow25989974/status/1996874239379673494?s=20" },
+      { title: "你的市场价值将归零——设计师的觉悟", url: "https://x.com/i/status/1993896080162029641" },
+      { title: "Animon新闻：API平台正式发布", url: "https://x.com/i/status/1991162516550873523" },
+      { title: "Animon Banana登场", url: "https://x.com/ARrow25989974/status/1970635643949850761/video/1" },
+      { title: "Chatchipai「学园主题」", url: "https://x.com/ARrow25989974/status/1961406607054799279/video/1" },
+      { title: "路由器攻击", url: "https://x.com/ARrow25989974/status/1960726834204827922/video/1" },
+      { title: "Michipoppo", url: "https://x.com/ARrow25989974/status/1945170933490106776/video/1" },
+      { title: "「龙骑士任务Zero」#ViduGameShow", url: "https://x.com/i/status/1944091331946791330" },
+      { title: "Mofutan电台", url: "https://x.com/ARrow25989974/status/1926330046676959698/video/1" },
+      { title: "副业故事主题", url: "https://x.com/ARrow25989974/status/1915256448382353733/video/1" },
+      { title: "近未来变现少女", url: "https://x.com/ARrow25989974/status/1892505972783935836/video/1" },
+      { title: "「城市猎人」与「Get Wild」的深厚羁绊", url: "https://x.com/i/status/1790776395083510023" },
+      { title: "史努比家族的奥拉夫：不自我否定地生活的重要性", url: "https://x.com/i/status/1790031826997682486" },
+      { title: "从摔跤手大岩选手的BL学习：克服背叛的心理技巧", url: "https://x.com/i/status/1789658408905568703" },
+      { title: "克服AI副业挫折并走向成功的方法", url: "https://x.com/i/status/1788592514691420539" },
+      { title: "与新型Switch和马里奥一起跳向未来：任天堂的战略", url: "https://x.com/i/status/1788236161787498663" },
+      { title: "从Macross歌姬学习：歌词铭刻记忆的情感力量", url: "https://x.com/i/status/1787855899681489148" },
+      { title: "中学生也能理解！终极目标受众明确化方法", url: "https://x.com/i/status/1784560592101240883" },
+      { title: "向阿尔敏学习！智囊型副业战略", url: "https://x.com/i/status/1777349276882116673" },
+      { title: "山顶冥想：AI深度伪造表现", url: "https://x.com/i/status/1769009441066881332" },
+      { title: "深度伪造舞蹈完成！", url: "https://x.com/i/status/1762397789261283597" },
+      { title: "舞蹈原始图像对比", url: "https://x.com/i/status/1762150135101096436" }
+    ]
+  };
+  return videoData[language];
+};
 
 // --- コンポーネント ---
 
@@ -605,7 +744,7 @@ const Portfolio = ({ language }: { language: Language }) => {
                 ? 'bg-red-600 text-white shadow-lg shadow-red-900/50' 
                 : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
             }`}>
-              {cat.id === 'all' ? t.all : cat.name}
+              {translations.categories[language][cat.key as keyof typeof translations.categories.ja]}
             </button>
           ))}
         </div>
@@ -625,7 +764,7 @@ const Portfolio = ({ language }: { language: Language }) => {
               
               <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-10">
                 <p className="text-orange-500 text-[10px] font-black mb-2 uppercase tracking-[0.3em]">
-                  {categories.find(c => c.id === item.category)?.name}
+                  {translations.categories[language][categories.find(c => c.id === item.category)?.key as keyof typeof translations.categories.ja]}
                 </p>
                 <h3 className="text-white font-bold text-xl tracking-tight leading-tight">{item.title}</h3>
               </div>
@@ -647,7 +786,7 @@ const Portfolio = ({ language }: { language: Language }) => {
             <div className="p-8 md:px-12 border-b border-gray-800 flex justify-between items-center bg-gray-950">
               <div className="flex items-center gap-3">
                 <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
-                <span className="font-black text-[10px] uppercase tracking-[0.3em] text-gray-500">Portfolio Detail</span>
+                <span className="font-black text-[10px] uppercase tracking-[0.3em] text-gray-500">{translations.portfolioDetail[language].detail}</span>
               </div>
               <p className="font-bold text-white text-xl tracking-tight">{selectedItem.title}</p>
             </div>
@@ -663,12 +802,12 @@ const Portfolio = ({ language }: { language: Language }) => {
               <div className="lg:w-96 p-10 md:p-12 border-t lg:border-t-0 lg:border-l border-gray-800 bg-gray-950 flex flex-col justify-between">
                 <div className="space-y-10">
                   <div>
-                    <h4 className="text-orange-500 font-black text-[10px] uppercase tracking-[0.3em] mb-4">Category</h4>
-                    <p className="text-white font-bold text-lg">{categories.find(c => c.id === selectedItem.category)?.name}</p>
+                    <h4 className="text-orange-500 font-black text-[10px] uppercase tracking-[0.3em] mb-4">{translations.portfolioDetail[language].category}</h4>
+                    <p className="text-white font-bold text-lg">{translations.categories[language][categories.find(c => c.id === selectedItem.category)?.key as keyof typeof translations.categories.ja]}</p>
                   </div>
                   
                   <div>
-                    <h4 className="text-orange-500 font-black text-[10px] uppercase tracking-[0.3em] mb-4">Project Title</h4>
+                    <h4 className="text-orange-500 font-black text-[10px] uppercase tracking-[0.3em] mb-4">{translations.portfolioDetail[language].projectTitle}</h4>
                     <p className="text-white font-medium text-lg leading-snug">{selectedItem.title}</p>
                   </div>
                 </div>
@@ -677,7 +816,7 @@ const Portfolio = ({ language }: { language: Language }) => {
                   onClick={() => setSelectedItem(null)}
                   className="w-full py-5 bg-white text-black rounded-2xl font-black text-xs uppercase tracking-[0.3em] hover:bg-orange-600 hover:text-white transition-all shadow-2xl mt-12"
                 >
-                  Close Window
+                  {translations.portfolioDetail[language].closeWindow}
                 </button>
               </div>
             </div>
@@ -690,6 +829,7 @@ const Portfolio = ({ language }: { language: Language }) => {
 
 const VibeCoding = ({ language }: { language: Language }) => {
   const t = translations.vibeCoding[language];
+  const projects = getVibeCodingProjects(language);
   
   return (
   <section id="vibecoding" className="py-24 bg-gray-900/30 border-y border-gray-800/50">
@@ -701,7 +841,7 @@ const VibeCoding = ({ language }: { language: Language }) => {
       </div>
 
       <div className="grid lg:grid-cols-3 gap-8">
-        {vibeCodingProjects.map((proj, i) => (
+        {projects.map((proj, i) => (
           <a key={i} href={proj.url} target="_blank" rel="noopener" className="group flex flex-col p-10 bg-gray-900 border border-gray-800 rounded-[2.5rem] text-white transition-all hover:bg-gray-800 h-full">
             <div className="flex flex-wrap gap-2 mb-6">
               {proj.tags.map(tag => <span key={tag} className="text-[10px] px-3 py-1 bg-orange-500/10 text-orange-500 rounded-lg uppercase font-black border border-orange-500/20">{tag}</span>)}
@@ -709,19 +849,21 @@ const VibeCoding = ({ language }: { language: Language }) => {
             <h3 className="text-2xl font-bold mb-6 group-hover:text-orange-500 transition-colors leading-tight">{proj.title}</h3>
             <p className="text-gray-400 text-sm leading-relaxed mb-10 flex-grow">{proj.desc}</p>
             <div className="mt-auto flex items-center gap-3 text-xs font-black uppercase tracking-widest">
-              Launch Project <ExternalLink size={14} className="opacity-50" />
+              {t.launchProject} <ExternalLink size={14} className="opacity-50" />
             </div>
           </a>
         ))}
       </div>
     </div>
   </section>
-);
+  );
+};
 
 const AIVideos = ({ language }: { language: Language }) => {
   const t = translations.aiVideo[language];
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   const tweetContainerRef = useRef<HTMLDivElement>(null);
+  const aiVideoData = getAIVideoData(language);
 
   const getTweetId = (url: string) => {
     const parts = url.split('/');
@@ -777,12 +919,12 @@ const AIVideos = ({ language }: { language: Language }) => {
                   {video.title}
                 </p>
                 <div className="mt-4 flex items-center gap-2 text-red-500 font-black text-[10px] uppercase tracking-widest">
-                  Watch Video <Play size={10} fill="currentColor" />
+                  {t.watchVideo} <Play size={10} fill="currentColor" />
                 </div>
               </div>
 
               <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center group-hover:opacity-0 transition-opacity duration-300">
-                <p className="text-white text-[10px] font-black uppercase tracking-widest opacity-60">AI Video #{i+1}</p>
+                <p className="text-white text-[10px] font-black uppercase tracking-widest opacity-60">{t.aiVideoLabel} #{i+1}</p>
                 <Maximize2 size={12} className="text-white opacity-40" />
               </div>
             </button>
@@ -858,7 +1000,7 @@ const App = () => {
   const [language, setLanguage] = useState<Language>('ja');
 
   return (
-    <div className="bg-gray-950 min-h-screen text-gray-100 selection:bg-red-600/50 font-sans">
+    <div className="bg-gray-950 min-h-screen">
       <Navigation language={language} setLanguage={setLanguage} />
       <main>
         <Hero language={language} />
@@ -868,17 +1010,19 @@ const App = () => {
         <Portfolio language={language} />
         <VibeCoding language={language} />
         <PromotionLinks language={language} />
-        <section id="contact" className="py-40 bg-gray-950 text-center relative overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-red-600 to-transparent"></div>
-          <div className="max-w-4xl mx-auto px-6 flex flex-col items-center">
-            <h2 className="text-5xl md:text-8xl font-black text-white mb-16 tracking-tighter uppercase">{translations.contact[language].title}</h2>
-            <a href="mailto:info@dq-l.com" className="inline-flex items-center gap-6 px-16 py-8 bg-white text-black hover:bg-red-600 hover:text-white rounded-[2rem] font-black text-lg md:text-2xl transition-all shadow-2xl hover:-translate-y-4 hover:rotate-2 mb-20">
-              <Mail size={32} /> {translations.contact[language].email}
-            </a>
-            <p className="text-gray-600 text-sm">© 2026 Design Quest AI. All rights reserved.</p>
-          </div>
-        </section>
       </main>
+      
+      <footer className="py-12 bg-gray-950 border-t border-gray-900 text-center">
+        <div className="flex flex-col items-center gap-6">
+          <div className="text-xl font-bold tracking-tighter flex items-center gap-2">
+            <span className="text-white">Design Quest</span>
+            <span className="text-orange-500">AI</span>
+          </div>
+          <p className="text-gray-500 text-[10px] font-black uppercase tracking-[0.3em]">
+            &copy; 2026 Design Quest AI. All Rights Reserved.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };
