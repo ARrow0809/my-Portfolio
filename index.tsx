@@ -365,35 +365,43 @@ const Navigation = ({ language, setLanguage }: { language: Language, setLanguage
   );
 };
 
-const Hero = () => (
-  <section className="relative h-[70vh] flex items-center justify-center overflow-hidden bg-gray-950">
-    <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-gray-900 to-red-950/20 z-0"></div>
-    <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1974&auto=format&fit=crop')] bg-cover bg-center mix-blend-overlay"></div>
-    
-    <div className="relative z-10 text-center px-4 w-full max-w-[98vw] mx-auto">
-      <div className="inline-block mb-8 px-4 py-1.5 bg-red-500/10 border border-red-500/30 rounded-full text-red-500 text-[10px] font-black tracking-[0.3em] uppercase animate-pulse">
-        New Era of Creativity
+const Hero = ({ language }: { language: Language }) => {
+  const t = translations.hero[language];
+  
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-gray-900 to-red-950/20 z-0"></div>
+      <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1974&auto=format&fit=crop')] bg-cover bg-center mix-blend-overlay"></div>
+      
+      <div className="relative z-10 text-center px-4 w-full max-w-[98vw] mx-auto">
+        <div className="inline-block mb-8 px-4 py-1.5 bg-red-500/10 border border-red-500/30 rounded-full text-red-500 text-[10px] font-black tracking-[0.3em] uppercase animate-pulse">
+          New Era of Creativity
+        </div>
+        <h1 className="text-5xl md:text-8xl font-black mb-10 text-white leading-none tracking-tighter uppercase py-4">
+          {t.title.split(' ').slice(0, -1).join(' ')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-500 font-black">{t.title.split(' ').slice(-1)}</span>
+        </h1>
+        <p className="text-lg md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
+          {t.subtitle}<br className="hidden md:block" />
+          {t.description}
+        </p>
       </div>
-      <h1 className="text-5xl md:text-8xl font-black mb-10 text-white leading-none tracking-tighter uppercase py-4">
-        DESIGN QUEST <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-500 font-black">AI</span>
-      </h1>
-      <p className="text-lg md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
-        AIと共創する未来のデザイン。従来の概念を破壊し、<br className="hidden md:block" />
-        テクノロジーの力で新たな美学を定義する。
-      </p>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
+};
 
-const About = () => (
-  <section id="about" className="py-24 bg-gray-950">
-    <div className="max-w-5xl mx-auto px-6">
+const About = ({ language }: { language: Language }) => {
+  const t = translations.about[language];
+  
+  return (
+    <section id="about" className="py-24 bg-gray-950">
+      <div className="max-w-5xl mx-auto px-6">
       <div className="bg-gray-900/40 p-10 md:p-20 rounded-[3rem] border border-gray-800 shadow-2xl relative overflow-hidden group">
         <div className="absolute top-0 right-0 w-80 h-80 bg-red-600/5 blur-[120px] -mr-40 -mt-40"></div>
         
         <div className="flex flex-col items-center text-center">
           <div className="flex flex-col md:flex-row items-center gap-6 mb-10">
-            <h2 className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase leading-none">ABOUT ME</h2>
+            <h2 className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase leading-none">{t.title}</h2>
             <div className="w-16 h-16 md:w-24 md:h-24 shrink-0 rounded-full overflow-hidden border-4 border-red-600 shadow-[0_0_40px_rgba(220,38,38,0.5)] transition-all duration-500 hover:scale-110">
               <SmartImage 
                 src="img/あろうAiデザインメンター_icon.jpeg" 
@@ -426,13 +434,13 @@ const About = () => (
           <div className="space-y-6">
             <div>
               <h4 className="flex items-center gap-3 justify-center lg:justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
-                 <Layout size={14} strokeWidth={3} /> 主な使用ツール
+                 <Layout size={14} strokeWidth={3} /> {t.mainTools}
               </h4>
               <p className="text-white text-xs md:text-sm font-bold">Illustrator / Photoshop / Premiere Proなど</p>
             </div>
             <div>
               <h4 className="flex items-center gap-3 justify-center lg:justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
-                 <Cpu size={14} strokeWidth={3} /> 使用AI
+                 <Cpu size={14} strokeWidth={3} /> {t.aiTools}
               </h4>
               <p className="text-white text-xs md:text-sm leading-relaxed font-bold">ChatGPT / codex CLI / Antigravity / Google AI Studio / Gemini / NotebookLMなど</p>
             </div>
@@ -440,13 +448,13 @@ const About = () => (
           <div className="space-y-6">
             <div>
               <h4 className="flex items-center gap-3 justify-center lg:justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
-                 <span className="text-lg font-black italic">F</span> 使用フォント
+                 <span className="text-lg font-black italic">F</span> {t.fonts}
               </h4>
               <p className="text-white text-xs md:text-sm font-bold">Adobeフォントなど</p>
             </div>
             <div>
               <h4 className="flex items-center gap-3 justify-center lg:justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
-                 <ImageIcon size={14} strokeWidth={3} /> 画像生成
+                 <ImageIcon size={14} strokeWidth={3} /> {t.imageGen}
               </h4>
               <p className="text-white text-xs md:text-sm font-bold">NanobananaPro / StableDiffusionなど</p>
             </div>
@@ -454,7 +462,7 @@ const About = () => (
           <div className="space-y-6">
             <div>
               <h4 className="flex items-center gap-3 justify-center lg:justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
-                 <Video size={14} strokeWidth={3} /> 動画生成
+                 <Video size={14} strokeWidth={3} /> {t.videoGen}
               </h4>
               <p className="text-white text-xs md:text-sm font-bold">Sora2 / Wan2.2など</p>
             </div>
@@ -465,39 +473,34 @@ const About = () => (
   </section>
 );
 
-const AIManga = () => {
+const AIManga = ({ language }: { language: Language }) => {
+  const t = translations.aiManga[language];
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <section id="aimanga" className="py-24 bg-gray-950 border-y border-gray-800/30">
       <div className="max-w-4xl mx-auto px-6 text-center">
-        <h2 className="text-3xl md:text-5xl font-black text-white mb-12 tracking-tighter uppercase">AI MANGA SERIES</h2>
+        <h2 className="text-3xl md:text-5xl font-black text-white mb-12 tracking-tighter uppercase">{t.title}</h2>
         
         <div 
           onClick={() => setIsOpen(true)}
-          className="group relative inline-block cursor-pointer overflow-hidden rounded-[2.5rem] border border-gray-800 hover:border-orange-500 transition-all shadow-2xl"
-        >
+          className="group relative inline-block cursor-pointer overflow-hidden rounded-[2.5rem] border border-gray-800 hover:border-orange-500 transition-all shadow-2xl">
           <SmartImage 
             src="00_ai_manga/thumbnail_cover.jpeg" 
             alt="AI漫画サムネイル" 
-            className="max-w-full h-auto transition-transform duration-700 group-hover:scale-105"
+            className="w-full max-w-md h-auto transition-transform duration-500 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center">
-            <div className="w-20 h-20 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20">
-              <BookOpen size={40} className="text-white" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-8">
+            <div className="flex items-center gap-2 text-white font-black text-lg uppercase tracking-widest">
+              <Play size={24} /> {t.viewManga}
             </div>
-            <p className="mt-6 text-white font-black text-xs uppercase tracking-[0.4em]">Read Full Manga</p>
           </div>
         </div>
       </div>
 
       {isOpen && (
-        <div className="fixed inset-0 z-[100] bg-black/98 flex flex-col items-center animate-in fade-in duration-300 overflow-y-auto">
-          <div className="sticky top-0 w-full z-[110] flex justify-between items-center p-6 bg-black/80 backdrop-blur-xl border-b border-gray-800">
-            <div className="flex items-center gap-4">
-              <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
-              <span className="font-black text-xs tracking-widest text-gray-400">Vertical Reading Mode</span>
-            </div>
+        <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 overflow-y-auto">
+          <div className="relative max-w-4xl w-full">
             <button 
               onClick={() => setIsOpen(false)}
               className="p-4 bg-gray-900 rounded-full text-white hover:bg-orange-600 transition-colors"
@@ -531,7 +534,8 @@ const AIManga = () => {
   );
 };
 
-const Portfolio = () => {
+const Portfolio = ({ language }: { language: Language }) => {
+  const t = translations.portfolio[language];
   const [activeTab, setActiveTab] = useState('all');
   const [selectedItem, setSelectedItem] = useState<any | null>(null);
   
@@ -543,18 +547,19 @@ const Portfolio = () => {
     <section id="portfolio" className="py-24 bg-gray-950">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-20 text-center">
-          <h2 className="text-4xl md:text-6xl font-black mb-6 text-white tracking-tighter uppercase">作品紹介</h2>
+          <h2 className="text-4xl md:text-6xl font-black mb-6 text-white tracking-tighter uppercase">{t.title}</h2>
+          <p className="text-gray-500 text-lg">{t.subtitle}</p>
           <div className="w-24 h-1.5 bg-gradient-to-r from-red-600 to-orange-500 mx-auto rounded-full mb-12"></div>
         </div>
 
         <div className="flex flex-wrap justify-center gap-3 mb-16">
           {categories.map(cat => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveTab(cat.id)}
-              className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all border ${activeTab === cat.id ? 'bg-white border-white text-black shadow-2xl scale-105' : 'bg-gray-900 border-gray-800 text-gray-500 hover:border-gray-600 hover:text-white'}`}
-            >
-              {cat.name}
+            <button key={cat.id} onClick={() => setActiveTab(cat.id)} className={`px-6 py-3 rounded-full font-bold text-sm transition-all ${
+              activeTab === cat.id 
+                ? 'bg-red-600 text-white shadow-lg shadow-red-900/50' 
+                : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+            }`}>
+              {cat.id === 'all' ? t.all : cat.name}
             </button>
           ))}
         </div>
@@ -637,12 +642,15 @@ const Portfolio = () => {
   );
 };
 
-const VibeCoding = () => (
+const VibeCoding = ({ language }: { language: Language }) => {
+  const t = translations.vibeCoding[language];
+  
+  return (
   <section id="vibecoding" className="py-24 bg-gray-900/30 border-y border-gray-800/50">
     <div className="max-w-7xl mx-auto px-6">
       <div className="mb-20 text-center md:text-left">
-        <h2 className="text-4xl md:text-6xl font-black text-white mb-4 tracking-tighter uppercase">バイブコーディング</h2>
-        <p className="text-gray-500 text-lg font-medium">ノーコード開発 × 生成AIによる次世代プロダクト</p>
+        <h2 className="text-4xl md:text-6xl font-black text-white mb-4 tracking-tighter uppercase">{t.title}</h2>
+        <p className="text-gray-500 text-lg font-medium">{t.subtitle}</p>
         <div className="w-16 h-1.5 bg-orange-500 mt-6 rounded-full hidden md:block"></div>
       </div>
 
@@ -664,7 +672,8 @@ const VibeCoding = () => (
   </section>
 );
 
-const AIVideos = () => {
+const AIVideos = ({ language }: { language: Language }) => {
+  const t = translations.aiVideo[language];
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   const tweetContainerRef = useRef<HTMLDivElement>(null);
 
@@ -698,8 +707,8 @@ const AIVideos = () => {
     <section id="aivideos" className="py-24 bg-gray-950">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-20 text-center">
-          <h2 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tighter uppercase">AI動画コレクション</h2>
-          <p className="text-gray-500 text-lg">生成AIが織りなす映像美のフロンティア</p>
+          <h2 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tighter uppercase">{t.title}</h2>
+          <p className="text-gray-500 text-lg">{t.subtitle}</p>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
