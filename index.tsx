@@ -105,81 +105,81 @@ const categories = [
 ];
 
 const mangaPages = [
-  '00_AI漫画/00 - 表紙_あろうマンガ表紙（大）（中）.jpeg'.normalize('NFC'),
-  '00_AI漫画/01 - 2025年11月26日 11.33.49 (7)（大）（中）.jpeg'.normalize('NFC'),
-  '00_AI漫画/02 - 2025年11月26日 11.33.49 (6)（大）（中）.jpeg'.normalize('NFC'),
-  '00_AI漫画/03 - 2025年11月26日 11.33.49 (2)（大）（中）.jpeg'.normalize('NFC'),
-  '00_AI漫画/04_Make_the_character_on_the_left_appear_as_if_it_is_-1764164772017（大）（中）.jpeg'.normalize('NFC'),
-  '00_AI漫画/05_未_設定 - 2025年11月26日 11.33.49 (5)（大）（中）.jpeg'.normalize('NFC'),
-  '00_AI漫画/06_未_設定---2025年11月26日-11.33.49-(3)（大）（中）.jpeg'.normalize('NFC')
+  '00_ai_manga/00_cover_manga.jpeg',
+  '00_ai_manga/01_page.jpeg',
+  '00_ai_manga/02_page.jpeg',
+  '00_ai_manga/03_page.jpeg',
+  '00_ai_manga/04_page.jpeg',
+  '00_ai_manga/05_page.jpeg',
+  '00_ai_manga/06_page.jpeg'
 ];
 
 const portfolioItems = [
-  // 01_DTPデザイン
-  { id: 101, category: '01_dtp', title: '東公園パンフレット', src: '01_DTPデザイン/09東公園パンフ（大）（中）.jpeg'.normalize('NFC') },
-  { id: 102, category: '01_dtp', title: 'ローター工業パンフレット', src: '01_DTPデザイン/10ローター工業パンフ（大）（中）.jpeg'.normalize('NFC') },
-  { id: 103, category: '01_dtp', title: 'SCN会社案内', src: '01_DTPデザイン/11SCN会社案内02（大）（中）.jpeg'.normalize('NFC') },
-  { id: 104, category: '01_dtp', title: 'kaoriパンフレット', src: '01_DTPデザイン/12kaoriパンフ（大）（中）.jpeg'.normalize('NFC') },
-  { id: 105, category: '01_dtp', title: 'ぎょしょうリーフレット', src: '01_DTPデザイン/13ぎょしょうリーフ（大）（中）.jpeg'.normalize('NFC') },
-  { id: 106, category: '01_dtp', title: 'イベントガイド', src: '01_DTPデザイン/14イベントガイド（大）（中）.jpeg'.normalize('NFC') },
-  { id: 107, category: '01_dtp', title: '豪円とうふプレゼン', src: '01_DTPデザイン/15豪円とうふプレゼン（大）（中）.jpeg'.normalize('NFC') },
-  { id: 108, category: '01_dtp', title: '豪円湯院GOENプリン', src: '01_DTPデザイン/16豪円湯院GOENプリン-型抜-7丁（大）（中）.jpeg'.normalize('NFC') },
-  { id: 109, category: '01_dtp', title: '燻製豆腐リーフレット', src: '01_DTPデザイン/17豪円湯院燻製豆腐リーフ（大）（中）.jpeg'.normalize('NFC') },
-  { id: 110, category: '01_dtp', title: 'バレエ団パンフレット', src: '01_DTPデザイン/18バレエ団パンフレット02（大）（中）.jpeg'.normalize('NFC') },
-  { id: 111, category: '01_dtp', title: '春の出店展示会', src: '01_DTPデザイン/19春の出店展示会（大）（中）.jpeg'.normalize('NFC') },
+  // 01_DTP Design
+  { id: 101, category: '01_dtp', title: '東公園パンフレット', src: '01_dtp_design/09_higashi_park.jpeg' },
+  { id: 102, category: '01_dtp', title: 'ローター工業パンフレット', src: '01_dtp_design/10_rotor_industry.jpeg' },
+  { id: 103, category: '01_dtp', title: 'SCN会社案内', src: '01_dtp_design/11_scn_company.jpeg' },
+  { id: 104, category: '01_dtp', title: 'kaoriパンフレット', src: '01_dtp_design/12_kaori.jpeg' },
+  { id: 105, category: '01_dtp', title: 'ぎょしょうリーフレット', src: '01_dtp_design/13_gyosho_leaf.jpeg' },
+  { id: 106, category: '01_dtp', title: 'イベントガイド', src: '01_dtp_design/14_event_guide.jpeg' },
+  { id: 107, category: '01_dtp', title: '豪円とうふプレゼン', src: '01_dtp_design/15_goen_tofu.jpeg' },
+  { id: 108, category: '01_dtp', title: '豪円湯院GOENプリン', src: '01_dtp_design/16_goen_pudding.jpeg' },
+  { id: 109, category: '01_dtp', title: '燻製豆腐リーフレット', src: '01_dtp_design/17_goen_smoked_tofu.jpeg' },
+  { id: 110, category: '01_dtp', title: 'バレエ団パンフレット', src: '01_dtp_design/18_ballet.jpeg' },
+  { id: 111, category: '01_dtp', title: '春の出店展示会', src: '01_dtp_design/19_spring_exhibition.jpeg' },
   
-  // 02_GAINA魂
-  { id: 201, category: '02_gaina', title: 'GAINA魂ロゴ', src: '02_GAINA魂/01GAINA魂ロゴ（大）（中）.jpeg'.normalize('NFC') },
-  { id: 202, category: '02_gaina', title: 'GAINA魂ロゴイメージ', src: '02_GAINA魂/02GAINA魂ロゴイメージ（大）（中）.jpeg'.normalize('NFC') },
-  { id: 203, category: '02_gaina', title: 'GAINA魂ポスター', src: '02_GAINA魂/03GAINA魂ポスター03（大）（中）.jpeg'.normalize('NFC') },
-  { id: 204, category: '02_gaina', title: 'GAINA魂パンフレット', src: '02_GAINA魂/04GAINA魂パンフレット02（大）（中）.jpeg'.normalize('NFC') },
-  { id: 205, category: '02_gaina', title: 'GAINA魂チケット', src: '02_GAINA魂/05GAINA魂チケット一覧（大）（中）.jpeg'.normalize('NFC') },
-  { id: 206, category: '02_gaina', title: 'GAINA魂SNS', src: '02_GAINA魂/06GAINA魂SNS（大）（中）.jpeg'.normalize('NFC') },
-  { id: 207, category: '02_gaina', title: 'GAINA魂ボードデザイン', src: '02_GAINA魂/07GAINA魂ボードデザイン（大）（中）.jpeg'.normalize('NFC') },
-  { id: 208, category: '02_gaina', title: 'GAINA魂米子ジム名刺', src: '02_GAINA魂/08GAINA魂米子ジム名刺（大）（中）.jpeg'.normalize('NFC') },
+  // 02_GAINA Soul
+  { id: 201, category: '02_gaina', title: 'GAINA魂ロゴ', src: '02_gaina_soul/01_logo.jpeg' },
+  { id: 202, category: '02_gaina', title: 'GAINA魂ロゴイメージ', src: '02_gaina_soul/02_logo_image.jpeg' },
+  { id: 203, category: '02_gaina', title: 'GAINA魂ポスター', src: '02_gaina_soul/03_poster.jpeg' },
+  { id: 204, category: '02_gaina', title: 'GAINA魂パンフレット', src: '02_gaina_soul/04_pamphlet.jpeg' },
+  { id: 205, category: '02_gaina', title: 'GAINA魂チケット', src: '02_gaina_soul/05_tickets.jpeg' },
+  { id: 206, category: '02_gaina', title: 'GAINA魂SNS', src: '02_gaina_soul/06_sns.jpeg' },
+  { id: 207, category: '02_gaina', title: 'GAINA魂ボードデザイン', src: '02_gaina_soul/07_board_design.jpeg' },
+  { id: 208, category: '02_gaina', title: 'GAINA魂米子ジム名刺', src: '02_gaina_soul/08_business_card.jpeg' },
   
-  // 03_ロゴデザイン
-  { id: 301, category: '03_logo', title: 'ロゴコンタクトシート', src: '03_ロゴデザイン/ロゴコンタクトシートカラー（大）.jpeg'.normalize('NFC') },
-  { id: 302, category: '03_logo', title: 'ガイナ魂ロゴ', src: '03_ロゴデザイン/ガイナ魂（大）.jpeg'.normalize('NFC') },
-  { id: 303, category: '03_logo', title: '皮膚科ロゴ', src: '03_ロゴデザイン/皮膚科（大）.jpeg'.normalize('NFC') },
-  { id: 304, category: '03_logo', title: '駅なかマルシェロゴ', src: '03_ロゴデザイン/駅なかマルシェ（大）.jpeg'.normalize('NFC') },
-  { id: 305, category: '03_logo', title: 'Swanロゴ', src: '03_ロゴデザイン/swan（大）.jpeg'.normalize('NFC') },
+  // 03_Logo Design
+  { id: 301, category: '03_logo', title: 'ロゴコンタクトシート', src: '03_logo_design/logo_contact_sheet.jpeg' },
+  { id: 302, category: '03_logo', title: 'ガイナ魂ロゴ', src: '03_logo_design/gaina_soul.jpeg' },
+  { id: 303, category: '03_logo', title: '皮膚科ロゴ', src: '03_logo_design/dermatology.jpeg' },
+  { id: 304, category: '03_logo', title: '駅なかマルシェロゴ', src: '03_logo_design/station_marche.jpeg' },
+  { id: 305, category: '03_logo', title: 'Swanロゴ', src: '03_logo_design/swan.jpeg' },
   
-  // 04_kindle表紙
-  { id: 401, category: '04_kindle', title: 'Kindle表紙 01', src: '04_kindle表紙/00001_kindle表紙A（大）（中）.jpeg'.normalize('NFC') },
-  { id: 402, category: '04_kindle', title: 'Kindle表紙 02', src: '04_kindle表紙/00002_kindle表紙A（大）（中）.jpeg'.normalize('NFC') },
-  { id: 403, category: '04_kindle', title: 'Kindle表紙 03', src: '04_kindle表紙/00003_kindle表紙A（大）（中）.jpeg'.normalize('NFC') },
-  { id: 404, category: '04_kindle', title: 'Kindle表紙 04', src: '04_kindle表紙/00004_kindle表紙A（大）（中）.jpeg'.normalize('NFC') },
-  { id: 405, category: '04_kindle', title: 'Kindle表紙 05', src: '04_kindle表紙/00005_kindle表紙A（大）（中）.jpeg'.normalize('NFC') },
-  { id: 406, category: '04_kindle', title: 'Kindle表紙 06', src: '04_kindle表紙/00006_kindle表紙A（大）（中）.jpeg'.normalize('NFC') },
-  { id: 407, category: '04_kindle', title: 'Kindle表紙 07', src: '04_kindle表紙/00007_kindle表紙A（大）（中）.jpeg'.normalize('NFC') },
-  { id: 408, category: '04_kindle', title: 'Kindle表紙 08', src: '04_kindle表紙/00008_kindle表紙A（大）（中）.jpeg'.normalize('NFC') },
-  { id: 409, category: '04_kindle', title: 'Kindle表紙 09', src: '04_kindle表紙/00009_kindle表紙B（大）（中）.jpeg'.normalize('NFC') },
-  { id: 410, category: '04_kindle', title: 'Kindle表紙 10', src: '04_kindle表紙/00010_kindle表紙B（大）（中）.jpeg'.normalize('NFC') },
-  { id: 411, category: '04_kindle', title: 'Kindle表紙 11', src: '04_kindle表紙/00011_kindle表紙B（大）（中）.jpeg'.normalize('NFC') },
-  { id: 412, category: '04_kindle', title: 'Kindle表紙 12', src: '04_kindle表紙/00012_kindle表紙B（大）（中）.jpeg'.normalize('NFC') },
-  { id: 413, category: '04_kindle', title: 'Kindle表紙 13', src: '04_kindle表紙/00013_kindle表紙B（大）（中）.jpeg'.normalize('NFC') },
-  { id: 414, category: '04_kindle', title: 'Kindle表紙 14', src: '04_kindle表紙/00014_kindle表紙B（大）（中）.jpeg'.normalize('NFC') },
-  { id: 415, category: '04_kindle', title: 'Kindle表紙 15', src: '04_kindle表紙/00015_kindle表紙B（大）（中）.jpeg'.normalize('NFC') },
+  // 04_Kindle Cover
+  { id: 401, category: '04_kindle', title: 'Kindle表紙 01', src: '04_kindle_cover/00001_cover_a.jpeg' },
+  { id: 402, category: '04_kindle', title: 'Kindle表紙 02', src: '04_kindle_cover/00002_cover_a.jpeg' },
+  { id: 403, category: '04_kindle', title: 'Kindle表紙 03', src: '04_kindle_cover/00003_cover_a.jpeg' },
+  { id: 404, category: '04_kindle', title: 'Kindle表紙 04', src: '04_kindle_cover/00004_cover_a.jpeg' },
+  { id: 405, category: '04_kindle', title: 'Kindle表紙 05', src: '04_kindle_cover/00005_cover_a.jpeg' },
+  { id: 406, category: '04_kindle', title: 'Kindle表紙 06', src: '04_kindle_cover/00006_cover_a.jpeg' },
+  { id: 407, category: '04_kindle', title: 'Kindle表紙 07', src: '04_kindle_cover/00007_cover_a.jpeg' },
+  { id: 408, category: '04_kindle', title: 'Kindle表紙 08', src: '04_kindle_cover/00008_cover_a.jpeg' },
+  { id: 409, category: '04_kindle', title: 'Kindle表紙 09', src: '04_kindle_cover/00009_cover_b.jpeg' },
+  { id: 410, category: '04_kindle', title: 'Kindle表紙 10', src: '04_kindle_cover/00010_cover_b.jpeg' },
+  { id: 411, category: '04_kindle', title: 'Kindle表紙 11', src: '04_kindle_cover/00011_cover_b.jpeg' },
+  { id: 412, category: '04_kindle', title: 'Kindle表紙 12', src: '04_kindle_cover/00012_cover_b.jpeg' },
+  { id: 413, category: '04_kindle', title: 'Kindle表紙 13', src: '04_kindle_cover/00013_cover_b.jpeg' },
+  { id: 414, category: '04_kindle', title: 'Kindle表紙 14', src: '04_kindle_cover/00014_cover_b.jpeg' },
+  { id: 415, category: '04_kindle', title: 'Kindle表紙 15', src: '04_kindle_cover/00015_cover_b.jpeg' },
   
-  // 05_AI画像生成
-  { id: 501, category: '05_ai', title: 'AI画像生成 01', src: '05_AI画像生成/portfolio_01（大）.jpeg'.normalize('NFC') },
-  { id: 502, category: '05_ai', title: 'AI画像生成 02', src: '05_AI画像生成/portfolio_02（大）.jpeg'.normalize('NFC') },
-  { id: 503, category: '05_ai', title: 'AI画像生成 03', src: '05_AI画像生成/portfolio-03（大）.jpeg'.normalize('NFC') },
-  { id: 504, category: '05_ai', title: 'AI画像生成 04', src: '05_AI画像生成/portfolio-04（大）.jpeg'.normalize('NFC') },
-  { id: 505, category: '05_ai', title: 'AI画像生成 05', src: '05_AI画像生成/portfolio-05（大）.jpeg'.normalize('NFC') },
-  { id: 506, category: '05_ai', title: 'AI画像生成 06', src: '05_AI画像生成/portfolio-06（大）.jpeg'.normalize('NFC') },
+  // 05_AI Generation
+  { id: 501, category: '05_ai', title: 'AI画像生成 01', src: '05_ai_generation/portfolio_01.jpeg' },
+  { id: 502, category: '05_ai', title: 'AI画像生成 02', src: '05_ai_generation/portfolio_02.jpeg' },
+  { id: 503, category: '05_ai', title: 'AI画像生成 03', src: '05_ai_generation/portfolio_03.jpeg' },
+  { id: 504, category: '05_ai', title: 'AI画像生成 04', src: '05_ai_generation/portfolio_04.jpeg' },
+  { id: 505, category: '05_ai', title: 'AI画像生成 05', src: '05_ai_generation/portfolio_05.jpeg' },
+  { id: 506, category: '05_ai', title: 'AI画像生成 06', src: '05_ai_generation/portfolio_06.jpeg' },
   
-  // 06_サムネなど
-  { id: 601, category: '06_thumb', title: 'DQXシールモンスター採用おすもっこり', src: '06_サムネなど/20DQXシールモンスター採用おすもっこり（中）.jpeg'.normalize('NFC') },
-  { id: 602, category: '06_thumb', title: 'YouTubeサムネイル', src: '06_サムネなど/21youtubeサムネ（中）.jpeg'.normalize('NFC') },
-  { id: 603, category: '06_thumb', title: 'バナー広告', src: '06_サムネなど/22バナー広告（中）.jpeg'.normalize('NFC') },
+  // 06_Thumbnails
+  { id: 601, category: '06_thumb', title: 'DQXシールモンスター採用おすもっこり', src: '06_thumbnails/20_dqx_seal_monster.jpeg' },
+  { id: 602, category: '06_thumb', title: 'YouTubeサムネイル', src: '06_thumbnails/21_youtube_thumbnail.jpeg' },
+  { id: 603, category: '06_thumb', title: 'バナー広告', src: '06_thumbnails/22_banner_ad.jpeg' },
   
-  // 07_デザイン講座評価
-  { id: 701, category: '07_reviews', title: '実績・感想 03', src: '07_デザイン講座評価/実績・感想03.jpg'.normalize('NFC') },
-  { id: 702, category: '07_reviews', title: '評価 01', src: '07_デザイン講座評価/評価01.jpg'.normalize('NFC') },
-  { id: 703, category: '07_reviews', title: '評価 02', src: '07_デザイン講座評価/評価02.jpg'.normalize('NFC') },
-  { id: 704, category: '07_reviews', title: '評価 03', src: '07_デザイン講座評価/評価03.jpg'.normalize('NFC') },
+  // 07_Design Reviews
+  { id: 701, category: '07_reviews', title: '実績・感想 03', src: '07_design_reviews/achievement_03.jpg' },
+  { id: 702, category: '07_reviews', title: '評価 01', src: '07_design_reviews/review_01.jpg' },
+  { id: 703, category: '07_reviews', title: '評価 02', src: '07_design_reviews/review_02.jpg' },
+  { id: 704, category: '07_reviews', title: '評価 03', src: '07_design_reviews/review_03.jpg' },
 ];
 
 const vibeCodingProjects = [
@@ -402,7 +402,7 @@ const AIManga = () => {
           className="group relative inline-block cursor-pointer overflow-hidden rounded-[2.5rem] border border-gray-800 hover:border-orange-500 transition-all shadow-2xl"
         >
           <SmartImage 
-            src="00_AI漫画/サムネ - DQA表紙（大）（中）.jpeg" 
+            src="00_ai_manga/thumbnail_cover.jpeg" 
             alt="AI漫画サムネイル" 
             className="max-w-full h-auto transition-transform duration-700 group-hover:scale-105"
           />
