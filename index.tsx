@@ -661,7 +661,7 @@ const Navigation = ({ language, setLanguage }: { language: Language, setLanguage
     { name: t.aiVideo, href: '#aivideos' },
     { name: t.portfolio, href: '#portfolio' },
     { name: t.vibeCoding, href: '#vibecoding' },
-    { name: t.blog, href: '#blog' },
+    { name: t.blog, href: 'https://note.com/dql', external: true },
   ];
 
   return (
@@ -674,7 +674,19 @@ const Navigation = ({ language, setLanguage }: { language: Language, setLanguage
 
         <div className="hidden md:flex items-center space-x-8">
           {links.map((link) => (
-            <a key={link.href} href={link.href} className="text-gray-400 hover:text-white transition-colors font-medium text-sm uppercase tracking-wider">
+            <a
+              key={link.href}
+              href={link.href}
+              target={link.external ? "_blank" : undefined}
+              rel={link.external ? "noopener noreferrer" : undefined}
+              onClick={(e) => {
+                if (link.external) {
+                  e.preventDefault();
+                  window.open(link.href, '_blank', 'noopener,noreferrer');
+                }
+              }}
+              className="text-gray-400 hover:text-white transition-colors font-medium text-sm uppercase tracking-wider"
+            >
               {link.name}
             </a>
           ))}
@@ -705,7 +717,20 @@ const Navigation = ({ language, setLanguage }: { language: Language, setLanguage
       {isOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-gray-950 border-b border-gray-800 p-6 flex flex-col space-y-4 shadow-2xl">
           {links.map((link) => (
-            <a key={link.href} href={link.href} className="text-lg font-medium text-gray-300 hover:text-orange-500" onClick={() => setIsOpen(false)}>
+            <a
+              key={link.href}
+              href={link.href}
+              target={link.external ? "_blank" : undefined}
+              rel={link.external ? "noopener noreferrer" : undefined}
+              className="text-lg font-medium text-gray-300 hover:text-orange-500"
+              onClick={(e) => {
+                setIsOpen(false);
+                if (link.external) {
+                  e.preventDefault();
+                  window.open(link.href, '_blank', 'noopener,noreferrer');
+                }
+              }}
+            >
               {link.name}
             </a>
           ))}
