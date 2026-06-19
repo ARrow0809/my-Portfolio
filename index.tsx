@@ -97,9 +97,9 @@ type Language = 'ja' | 'en' | 'zh';
 
 const translations = {
   nav: {
-    ja: { about: 'ABOUT', aiManga: 'AI漫画', aiVideo: 'AI動画', portfolio: '作品紹介', vibeCoding: 'バイブコーディング', blog: 'ブログ' },
-    en: { about: 'ABOUT', aiManga: 'AI MANGA', aiVideo: 'AI VIDEO', portfolio: 'PORTFOLIO', vibeCoding: 'VIBE CODING', blog: 'BLOG' },
-    zh: { about: '关于', aiManga: 'AI漫画', aiVideo: 'AI视频', portfolio: '作品集', vibeCoding: '氛围编程', blog: '博客' }
+    ja: { about: 'ABOUT', aiManga: 'AI漫画', aiVideo: 'AI動画', portfolio: '作品紹介', vibeCoding: 'バイブコーディング', blog: 'note' },
+    en: { about: 'ABOUT', aiManga: 'AI MANGA', aiVideo: 'AI VIDEO', portfolio: 'PORTFOLIO', vibeCoding: 'VIBE CODING', blog: 'note' },
+    zh: { about: '关于', aiManga: 'AI漫画', aiVideo: 'AI视频', portfolio: '作品集', vibeCoding: '氛围编程', blog: 'note' }
   },
   hero: {
     ja: { title: 'Design Quest AI', subtitle: 'デザイン × AI で未来を創る', description: 'クリエイティブとテクノロジーの融合で、新しい価値を生み出すデザイナー' },
