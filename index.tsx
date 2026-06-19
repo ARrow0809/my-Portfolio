@@ -213,11 +213,6 @@ const translations = {
     en: { detail: 'Portfolio Detail', category: 'Category', projectTitle: 'Project Title', closeWindow: 'Close Window' },
     zh: { detail: '作品详情', category: '类别', projectTitle: '项目标题', closeWindow: '关闭窗口' }
   },
-  promotions: {
-    ja: { promo1Title: 'GAINA魂 2022 詳細', promo1Label: 'Promotion Details', promo2Title: 'My ホームページ', promo2Label: 'Official Identity' },
-    en: { promo1Title: 'GAINA Soul 2022 Details', promo1Label: 'Promotion Details', promo2Title: 'My Homepage', promo2Label: 'Official Identity' },
-    zh: { promo1Title: 'GAINA魂 2022 详情', promo1Label: '推广详情', promo2Title: '我的主页', promo2Label: '官方身份' }
-  },
   contact: {
     ja: { title: 'CONTACT', subtitle: 'お気軽にお問い合わせください', email: 'メールを送る' },
     en: { title: 'CONTACT', subtitle: 'Feel free to contact me', email: 'Send Email' },
@@ -498,89 +493,148 @@ const getVibeCodingProjects = (language: Language) => {
   return projectsData[language];
 };
 
+type AIVideoItem = {
+  title: string;
+  url: string;
+  videoUrl?: string;
+  thumbnail?: string;
+  awardImage?: string;
+  badge?: string;
+  challenge?: string;
+  judgeComments?: string[];
+  featured?: boolean;
+  objectPosition?: string;
+};
+
+const sousakuAwardAssets = {
+  eventUrl: 'https://sousaku.ai/event/agent-creation-cup-v1/vote?exp_mid=4fc8a120-0aad-487d-94c1-66818108dc2d',
+  videoUrl: 'https://cdn.sousaku.ai/home/image/user/6389e286-572a-4089-a430-a033af42363b/10625820-6934-4c60-a0ea-af4895894115/origin/20260509-4fc8a1200aad487d94c166818108dc2d.mp4',
+  thumbnail: 'https://cdn.sousaku.ai/home/image/user/6389e286-572a-4089-a430-a033af42363b/10625820-6934-4c60-a0ea-af4895894115/thumbnail-500/20260509-164d341187cc48e0bc3c35cf92ac88c2.webp',
+  awardImage: '08_ai_video/sousaku_ai_agent_creation_cup_2026_award.png'
+};
+
 // AI動画データ - 日時降順（Status IDが大きい順）でソート
-const getAIVideoData = (language: Language) => {
+const getAIVideoData = (language: Language): AIVideoItem[] => {
+  const awardCopy = {
+    ja: {
+      title: 'AIしてもいいですか？',
+      badge: 'ストーリー部門 参加作品',
+      challenge: '近未来SF / AIヒューマンドラマ / ショートフィルム',
+      judgeComments: [
+        '新しいものを買いがちな自分にも刺さりました。曲もとても好みでしたが、途中でロボット2人が戦い出す理由付けが、もうちょっと何か欲しいなと思いました。',
+        '作品に込めた情熱と、AI Agentを駆使した表現力は本当に素晴らしいものでした。'
+      ]
+    },
+    en: {
+      title: 'May I Love AI?',
+      badge: 'Storytelling Category Entry',
+      challenge: 'Near-Future Sci-Fi / AI Human Drama / Short Film',
+      judgeComments: [
+        'As someone who tends to buy new things, this really resonated with me. I also loved the song, though I wanted a little more motivation for why the two robots suddenly started fighting.',
+        'The passion poured into the work and the expressive power achieved through AI Agents were truly outstanding.'
+      ]
+    },
+    zh: {
+      title: '可以爱上AI吗？',
+      badge: '故事部门 参赛作品',
+      challenge: '近未来科幻 / AI人性剧情 / 短片',
+      judgeComments: [
+        '这部作品也触动了总是容易购买新东西的我。我也很喜欢音乐，不过如果能再补充一些两个机器人中途开战的理由就更好了。',
+        '作品中倾注的热情，以及运用AI Agent展现出的表现力，真的非常出色。'
+      ]
+    }
+  }[language];
+
+  const awardVideo: AIVideoItem = {
+    ...awardCopy,
+    url: sousakuAwardAssets.eventUrl,
+    videoUrl: sousakuAwardAssets.videoUrl,
+    thumbnail: sousakuAwardAssets.thumbnail,
+    awardImage: sousakuAwardAssets.awardImage,
+    featured: true
+  };
+
   const videoData = {
     ja: [
-      { title: "アニモン動画チャレンジ:新モデル登場!", url: "https://x.com/ARrow25989974/status/2013537013883097376" },
-      { title: "アニモン動画チャレンジ:フレーム抽出・切り抜き機能登場!", url: "https://x.com/ARrow25989974/status/2000872251089105122/video/1" },
-      { title: "アニモン動画チャレンジ:15秒CM「新モデル＆大型アップデート」", url: "https://x.com/ARrow25989974/status/1996874239379673494?s=20" },
-      { title: "あなたの市場価値、もうゼロになりますよ?―デザイナーの気づき", url: "https://x.com/i/status/1993896080162029641" },
-      { title: "アニモンニュース:APIプラットフォーム正式リリース", url: "https://x.com/i/status/1991162516550873523" },
-      { title: "アニモン banana登場", url: "https://x.com/ARrow25989974/status/1970635643949850761/video/1" },
-      { title: "ちゃっちぱい「学園モチーフ」", url: "https://x.com/ARrow25989974/status/1961406607054799279/video/1" },
-      { title: "ルーター攻撃", url: "https://x.com/ARrow25989974/status/1960726834204827922/video/1" },
-      { title: "みちぽっぽ", url: "https://x.com/ARrow25989974/status/1945170933490106776/video/1" },
-      { title: "「ドラグーンクエストzero」 #ViduGameShow", url: "https://x.com/i/status/1944091331946791330" },
-      { title: "もふたんラジオ", url: "https://x.com/ARrow25989974/status/1926330046676959698/video/1" },
-      { title: "ふくぎょう物語テーマ", url: "https://x.com/ARrow25989974/status/1915256448382353733/video/1" },
-      { title: "近未来マネタイズ少女", url: "https://x.com/ARrow25989974/status/1892505972783935836/video/1" },
-      { title: "「シティーハンター」と「Get Wild」の深い絆", url: "https://x.com/i/status/1790776395083510023" },
-      { title: "スヌーピーファミリーのオラフ:自己否定せずに生きることの大切さ", url: "https://x.com/i/status/1790031826997682486" },
-      { title: "プロレスラー大岩選手のBLから学ぶ:裏切りを乗り越える心理テクニック", url: "https://x.com/i/status/1789658408905568703" },
-      { title: "AI副業での挫折を乗り越え、成功へ導く方法", url: "https://x.com/i/status/1788592514691420539" },
-      { title: "新型 Switchとマリオと共に未来へジャンプ:任天堂の戦略", url: "https://x.com/i/status/1788236161787498663" },
-      { title: "マクロスの歌姫から学ぶ:歌詞が記憶に刻む感情の力", url: "https://x.com/i/status/1787855899681489148" },
-      { title: "中学生でも理解できる!究極のターゲットオーディエンス明確化方法", url: "https://x.com/i/status/1784560592101240883" },
-      { title: "アルミンに学ぶ!頭脳派の副業戦略", url: "https://x.com/i/status/1777349276882116673" },
-      { title: "山の頂上で瞑想:AIによるディープフェイク表現", url: "https://x.com/i/status/1769009441066881332" },
-      { title: "ディープフェイクダンス完成!", url: "https://x.com/i/status/1762397789261283597" },
-      { title: "ダンス元画像比較", url: "https://x.com/i/status/1762150135101096436" }
+      { title: "Animon動画チャレンジ「2026年の願い」", url: "https://x.com/ARrow25989974/status/2013537013883097376", thumbnail: "thumbnails/2013537013883097376.png", badge: "Animon感謝賞 受賞作品" },
+      { title: "アニモン動画チャレンジ:フレーム抽出・切り抜き機能登場!", url: "https://x.com/ARrow25989974/status/2000872251089105122/video/1", thumbnail: "thumbnails/2000872251089105122.png" },
+      { title: "アニモン動画チャレンジ:15秒CM「新モデル＆大型アップデート」", url: "https://x.com/ARrow25989974/status/1996874239379673494?s=20", thumbnail: "thumbnails/1996874239379673494.png" },
+      { title: "あなたの市場価値、もうゼロになりますよ?―デザイナーの気づき", url: "https://x.com/i/status/1993896080162029641", thumbnail: "thumbnails/1993896080162029641.png" },
+      { title: "アニモンニュース:APIプラットフォーム正式リリース", url: "https://x.com/i/status/1991162516550873523", thumbnail: "thumbnails/1991162516550873523.png" },
+      { title: "アニモン banana登場", url: "https://x.com/ARrow25989974/status/1970635643949850761/video/1", thumbnail: "thumbnails/1970635643949850761.png" },
+      { title: "ちゃっちぱい「学園モチーフ」", url: "https://x.com/ARrow25989974/status/1961406607054799279/video/1", thumbnail: "thumbnails/1961406607054799279.png" },
+      { title: "ルーター攻撃", url: "https://x.com/ARrow25989974/status/1960726834204827922/video/1", thumbnail: "thumbnails/1960726834204827922.png" },
+      { title: "みちぽっぽ", url: "https://x.com/ARrow25989974/status/1945170933490106776/video/1", thumbnail: "thumbnails/1945170933490106776.png" },
+      { title: "「ドラグーンクエストzero」 #ViduGameShow", url: "https://x.com/i/status/1944091331946791330", thumbnail: "thumbnails/1944091331946791330.png" },
+      { title: "もふたんラジオ", url: "https://x.com/ARrow25989974/status/1926330046676959698/video/1", thumbnail: "thumbnails/1926330046676959698.png" },
+      { title: "ふくぎょう物語テーマ", url: "https://x.com/ARrow25989974/status/1915256448382353733/video/1", thumbnail: "thumbnails/1915256448382353733.png" },
+      { title: "近未来マネタイズ少女", url: "https://x.com/ARrow25989974/status/1892505972783935836/video/1", thumbnail: "thumbnails/1892505972783935836.png" },
+      { title: "「シティーハンター」と「Get Wild」の深い絆", url: "https://x.com/i/status/1790776395083510023", thumbnail: "thumbnails/1790776395083510023.png" },
+      { title: "スヌーピーファミリーのオラフ:自己否定せずに生きることの大切さ", url: "https://x.com/i/status/1790031826997682486", thumbnail: "thumbnails/1790031826997682486.png" },
+      { title: "プロレスラー大岩選手のBLから学ぶ:裏切りを乗り越える心理テクニック", url: "https://x.com/i/status/1789658408905568703", thumbnail: "thumbnails/1789658408905568703.png" },
+      { title: "AI副業での挫折を乗り越え、成功へ導く方法", url: "https://x.com/i/status/1788592514691420539", thumbnail: "thumbnails/1788592514691420539.png" },
+      { title: "新型 Switchとマリオと共に未来へジャンプ:任天堂の戦略", url: "https://x.com/i/status/1788236161787498663", thumbnail: "thumbnails/1788236161787498663.png" },
+      { title: "マクロスの歌姫から学ぶ:歌詞が記憶に刻む感情の力", url: "https://x.com/i/status/1787855899681489148", thumbnail: "thumbnails/1787855899681489148.png" },
+      { title: "中学生でも理解できる!究極のターゲットオーディエンス明確化方法", url: "https://x.com/i/status/1784560592101240883", thumbnail: "thumbnails/1784560592101240883.png" },
+      { title: "アルミンに学ぶ!頭脳派の副業戦略", url: "https://x.com/i/status/1777349276882116673", thumbnail: "thumbnails/1777349276882116673.png" },
+      { title: "山の頂上で瞑想:AIによるディープフェイク表現", url: "https://x.com/i/status/1769009441066881332", thumbnail: "thumbnails/1769009441066881332.png", objectPosition: 'top' },
+      { title: "ディープフェイクダンス完成!", url: "https://x.com/i/status/1762397789261283597", thumbnail: "thumbnails/1762397789261283597.png", objectPosition: 'top' },
+      { title: "ダンス元画像比較", url: "https://x.com/i/status/1762150135101096436", thumbnail: "thumbnails/1762150135101096436.png", objectPosition: 'center 12%' }
     ],
     en: [
-      { title: "Animon Video Challenge: New Model Released!", url: "https://x.com/ARrow25989974/status/2013537013883097376" },
-      { title: "Animon Video Challenge: Frame Extraction & Cutout Feature!", url: "https://x.com/ARrow25989974/status/2000872251089105122/video/1" },
-      { title: "Animon Video Challenge: 15s CM 'New Model & Major Update'", url: "https://x.com/ARrow25989974/status/1996874239379673494?s=20" },
-      { title: "Your Market Value Will Be Zero - Designer's Realization", url: "https://x.com/i/status/1993896080162029641" },
-      { title: "Animon News: API Platform Official Release", url: "https://x.com/i/status/1991162516550873523" },
-      { title: "Animon Banana Debut", url: "https://x.com/ARrow25989974/status/1970635643949850761/video/1" },
-      { title: "Chatchipai 'School Motif'", url: "https://x.com/ARrow25989974/status/1961406607054799279/video/1" },
-      { title: "Router Attack", url: "https://x.com/ARrow25989974/status/1960726834204827922/video/1" },
-      { title: "Michipoppo", url: "https://x.com/ARrow25989974/status/1945170933490106776/video/1" },
-      { title: "'Dragoon Quest Zero' #ViduGameShow", url: "https://x.com/i/status/1944091331946791330" },
-      { title: "Mofutan Radio", url: "https://x.com/ARrow25989974/status/1926330046676959698/video/1" },
-      { title: "Side Business Story Theme", url: "https://x.com/ARrow25989974/status/1915256448382353733/video/1" },
-      { title: "Near-Future Monetization Girl", url: "https://x.com/ARrow25989974/status/1892505972783935836/video/1" },
-      { title: "Deep Bond Between 'City Hunter' and 'Get Wild'", url: "https://x.com/i/status/1790776395083510023" },
-      { title: "Olaf from Snoopy Family: Importance of Living Without Self-Denial", url: "https://x.com/i/status/1790031826997682486" },
-      { title: "Learning from Wrestler Oiwa's BL: Psychological Techniques to Overcome Betrayal", url: "https://x.com/i/status/1789658408905568703" },
-      { title: "Overcoming Setbacks in AI Side Business and Leading to Success", url: "https://x.com/i/status/1788592514691420539" },
-      { title: "Jumping to the Future with New Switch and Mario: Nintendo's Strategy", url: "https://x.com/i/status/1788236161787498663" },
-      { title: "Learning from Macross Divas: The Power of Lyrics to Engrave Emotions in Memory", url: "https://x.com/i/status/1787855899681489148" },
-      { title: "Even Middle Schoolers Can Understand! Ultimate Target Audience Clarification Method", url: "https://x.com/i/status/1784560592101240883" },
-      { title: "Learning from Armin! Intellectual Side Business Strategy", url: "https://x.com/i/status/1777349276882116673" },
-      { title: "Meditation on Mountain Peak: AI Deepfake Expression", url: "https://x.com/i/status/1769009441066881332" },
-      { title: "Deepfake Dance Complete!", url: "https://x.com/i/status/1762397789261283597" },
-      { title: "Original Dance Image Comparison", url: "https://x.com/i/status/1762150135101096436" }
+      { title: "Animon Video Challenge: A Wish for 2026", url: "https://x.com/ARrow25989974/status/2013537013883097376", thumbnail: "thumbnails/2013537013883097376.png", badge: "Animon Appreciation Award Winner" },
+      { title: "Animon Video Challenge: Frame Extraction & Cutout Feature!", url: "https://x.com/ARrow25989974/status/2000872251089105122/video/1", thumbnail: "thumbnails/2000872251089105122.png" },
+      { title: "Animon Video Challenge: 15s CM 'New Model & Major Update'", url: "https://x.com/ARrow25989974/status/1996874239379673494?s=20", thumbnail: "thumbnails/1996874239379673494.png" },
+      { title: "Your Market Value Will Be Zero - Designer's Realization", url: "https://x.com/i/status/1993896080162029641", thumbnail: "thumbnails/1993896080162029641.png" },
+      { title: "Animon News: API Platform Official Release", url: "https://x.com/i/status/1991162516550873523", thumbnail: "thumbnails/1991162516550873523.png" },
+      { title: "Animon Banana Debut", url: "https://x.com/ARrow25989974/status/1970635643949850761/video/1", thumbnail: "thumbnails/1970635643949850761.png" },
+      { title: "Chatchipai 'School Motif'", url: "https://x.com/ARrow25989974/status/1961406607054799279/video/1", thumbnail: "thumbnails/1961406607054799279.png" },
+      { title: "Router Attack", url: "https://x.com/ARrow25989974/status/1960726834204827922/video/1", thumbnail: "thumbnails/1960726834204827922.png" },
+      { title: "Michipoppo", url: "https://x.com/ARrow25989974/status/1945170933490106776/video/1", thumbnail: "thumbnails/1945170933490106776.png" },
+      { title: "'Dragoon Quest Zero' #ViduGameShow", url: "https://x.com/i/status/1944091331946791330", thumbnail: "thumbnails/1944091331946791330.png" },
+      { title: "Mofutan Radio", url: "https://x.com/ARrow25989974/status/1926330046676959698/video/1", thumbnail: "thumbnails/1926330046676959698.png" },
+      { title: "Side Business Story Theme", url: "https://x.com/ARrow25989974/status/1915256448382353733/video/1", thumbnail: "thumbnails/1915256448382353733.png" },
+      { title: "Near-Future Monetization Girl", url: "https://x.com/ARrow25989974/status/1892505972783935836/video/1", thumbnail: "thumbnails/1892505972783935836.png" },
+      { title: "Deep Bond Between 'City Hunter' and 'Get Wild'", url: "https://x.com/i/status/1790776395083510023", thumbnail: "thumbnails/1790776395083510023.png" },
+      { title: "Olaf from Snoopy Family: Importance of Living Without Self-Denial", url: "https://x.com/i/status/1790031826997682486", thumbnail: "thumbnails/1790031826997682486.png" },
+      { title: "Learning from Wrestler Oiwa's BL: Psychological Techniques to Overcome Betrayal", url: "https://x.com/i/status/1789658408905568703", thumbnail: "thumbnails/1789658408905568703.png" },
+      { title: "Overcoming Setbacks in AI Side Business and Leading to Success", url: "https://x.com/i/status/1788592514691420539", thumbnail: "thumbnails/1788592514691420539.png" },
+      { title: "Jumping to the Future with New Switch and Mario: Nintendo's Strategy", url: "https://x.com/i/status/1788236161787498663", thumbnail: "thumbnails/1788236161787498663.png" },
+      { title: "Learning from Macross Divas: The Power of Lyrics to Engrave Emotions in Memory", url: "https://x.com/i/status/1787855899681489148", thumbnail: "thumbnails/1787855899681489148.png" },
+      { title: "Even Middle Schoolers Can Understand! Ultimate Target Audience Clarification Method", url: "https://x.com/i/status/1784560592101240883", thumbnail: "thumbnails/1784560592101240883.png" },
+      { title: "Learning from Armin! Intellectual Side Business Strategy", url: "https://x.com/i/status/1777349276882116673", thumbnail: "thumbnails/1777349276882116673.png" },
+      { title: "Meditation on Mountain Peak: AI Deepfake Expression", url: "https://x.com/i/status/1769009441066881332", thumbnail: "thumbnails/1769009441066881332.png", objectPosition: 'top' },
+      { title: "Deepfake Dance Complete!", url: "https://x.com/i/status/1762397789261283597", thumbnail: "thumbnails/1762397789261283597.png", objectPosition: 'top' },
+      { title: "Original Dance Image Comparison", url: "https://x.com/i/status/1762150135101096436", thumbnail: "thumbnails/1762150135101096436.png", objectPosition: 'center 12%' }
     ],
     zh: [
-      { title: "Animon视频挑战：新模型登场！", url: "https://x.com/ARrow25989974/status/2013537013883097376" },
-      { title: "Animon视频挑战：帧提取·剪切功能登场！", url: "https://x.com/ARrow25989974/status/2000872251089105122/video/1" },
-      { title: "Animon视频挑战：15秒CM「新模型&大型更新」", url: "https://x.com/ARrow25989974/status/1996874239379673494?s=20" },
-      { title: "你的市场价值将归零——设计师的觉悟", url: "https://x.com/i/status/1993896080162029641" },
-      { title: "Animon新闻：API平台正式发布", url: "https://x.com/i/status/1991162516550873523" },
-      { title: "Animon Banana登场", url: "https://x.com/ARrow25989974/status/1970635643949850761/video/1" },
-      { title: "Chatchipai「学园主题」", url: "https://x.com/ARrow25989974/status/1961406607054799279/video/1" },
-      { title: "路由器攻击", url: "https://x.com/ARrow25989974/status/1960726834204827922/video/1" },
-      { title: "Michipoppo", url: "https://x.com/ARrow25989974/status/1945170933490106776/video/1" },
-      { title: "「龙骑士任务Zero」#ViduGameShow", url: "https://x.com/i/status/1944091331946791330" },
-      { title: "Mofutan电台", url: "https://x.com/ARrow25989974/status/1926330046676959698/video/1" },
-      { title: "副业故事主题", url: "https://x.com/ARrow25989974/status/1915256448382353733/video/1" },
-      { title: "近未来变现少女", url: "https://x.com/ARrow25989974/status/1892505972783935836/video/1" },
-      { title: "「城市猎人」与「Get Wild」的深厚羁绊", url: "https://x.com/i/status/1790776395083510023" },
-      { title: "史努比家族的奥拉夫：不自我否定地生活的重要性", url: "https://x.com/i/status/1790031826997682486" },
-      { title: "从摔跤手大岩选手的BL学习：克服背叛的心理技巧", url: "https://x.com/i/status/1789658408905568703" },
-      { title: "克服AI副业挫折并走向成功的方法", url: "https://x.com/i/status/1788592514691420539" },
-      { title: "与新型Switch和马里奥一起跳向未来：任天堂的战略", url: "https://x.com/i/status/1788236161787498663" },
-      { title: "从Macross歌姬学习：歌词铭刻记忆的情感力量", url: "https://x.com/i/status/1787855899681489148" },
-      { title: "中学生也能理解！终极目标受众明确化方法", url: "https://x.com/i/status/1784560592101240883" },
-      { title: "向阿尔敏学习！智囊型副业战略", url: "https://x.com/i/status/1777349276882116673" },
-      { title: "山顶冥想：AI深度伪造表现", url: "https://x.com/i/status/1769009441066881332" },
-      { title: "深度伪造舞蹈完成！", url: "https://x.com/i/status/1762397789261283597" },
-      { title: "舞蹈原始图像对比", url: "https://x.com/i/status/1762150135101096436" }
+      { title: "Animon视频挑战：2026年的愿望", url: "https://x.com/ARrow25989974/status/2013537013883097376", thumbnail: "thumbnails/2013537013883097376.png", badge: "Animon感谢奖 获奖作品" },
+      { title: "Animon视频挑战：帧提取·剪切功能登场！", url: "https://x.com/ARrow25989974/status/2000872251089105122/video/1", thumbnail: "thumbnails/2000872251089105122.png" },
+      { title: "Animon视频挑战：15秒CM「新模型&大型更新」", url: "https://x.com/ARrow25989974/status/1996874239379673494?s=20", thumbnail: "thumbnails/1996874239379673494.png" },
+      { title: "你的市场价值将归零——设计师的觉悟", url: "https://x.com/i/status/1993896080162029641", thumbnail: "thumbnails/1993896080162029641.png" },
+      { title: "Animon新闻：API平台正式发布", url: "https://x.com/i/status/1991162516550873523", thumbnail: "thumbnails/1991162516550873523.png" },
+      { title: "Animon Banana登场", url: "https://x.com/ARrow25989974/status/1970635643949850761/video/1", thumbnail: "thumbnails/1970635643949850761.png" },
+      { title: "Chatchipai「学园主题」", url: "https://x.com/ARrow25989974/status/1961406607054799279/video/1", thumbnail: "thumbnails/1961406607054799279.png" },
+      { title: "路由器攻击", url: "https://x.com/ARrow25989974/status/1960726834204827922/video/1", thumbnail: "thumbnails/1960726834204827922.png" },
+      { title: "Michipoppo", url: "https://x.com/ARrow25989974/status/1945170933490106776/video/1", thumbnail: "thumbnails/1945170933490106776.png" },
+      { title: "「龙骑士任务Zero」#ViduGameShow", url: "https://x.com/i/status/1944091331946791330", thumbnail: "thumbnails/1944091331946791330.png" },
+      { title: "Mofutan电台", url: "https://x.com/ARrow25989974/status/1926330046676959698/video/1", thumbnail: "thumbnails/1926330046676959698.png" },
+      { title: "副业故事主题", url: "https://x.com/ARrow25989974/status/1915256448382353733/video/1", thumbnail: "thumbnails/1915256448382353733.png" },
+      { title: "近未来变现少女", url: "https://x.com/ARrow25989974/status/1892505972783935836/video/1", thumbnail: "thumbnails/1892505972783935836.png" },
+      { title: "「城市猎人」与「Get Wild」的深厚羁绊", url: "https://x.com/i/status/1790776395083510023", thumbnail: "thumbnails/1790776395083510023.png" },
+      { title: "史努比家族的奥拉夫：不自我否定地生活的重要性", url: "https://x.com/i/status/1790031826997682486", thumbnail: "thumbnails/1790031826997682486.png" },
+      { title: "从摔跤手大岩选手的BL学习：克服背叛的心理技巧", url: "https://x.com/i/status/1789658408905568703", thumbnail: "thumbnails/1789658408905568703.png" },
+      { title: "克服AI副业挫折并走向成功的方法", url: "https://x.com/i/status/1788592514691420539", thumbnail: "thumbnails/1788592514691420539.png" },
+      { title: "与新型Switch和马里奥一起跳向未来：任天堂的战略", url: "https://x.com/i/status/1788236161787498663", thumbnail: "thumbnails/1788236161787498663.png" },
+      { title: "从Macross歌姬学习：歌词铭刻记忆的情感力量", url: "https://x.com/i/status/1787855899681489148", thumbnail: "thumbnails/1787855899681489148.png" },
+      { title: "中学生也能理解！终极目标受众明确化方法", url: "https://x.com/i/status/1784560592101240883", thumbnail: "thumbnails/1784560592101240883.png" },
+      { title: "向阿尔敏学习！智囊型副业战略", url: "https://x.com/i/status/1777349276882116673", thumbnail: "thumbnails/1777349276882116673.png" },
+      { title: "山顶冥想：AI深度伪造表现", url: "https://x.com/i/status/1769009441066881332", thumbnail: "thumbnails/1769009441066881332.png", objectPosition: 'top' },
+      { title: "深度伪造舞蹈完成！", url: "https://x.com/i/status/1762397789261283597", thumbnail: "thumbnails/1762397789261283597.png", objectPosition: 'top' },
+      { title: "舞蹈原始图像对比", url: "https://x.com/i/status/1762150135101096436", thumbnail: "thumbnails/1762150135101096436.png", objectPosition: 'center 12%' }
     ]
   };
-  return videoData[language];
+  return [awardVideo, ...videoData[language]];
 };
 
 // --- コンポーネント ---
@@ -778,6 +832,23 @@ const AIManga = ({ language }: { language: Language }) => {
   const t = translations.aiManga[language];
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsOpen(false);
+    };
+
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen]);
+
   return (
     <section id="aimanga" className="py-24 bg-gray-950 border-y border-gray-800/30">
       <div className="max-w-4xl mx-auto px-6 text-center">
@@ -800,17 +871,16 @@ const AIManga = ({ language }: { language: Language }) => {
       </div>
 
       {isOpen && (
-        <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 overflow-y-auto">
-          <div className="relative max-w-4xl w-full">
-            <button 
-              onClick={() => setIsOpen(false)}
-              className="p-4 bg-gray-900 rounded-full text-white hover:bg-orange-600 transition-colors"
-            >
-              <X size={32} />
-            </button>
-          </div>
+        <div className="fixed inset-0 z-[100] bg-black/95 overflow-y-auto overscroll-contain">
+          <button
+            onClick={() => setIsOpen(false)}
+            aria-label={t.closeManga}
+            className="fixed top-4 right-4 md:top-8 md:right-8 z-[110] p-3 md:p-4 bg-gray-900 rounded-full text-white hover:bg-orange-600 transition-colors shadow-2xl"
+          >
+            <X size={32} />
+          </button>
           
-          <div className="w-full max-w-4xl flex flex-col gap-16 py-32 px-4 pb-80">
+          <div className="w-full max-w-4xl mx-auto flex flex-col gap-8 md:gap-16 px-4 pt-24 md:pt-32 pb-40">
             {mangaPages.map((page, idx) => (
               <SmartImage 
                 key={idx} 
@@ -821,12 +891,12 @@ const AIManga = ({ language }: { language: Language }) => {
             ))}
           </div>
 
-          <div className="fixed bottom-0 left-0 w-full p-8 flex justify-center pointer-events-none">
+          <div className="fixed bottom-0 left-0 z-[110] w-full p-4 md:p-8 flex justify-center pointer-events-none bg-gradient-to-t from-black via-black/80 to-transparent">
              <button 
                onClick={() => setIsOpen(false)}
                className="pointer-events-auto bg-white text-black font-black px-12 py-5 rounded-full shadow-2xl hover:scale-105 transition-transform text-xs uppercase tracking-widest"
              >
-               Close Manga
+               {t.closeManga}
              </button>
           </div>
         </div>
@@ -978,9 +1048,11 @@ const VibeCoding = ({ language }: { language: Language }) => {
 
 const AIVideos = ({ language }: { language: Language }) => {
   const t = translations.aiVideo[language];
-  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+  const [selectedVideo, setSelectedVideo] = useState<AIVideoItem | null>(null);
   const tweetContainerRef = useRef<HTMLDivElement>(null);
   const aiVideoData = getAIVideoData(language);
+  const featuredVideo = aiVideoData.find((video) => video.featured);
+  const xVideos = aiVideoData.filter((video) => !video.featured);
 
   const getTweetId = (url: string) => {
     const parts = url.split('/');
@@ -992,10 +1064,10 @@ const AIVideos = ({ language }: { language: Language }) => {
   };
 
   useEffect(() => {
-    if (selectedVideo && (window as any).twttr) {
+    if (selectedVideo && !selectedVideo.videoUrl && (window as any).twttr) {
       if (tweetContainerRef.current) {
         tweetContainerRef.current.innerHTML = '';
-        const tweetId = getTweetId(selectedVideo);
+        const tweetId = getTweetId(selectedVideo.url);
         if (tweetId) {
           (window as any).twttr.widgets.createTweet(tweetId, tweetContainerRef.current, {
             theme: 'dark',
@@ -1016,14 +1088,56 @@ const AIVideos = ({ language }: { language: Language }) => {
           <p className="text-gray-500 text-lg">{t.subtitle}</p>
         </div>
 
+        {featuredVideo && (
+          <button
+            onClick={() => setSelectedVideo(featuredVideo)}
+            className="group relative w-full aspect-[16/7] mb-10 overflow-hidden rounded-[2rem] border border-orange-500/60 bg-gray-900 text-left shadow-2xl hover:border-orange-300 transition-colors"
+          >
+            <SmartImage
+              src={featuredVideo.thumbnail!}
+              alt={featuredVideo.title}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent"></div>
+            <div className="relative z-10 h-full flex flex-col justify-between p-6 md:p-10">
+              <span className="self-start px-3 py-1.5 rounded-full bg-orange-500 text-black text-[9px] md:text-[10px] font-black tracking-wider shadow-xl">
+                {featuredVideo.badge}
+              </span>
+              <div>
+                <p className="text-orange-400 text-[10px] md:text-xs font-black uppercase tracking-[0.25em]">SousakuAI Agent Feature</p>
+                <h3 className="mt-2 text-2xl md:text-5xl text-white font-black tracking-tight">{featuredVideo.title}</h3>
+                <p className="mt-3 max-w-2xl text-xs md:text-base text-gray-300 font-bold leading-relaxed">{featuredVideo.challenge}</p>
+                <div className="mt-5 inline-flex items-center gap-2 text-white text-xs font-black uppercase tracking-widest group-hover:text-orange-400 transition-colors">
+                  Play & View Details <Play size={14} fill="currentColor" />
+                </div>
+              </div>
+            </div>
+          </button>
+        )}
+
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-          {aiVideoData.map((video, i) => (
+          {xVideos.map((video, i) => (
             <button 
-              key={i} 
-              onClick={() => setSelectedVideo(video.url)}
+              key={video.url}
+              onClick={() => setSelectedVideo(video)}
               className="relative aspect-video bg-gray-900 border border-gray-800/50 rounded-2xl hover:border-red-600 transition-all group overflow-hidden shadow-xl"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-red-600/30 to-transparent opacity-20 group-hover:opacity-10 transition-opacity"></div>
+              {video.badge && (
+                <div className="absolute top-3 left-3 z-30 px-3 py-1.5 rounded-full bg-orange-500 text-black text-[9px] font-black tracking-wider shadow-xl">
+                  {video.badge}
+                </div>
+              )}
+              {video.thumbnail ? (
+                <SmartImage
+                  src={video.thumbnail}
+                  alt={video.title}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  style={{ objectPosition: video.objectPosition || 'center' }}
+                />
+              ) : (
+                <div className="absolute inset-0 bg-gradient-to-br from-red-600/30 to-transparent opacity-20 group-hover:opacity-10 transition-opacity"></div>
+              )}
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/80 transition-colors z-0"></div>
               
               <div className="absolute inset-0 flex items-center justify-center z-10">
                 <div className="w-14 h-14 bg-white/10 backdrop-blur-md rounded-full border border-white/20 flex items-center justify-center text-white transform group-hover:scale-90 group-hover:opacity-0 transition-all duration-300">
@@ -1053,29 +1167,93 @@ const AIVideos = ({ language }: { language: Language }) => {
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 backdrop-blur-2xl bg-black/95">
           <button 
             onClick={() => setSelectedVideo(null)}
+            aria-label="Close video"
             className="absolute top-8 right-8 text-gray-500 hover:text-white transition-colors z-[110]"
           >
             <X size={40} strokeWidth={1} />
           </button>
           
-          <div className="w-full max-w-5xl bg-gray-900 rounded-[3rem] overflow-hidden shadow-2xl border border-gray-800 flex flex-col animate-in zoom-in-95 duration-300">
+          <div className={`w-full ${selectedVideo.videoUrl ? 'max-w-[1500px]' : 'max-w-5xl'} bg-gray-900 rounded-[3rem] overflow-hidden shadow-2xl border border-gray-800 flex flex-col animate-in zoom-in-95 duration-300`}>
             <div className="p-6 md:px-10 border-b border-gray-800 flex justify-between items-center bg-gray-900/50 backdrop-blur-md">
               <div className="flex items-center gap-3">
                 <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
                 <span className="font-black text-xs uppercase tracking-[0.2em] text-gray-400">Exclusive Video Preview</span>
+                {selectedVideo.badge && !selectedVideo.videoUrl && (
+                  <span className="hidden sm:inline-flex px-3 py-1 rounded-full bg-orange-500 text-black text-[9px] font-black tracking-wider">
+                    {selectedVideo.badge}
+                  </span>
+                )}
               </div>
-              <a href={selectedVideo} target="_blank" rel="noopener" className="text-xs font-bold text-gray-400 hover:text-white flex items-center gap-2 transition-colors">
-                WATCH ON X (TWITTER) <ExternalLink size={14} />
+              <a href={selectedVideo.url} target="_blank" rel="noopener" className="text-xs font-bold text-gray-400 hover:text-white flex items-center gap-2 transition-colors">
+                {selectedVideo.videoUrl ? 'VIEW ON SOUSAKU.AI' : 'WATCH ON X (TWITTER)'} <ExternalLink size={14} />
               </a>
             </div>
             
-            <div className="max-h-[70vh] overflow-y-auto bg-black p-4 flex flex-col items-center">
-              <div ref={tweetContainerRef} className="w-full flex justify-center min-h-[300px]">
-                <div className="flex flex-col items-center justify-center text-gray-600 gap-4">
-                  <Play className="animate-spin" size={32} />
-                  <p className="text-xs font-bold uppercase tracking-widest">Loading Video Content...</p>
+            <div className="max-h-[78vh] overflow-y-auto bg-black">
+              {selectedVideo.videoUrl ? (
+                <div className="grid lg:grid-cols-[minmax(0,1fr)_420px] max-h-[78vh] bg-gray-950">
+                  <div className="flex items-center justify-center bg-black min-h-[260px]">
+                    <video
+                      src={selectedVideo.videoUrl}
+                      poster={selectedVideo.thumbnail}
+                      controls
+                      playsInline
+                      preload="metadata"
+                      className="w-full max-h-[78vh] aspect-video bg-black"
+                    />
+                  </div>
+
+                  <div className="space-y-6 p-6 md:p-8 text-left overflow-y-auto border-t lg:border-t-0 lg:border-l border-gray-800">
+                    <div>
+                      <p className="text-orange-400 text-[10px] font-black uppercase tracking-[0.25em] mb-3">SousakuAI Agent Creation Cup 2026</p>
+                      <div>
+                        <span className="inline-flex px-3 py-1.5 rounded-full bg-orange-500 text-black text-[10px] font-black tracking-wider">
+                          {selectedVideo.badge}
+                        </span>
+                        <h3 className="mt-4 text-2xl md:text-3xl text-white font-black">{selectedVideo.title}</h3>
+                        <p className="mt-3 text-sm text-orange-300 font-bold leading-relaxed">{selectedVideo.challenge}</p>
+                      </div>
+                    </div>
+
+                    <div>
+                      <p className="text-[10px] text-gray-500 font-black uppercase tracking-[0.3em] mb-3">審査員コメント</p>
+                      <div className="space-y-3">
+                        {selectedVideo.judgeComments?.map((comment) => (
+                          <blockquote key={comment} className="border-l-2 border-orange-500 pl-4 text-sm text-gray-300 leading-relaxed">
+                            {comment}
+                          </blockquote>
+                        ))}
+                      </div>
+                    </div>
+
+                    {selectedVideo.awardImage && (
+                      <SmartImage
+                        src={selectedVideo.awardImage}
+                        alt="SousakuAI Agent Creation Cup 2026 表彰状"
+                        className="w-full h-auto rounded-2xl border border-orange-500/30 shadow-2xl"
+                      />
+                    )}
+
+                    <a
+                      href={selectedVideo.url}
+                      target="_blank"
+                      rel="noopener"
+                      className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white text-black text-xs font-black hover:bg-orange-500 transition-colors"
+                    >
+                      SousakuAIで作品を見る <ExternalLink size={14} />
+                    </a>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="p-4 flex flex-col items-center">
+                  <div ref={tweetContainerRef} className="w-full flex justify-center min-h-[300px]">
+                    <div className="flex flex-col items-center justify-center text-gray-600 gap-4">
+                      <Play className="animate-spin" size={32} />
+                      <p className="text-xs font-bold uppercase tracking-widest">Loading Video Content...</p>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="p-6 px-10 bg-gray-950/50 text-gray-600 text-[10px] font-medium tracking-widest text-center uppercase">
@@ -1088,28 +1266,59 @@ const AIVideos = ({ language }: { language: Language }) => {
   );
 };
 
-const PromotionLinks = ({ language }: { language: Language }) => {
-  const t = translations.promotions[language];
-  
+const gainaTranslations = {
+  ja: {
+    title: 'GAINA魂 2022', subtitle: 'キックボクシング大会記録',
+    desc: '米子ジム主催のキックボクシング興行「Gaina魂」の大会記録映像。選手の熱気と会場の興奮を伝える作品。',
+    videoLabel: '大会記録映像', videoNote: 'YouTube公開準備中'
+  },
+  en: {
+    title: 'GAINA Soul 2022', subtitle: 'Kickboxing Event Record',
+    desc: 'Event footage from "Gaina Soul," a kickboxing event hosted by Yonago Gym, capturing the fighters’ intensity and the venue’s excitement.',
+    videoLabel: 'Event Footage', videoNote: 'Coming soon on YouTube'
+  },
+  zh: {
+    title: 'GAINA魂 2022', subtitle: '搏击大会记录',
+    desc: '米子健身房主办的搏击赛事「Gaina魂」的大会记录影像，传达选手的热情与会场的兴奋感。',
+    videoLabel: '大会记录影像', videoNote: 'YouTube 即将公开'
+  }
+};
+
+const gainaImages = [
+  '02_gaina_soul/01_logo.jpeg',
+  '02_gaina_soul/02_logo_image.jpeg',
+  '02_gaina_soul/03_poster.jpeg',
+  '02_gaina_soul/04_pamphlet.jpeg',
+  '02_gaina_soul/05_tickets.jpeg',
+  '02_gaina_soul/06_sns.jpeg',
+  '02_gaina_soul/07_board_design.jpeg',
+  '02_gaina_soul/08_business_card.jpeg'
+];
+
+const GainaShowcase = ({ language }: { language: Language }) => {
+  const t = gainaTranslations[language];
+
   return (
-  <section className="py-24 bg-gray-950">
-    <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-8">
-      <a href="https://pf01.dq-l.com/" target="_blank" rel="noopener" className="group p-10 bg-gray-900 hover:bg-gray-800 rounded-[2.5rem] text-white font-bold flex flex-col justify-between transition-all shadow-2xl border border-gray-800 h-48">
-        <span className="text-[10px] uppercase font-black tracking-widest opacity-70 text-red-500">{t.promo1Label}</span>
-        <div className="flex justify-between items-end">
-          <span className="text-2xl md:text-3xl tracking-tighter group-hover:text-red-500 transition-colors">{t.promo1Title}</span>
-          <ArrowRight size={32} className="group-hover:translate-x-3 transition-transform text-white" />
+    <section className="py-24 bg-gray-950">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="mb-12 text-center md:text-left">
+          <h2 className="text-4xl md:text-6xl font-black text-white mb-4 tracking-tighter uppercase">{t.title}</h2>
+          <p className="text-gray-500 text-lg font-medium">{t.subtitle}</p>
+          <div className="w-16 h-1.5 bg-orange-500 mt-6 rounded-full hidden md:block"></div>
+          <p className="text-gray-400 text-sm leading-relaxed mt-6 max-w-2xl">{t.desc}</p>
         </div>
-      </a>
-      <a href="https://dq-l.com/" target="_blank" rel="noopener" className="group p-10 bg-gray-900 hover:bg-gray-800 rounded-[2.5rem] text-white font-bold flex flex-col justify-between transition-all border border-gray-800 h-48 shadow-2xl">
-        <span className="text-[10px] uppercase font-black tracking-widest opacity-50 text-orange-500">{t.promo2Label}</span>
-        <div className="flex justify-between items-end">
-          <span className="text-2xl md:text-3xl tracking-tighter group-hover:text-orange-500 transition-colors">{t.promo2Title}</span>
-          <ExternalLink size={32} className="opacity-30 group-hover:opacity-100 transition-opacity" />
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          {gainaImages.map((src, i) => (
+            <div key={i} className="aspect-square rounded-2xl overflow-hidden border border-gray-800 bg-gray-900">
+              <SmartImage src={src} alt={`GAINA Soul ${i + 1}`} className="w-full h-full object-cover" />
+            </div>
+          ))}
         </div>
-      </a>
-    </div>
-  </section>
+
+
+      </div>
+    </section>
   );
 };
 
@@ -1126,7 +1335,7 @@ const App = () => {
         <AIVideos language={language} />
         <Portfolio language={language} />
         <VibeCoding language={language} />
-        <PromotionLinks language={language} />
+        <GainaShowcase language={language} />
       </main>
       
       <footer className="py-12 bg-gray-950 border-t border-gray-900 text-center">
