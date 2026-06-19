@@ -1379,6 +1379,9 @@ const App = () => {
             <a href="https://x.com/ARrow25989974" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
               X: @ARrow25989974
             </a>
+            <a href="https://line.me/R/ti/p/@347weexf?from=page&searchId=347weexf" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+              LINE: 公式アカウント
+            </a>
             <a href="mailto:nvng75@gmail.com" className="hover:text-white transition-colors">
               Contact: nvng75@gmail.com
             </a>
