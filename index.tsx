@@ -1350,6 +1350,14 @@ const App = () => {
             <span className="text-white">Design Quest</span>
             <span className="text-orange-500">AI</span>
           </div>
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 text-xs text-gray-400 font-medium">
+            <a href="https://x.com/ARrow25989974" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+              X: @ARrow25989974
+            </a>
+            <a href="mailto:nvng75@gmail.com" className="hover:text-white transition-colors">
+              Contact: nvng75@gmail.com
+            </a>
+          </div>
           <p className="text-gray-500 text-[10px] font-black uppercase tracking-[0.3em]">
             &copy; 2026 Design Quest AI. All Rights Reserved.
           </p>
