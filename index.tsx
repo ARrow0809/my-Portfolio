@@ -118,10 +118,10 @@ const translations = {
       imageGen: '画像生成', 
       videoGen: '動画生成',
       toolsList: 'Illustrator / Photoshop / Premiere Proなど',
-      aiToolsList: 'ChatGPT / codex CLI / Antigravity / Google AI Studio / Gemini / NotebookLMなど',
+      aiToolsList: 'ChatGPT(Codex) / Antigravity / Hermes / Claude Code など',
       fontsList: 'Adobeフォントなど',
-      imageGenList: 'NanobananaPro / StableDiffusionなど',
-      videoGenList: 'Sora2 / Wan2.2など'
+      imageGenList: 'ComfyUI Anima / StableDiffusion EasyRefogeなど',
+      videoGenList: 'Floyo MiniMax H3 / Tap Now / sousaku AI など'
     },
     en: { 
       title: 'ABOUT ME', 
@@ -134,10 +134,10 @@ const translations = {
       imageGen: 'Image Generation', 
       videoGen: 'Video Generation',
       toolsList: 'Illustrator / Photoshop / Premiere Pro etc.',
-      aiToolsList: 'ChatGPT / codex CLI / Antigravity / Google AI Studio / Gemini / NotebookLM etc.',
+      aiToolsList: 'ChatGPT (Codex) / Antigravity / Hermes / Claude Code, etc.',
       fontsList: 'Adobe Fonts etc.',
-      imageGenList: 'NanobananaPro / StableDiffusion etc.',
-      videoGenList: 'Sora2 / Wan2.2 etc.'
+      imageGenList: 'ComfyUI Anima / StableDiffusion EasyRefoge, etc.',
+      videoGenList: 'Floyo MiniMax H3 / Tap Now / Sousaku AI, etc.'
     },
     zh: { 
       title: '关于我', 
@@ -150,10 +150,10 @@ const translations = {
       imageGen: '图像生成', 
       videoGen: '视频生成',
       toolsList: 'Illustrator / Photoshop / Premiere Pro 等',
-      aiToolsList: 'ChatGPT / codex CLI / Antigravity / Google AI Studio / Gemini / NotebookLM 等',
+      aiToolsList: 'ChatGPT(Codex) / Antigravity / Hermes / Claude Code 等',
       fontsList: 'Adobe 字体等',
-      imageGenList: 'NanobananaPro / StableDiffusion 等',
-      videoGenList: 'Sora2 / Wan2.2 等'
+      imageGenList: 'ComfyUI Anima / StableDiffusion EasyRefoge 等',
+      videoGenList: 'Floyo MiniMax H3 / Tap Now / sousaku AI 等'
     }
   },
   aiManga: {
@@ -204,9 +204,9 @@ const translations = {
     zh: { title: '氛围编程', subtitle: '无代码开发 × 生成AI的下一代产品', viewProject: '查看项目', launchProject: '启动项目' }
   },
   aiVideo: {
-    ja: { title: 'AI動画コレクション', subtitle: '生成AIが織りなす映像美のフロンティア', watchVideo: 'Watch Video', aiVideoLabel: 'AI Video', sortLabel: '並べ替え', newest: '新しい順', oldest: '古い順', genre: 'ジャンル順', type: '種類順', countLabel: '作品' },
-    en: { title: 'AI VIDEO COLLECTION', subtitle: 'Frontier of Visual Beauty Woven by Generative AI', watchVideo: 'Watch Video', aiVideoLabel: 'AI Video', sortLabel: 'Sort', newest: 'Newest', oldest: 'Oldest', genre: 'By Genre', type: 'By Type', countLabel: 'works' },
-    zh: { title: 'AI视频集', subtitle: '生成AI编织的视觉美学前沿', watchVideo: '观看视频', aiVideoLabel: 'AI视频', sortLabel: '排序', newest: '最新', oldest: '最早', genre: '按类别', type: '按类型', countLabel: '件作品' }
+    ja: { title: 'AI動画コレクション', subtitle: '生成AIが織りなす映像美のフロンティア', watchVideo: 'Watch Video', aiVideoLabel: 'AI Video', sortLabel: '並べ替え', newest: '新しい順', oldest: '古い順', genre: 'ジャンル順', type: '種類順', tag: 'タグ順', tagFilter: 'タグ', allTags: 'すべて', countLabel: '作品' },
+    en: { title: 'AI VIDEO COLLECTION', subtitle: 'Frontier of Visual Beauty Woven by Generative AI', watchVideo: 'Watch Video', aiVideoLabel: 'AI Video', sortLabel: 'Sort', newest: 'Newest', oldest: 'Oldest', genre: 'By Genre', type: 'By Type', tag: 'By Tag', tagFilter: 'Tag', allTags: 'All', countLabel: 'works' },
+    zh: { title: 'AI视频集', subtitle: '生成AI编织的视觉美学前沿', watchVideo: '观看视频', aiVideoLabel: 'AI视频', sortLabel: '排序', newest: '最新', oldest: '最早', genre: '按类别', type: '按类型', tag: '按标签', tagFilter: '标签', allTags: '全部', countLabel: '件作品' }
   },
   portfolioDetail: {
     ja: { detail: 'Portfolio Detail', category: 'Category', projectTitle: 'Project Title', closeWindow: 'Close Window' },
@@ -513,6 +513,9 @@ type AIVideoItem = {
   badge?: string;
   challenge?: string;
   judgeComments?: string[];
+  storyNumber?: number;
+  relatedLinks?: { label: string; url: string }[];
+  submissionNote?: string;
   featured?: boolean;
   localOnly?: boolean;
   date?: string;
@@ -520,6 +523,8 @@ type AIVideoItem = {
   type?: string;
   sortGenre?: string;
   sortType?: string;
+  qNumber?: number;
+  tags?: string[];
   objectPosition?: string;
 };
 
@@ -537,11 +542,12 @@ const getAIVideoSourceId = (url?: string) => {
 };
 
 const aiVideoMetaBySource: Record<string, Partial<AIVideoItem>> = {
-  '2094183380527284391': { date: '2026-08-30', genre: '音楽', type: 'MV', sortGenre: 'music', sortType: 'mv', thumbnail: '08_ai_video/previews/x-2094183380527284391.jpg' },
+  '2094183380527284391': { date: '2026-08-30', genre: '音楽', type: 'MV', sortGenre: 'music', sortType: 'mv', thumbnail: '08_ai_video/previews/x-2094183380527284391.jpg', tags: ['DQA', 'MV'] },
   '2093302634501595187': { date: '2026-08-28', genre: '音楽', type: 'MV', sortGenre: 'music', sortType: 'mv', thumbnail: '08_ai_video/previews/x-2093302634501595187.jpg' },
   '2092275374210076776': { date: '2026-08-25', genre: '音楽', type: 'MV', sortGenre: 'music', sortType: 'mv', thumbnail: '08_ai_video/previews/x-2092275374210076776.jpg' },
   '2091763869006061917': { date: '2026-08-24', genre: 'ダンス', type: 'AI社員', sortGenre: 'dance', sortType: 'dance', thumbnail: '08_ai_video/previews/x-2091763869006061917.jpg' },
   '2090584633108996264': { date: '2026-08-20', genre: '音楽', type: 'ニュースED', sortGenre: 'music', sortType: 'mv', thumbnail: '08_ai_video/previews/x-2090584633108996264.jpg' },
+  '2090096682457571534': { date: '2026-08-20' },
   '2084342226986115178': { date: '2026-08-03', genre: 'アクション', type: 'コラボ映像', sortGenre: 'action', sortType: 'short', thumbnail: '08_ai_video/previews/x-2084342226986115178.jpg' },
   '2082301345034633579': { date: '2026-07-29', genre: '解説', type: 'チュートリアル', sortGenre: 'tutorial', sortType: 'tutorial', thumbnail: '08_ai_video/previews/x-2082301345034633579.jpg' },
   '2071973696450031747': { date: '2026-06-30', genre: 'ドラマ', type: '短編フィルム', sortGenre: 'drama', sortType: 'short', thumbnail: '08_ai_video/previews/x-2071973696450031747.jpg' },
@@ -550,6 +556,24 @@ const aiVideoMetaBySource: Record<string, Partial<AIVideoItem>> = {
 const applyAIVideoMetadata = (items: AIVideoItem[]) => items.map((item) => {
   const sourceId = getAIVideoSourceId(item.url);
   const metadata = sourceId ? aiVideoMetaBySource[sourceId] : undefined;
+  const storyNumberBySource: Record<string, number> = {
+    '2071973696450031747': 3
+  };
+  const storyNumberById: Record<string, number> = {
+    'dqa-story-01': 1,
+    'dqa-story-02': 2,
+    'crimson-mirror-pond': 4,
+    'wfaia-ad': 5,
+    'wfaia-drama': 6
+  };
+  const storyDetails = sourceId === '2071973696450031747' ? {
+    challenge: 'コロテック応募作品 / AIしてもいいですか？ 第3話',
+    relatedLinks: [
+      { label: 'コロテック公式サイト', url: 'https://colo-tek.com/' },
+      { label: 'X投稿', url: 'https://x.com/ARrow25989974/status/2071973696450031747' }
+    ],
+    submissionNote: `コロテック運営事務局でございます。\nこの度は、本コンテストに作品をご応募いただき、誠にありがとうございました。\n\n今回は、約350作品ものご応募をいただきました。いずれの作品からも、クリエイターの皆様の熱意と創造性が感じられ、審査は非常に難しいものとなりました。慎重に選考を重ねた結果、誠に残念ながら、今回はノミネート作品への選出を見送らせていただくこととなりました。\n\n今回の結果は、本コンテストの審査基準に基づき総合的に判断したものであり、作品そのものの価値や、皆様の創造性を否定するものではございません。\n\n魅力ある作品をご応募いただきましたことに、改めて心より御礼申し上げます。`
+  } : undefined;
   const fallback = {
     genre: item.videoUrl ? 'ドラマ' : item.embedUrl ? '実写' : 'AI作品',
     type: item.videoUrl ? '短編フィルム' : item.embedUrl ? '密着編集' : 'X投稿',
@@ -559,10 +583,118 @@ const applyAIVideoMetadata = (items: AIVideoItem[]) => items.map((item) => {
   return {
     ...fallback,
     ...metadata,
+    ...storyDetails,
     ...item,
+    storyNumber: item.storyNumber || storyNumberById[item.id || ''] || storyNumberBySource[sourceId || ''],
     thumbnail: item.thumbnail || metadata?.thumbnail
   };
 });
+
+const aiVideoTagsByQ: Record<number, string[]> = {
+  1: ['ディープフェイク'],
+  2: ['ディープフェイク'],
+  3: ['ディープフェイク'],
+  4: ['AI動画'],
+  5: ['AI動画'],
+  6: ['ブログ', 'AI動画'],
+  7: ['ブログ', 'AI動画'],
+  8: ['ブログ', 'AI動画'],
+  9: ['ブログ', 'AI動画'],
+  10: ['ブログ', 'AI動画'],
+  11: ['ブログ', 'AI動画'],
+  12: ['ブログ', 'AI動画'],
+  13: ['AI動画'],
+  14: ['AI動画'],
+  15: ['動画コンテスト', 'AI動画'],
+  16: ['AI動画'],
+  17: ['AI動画'],
+  18: ['AI動画'],
+  19: ['ブログ', 'AI動画'],
+  20: ['ブログ', 'AI動画'],
+  21: ['ブログ', 'AI動画'],
+  22: ['AI動画'],
+  23: ['Animon', 'チュートリアル'],
+  24: ['Animon', '動画コンテスト', '受賞作品'],
+  25: ['AI動画', 'チャレンジ記録'],
+  26: ['動画コンテスト', 'ストーリー部門'],
+  27: ['GAINA魂', '実績・案件', '広告・CM'],
+  28: ['GAINA魂', '実績・案件', '実写'],
+  29: ['GAINA魂', '実績・案件', '実写編集'],
+  30: ['AI動画', 'ショートフィルム'],
+  31: ['GAINA魂', '実績・案件', '実写編集'],
+  32: ['動画コンテスト', 'SousakuAI Agent Creation Cup'],
+  33: ['チュートリアル', 'AI動画'],
+  34: ['動画コンテスト', 'WFAIA 2026', '広告・CM'],
+  35: ['AI動画', 'アクション'],
+  36: ['動画コンテスト', 'WFAIA 2026', 'ショートドラマ'],
+  37: ['DQA', 'ニュースED', 'MV'],
+  38: ['DQA', 'AI社員', 'ダンス'],
+  39: ['DQA', '公式イメージソング', 'MV'],
+  40: ['DQA', '公式イメージソング', 'MV'],
+  41: ['AI動画', 'MV', 'Floyo H3 I2V Turbo']
+};
+
+const hiddenAIVideoFilterTags = new Set([
+  'AI動画',
+  'AI社員',
+  'DQA',
+  'Floyo H3 I2V Turbo',
+  'SousakuAI Agent Creation Cup',
+  'WFAIA 2026',
+  'アクション',
+  'ショートドラマ',
+  'ショートフィルム',
+  'ストーリー部門',
+  'ダンス',
+  'チュートリアル',
+  'チャレンジ記',
+  'チャレンジ記録',
+  'ニュースED',
+  '公式イメージソング',
+  '広告・CM',
+  '実写',
+  '実写編集',
+  '実績・案件',
+  '受賞作品'
+]);
+
+// 追加作品でQ番号がずれても、作品そのものに対する分類を維持する。
+const aiVideoTagOverrides: Record<string, string[]> = {
+  // 1. AIアクション: 動画コンテストから外す
+  '2084342226986115178': ['AI動画', 'アクション'],
+  // 2. SousakuAIの使い方: チュートリアルではなく動画コンテスト
+  '2082301345034633579': ['チュートリアル', 'SousakuAI Agent Creation Cup'],
+  // 3. GAINA魂15秒CM: コンテストではなくGAINA魂
+  'gaina-cm': ['GAINA魂', '広告・CM'],
+  // 4. WFAIA広告: AI動画・チュートリアルを外し、動画コンテストへ
+  'wfaia-ad': ['動画コンテスト', 'WFAIA 2026', '広告・CM'],
+  // 5. クリムゾンミラーポンド: GAINA魂ではなくDQA物語（storyNumberで付与）
+  'crimson-mirror-pond': [],
+  // 6. 第3話: GAINA魂ではなく動画コンテスト
+  '2071973696450031747': ['動画コンテスト'],
+  // 7. DQA単体は外す。DQA物語は storyNumber から保持する。
+  'dqa-story-02': ['動画コンテスト', 'ストーリー部門'],
+  // 8以降: Animonへ
+  'https://www.youtube.com/watch?v=1l8PwbJh8sM': ['GAINA魂', '実績・案件', '実写編集'],
+  '1970635643949850761': ['Animon'],
+  '1996874239379673494': ['Animon'],
+  '2000872251089105122': ['Animon'],
+  // GAINA魂は晃貴選手・県知事の実写記録に限定する。
+  'https://www.youtube.com/watch?v=6qYAWsS7U0o': ['GAINA魂', '実績・案件', '実写'],
+  // 5. WFAIAショートドラマ: 動画コンテスト
+  'wfaia-drama': ['動画コンテスト', 'WFAIA 2026', 'ショートドラマ']
+};
+
+const aiVideoFilterTagOrder = [
+  '動画コンテスト',
+  'Animon',
+  'DQA物語',
+  'GAINA魂',
+  'チュートリアル',
+  'MV',
+  'ブログ',
+  'ディープフェイク'
+];
 
 const driveVideoLinks = {
   crimson: {
@@ -596,8 +728,10 @@ const additionalAIVideoData: Record<Language, AIVideoItem[]> = {
     { title: '澪の向こうへ（Beyond the Waterway）', url: 'https://x.com/ARrow25989974/status/2090584633108996264', badge: 'DQAニュースED' },
     { title: '月夜の水没屋上バトル（仮）', url: 'https://x.com/ARrow25989974/status/2084342226986115178', badge: 'AIアクション' },
     { title: 'SousakuAIの使い方', url: 'https://x.com/ARrow25989974/status/2082301345034633579', badge: 'チュートリアル' },
+    { title: 'DQA物語01', id: 'dqa-story-01', url: 'https://x.com/ARrow25989974/status/2033910500782969237', thumbnail: '08_ai_video/previews/dqa-story-01.png', badge: 'DQA物語01 / DQA', date: '2026-03-17', genre: 'DQA', type: 'ストーリー', sortGenre: 'dqa', sortType: 'story', storyNumber: 1 },
+    { title: 'うちのAI社員が仕事もせず急に歌いだした', id: 'dqa-ai-employee-song', url: 'https://x.com/ARrow25989974/status/2090096682457571534', thumbnail: '08_ai_video/previews/ai-employee-sings.png', badge: 'DQA / AI社員 / MV', genre: '音楽', type: 'AI社員', sortGenre: 'music', sortType: 'mv', tags: ['DQA', 'AI社員', 'MV'] },
     { title: 'くりえみAIフィルムコンテスト制作映像（仮）', url: 'https://x.com/ARrow25989974/status/2039022920853512213', thumbnail: '08_ai_video/previews/kuriemi-ai-film.jpg', badge: 'チャレンジ記録' },
-    { title: 'AIしてもいいですか？ 第3話', url: 'https://x.com/ARrow25989974/status/2071973696450031747', badge: 'ショートフィルム' },
+    { title: 'AIしてもいいですか？ 第3話', id: 'dqa-story-03', url: 'https://x.com/ARrow25989974/status/2071973696450031747', badge: 'ショートフィルム', challenge: 'コロテック応募作品 / AIしてもいいですか？ 第3話', storyNumber: 3, relatedLinks: [{ label: 'コロテック公式サイト', url: 'https://colo-tek.com/' }, { label: 'X投稿', url: 'https://x.com/ARrow25989974/status/2071973696450031747' }], submissionNote: `コロテック運営事務局でございます。\nこの度は、本コンテストに作品をご応募いただき、誠にありがとうございました。\n\n今回は、約350作品ものご応募をいただきました。いずれの作品からも、クリエイターの皆様の熱意と創造性が感じられ、審査は非常に難しいものとなりました。慎重に選考を重ねた結果、誠に残念ながら、今回はノミネート作品への選出を見送らせていただくこととなりました。\n\n今回の結果は、本コンテストの審査基準に基づき総合的に判断したものであり、作品そのものの価値や、皆様の創造性を否定するものではございません。\n\n魅力ある作品をご応募いただきましたことに、改めて心より御礼申し上げます。` },
     { title: 'クリムゾンミラーポンド', id: 'crimson-mirror-pond', url: driveVideoLinks.crimson.url, drivePreviewUrl: driveVideoLinks.crimson.preview, platform: 'local', localOnly: true, thumbnail: '08_ai_video/previews/crimson-mirror-pond.jpg', awardImage: '08_ai_video/previews/crimson-award.jpg', badge: 'SousakuAI Agent Creation Cup Vol.2', challenge: '特撮カテゴリ / AIアニメーション', date: '2026-07-22', genre: 'アクション', type: '短編アニメ', sortGenre: 'action', sortType: 'short', judgeComments: ['特撮カテゴリでアニメ映像への挑戦で評価に悩んだ作品です。アニメがダメなわけではないですが、コンテストの主旨として特撮らしい演出をもっと盛り込んで欲しかったです。', '「クリムゾンミラーポンド」というタイトルと、音楽の入りから一気に作品の世界観へ引き込まれました。登場するモンスターもとても愛らしく、作品ならではの魅力を感じました。', '物語の展開がやや唐突に感じられる場面があり、セリフの訛りや、BGM・環境音のバランスが整うことで、作品全体がさらに自然で見やすくなりそうです。'] },
     { title: 'WFAIA 2026 広告部門', id: 'wfaia-ad', url: driveVideoLinks.wfaiaAd.url, drivePreviewUrl: driveVideoLinks.wfaiaAd.preview, platform: 'local', localOnly: true, thumbnail: '08_ai_video/previews/wfaia-ad.jpg', supportingImage: '08_ai_video/previews/wfaia-context.jpg', supportingImageLabel: 'WFAIA 2026 大会情報', badge: 'WFAIA 2026 / 広告部門', challenge: '2026年7月31日提出', date: '2026-07-31', genre: '広告', type: 'CM', sortGenre: 'advertising', sortType: 'cm' },
     { title: 'WFAIA 2026 ショートドラマ部門', id: 'wfaia-drama', url: driveVideoLinks.wfaiaDrama.url, drivePreviewUrl: driveVideoLinks.wfaiaDrama.preview, platform: 'local', localOnly: true, thumbnail: '08_ai_video/previews/wfaia-drama.jpg', supportingImage: '08_ai_video/previews/wfaia-context.jpg', supportingImageLabel: 'WFAIA 2026 大会情報', badge: 'WFAIA 2026 / ショートドラマ部門', challenge: '2026年8月14日提出', date: '2026-08-14', genre: 'ドラマ', type: 'ショートドラマ', sortGenre: 'drama', sortType: 'short' },
@@ -614,6 +748,8 @@ const additionalAIVideoData: Record<Language, AIVideoItem[]> = {
     { title: 'Beyond the Waterway', url: 'https://x.com/ARrow25989974/status/2090584633108996264', badge: 'DQA News ED' },
     { title: 'Moonlit Rooftop Battle (Working Title)', url: 'https://x.com/ARrow25989974/status/2084342226986115178', badge: 'AI Action' },
     { title: 'How to Use SousakuAI', url: 'https://x.com/ARrow25989974/status/2082301345034633579', badge: 'Tutorial' },
+    { title: 'DQA Story 01', id: 'dqa-story-01', url: 'https://x.com/ARrow25989974/status/2033910500782969237', thumbnail: '08_ai_video/previews/dqa-story-01.png', badge: 'DQA Story 01 / DQA', date: '2026-03-17', genre: 'DQA', type: 'Story', sortGenre: 'dqa', sortType: 'story', storyNumber: 1 },
+    { title: 'My AI Employee Suddenly Started Singing', id: 'dqa-ai-employee-song', url: 'https://x.com/ARrow25989974/status/2090096682457571534', thumbnail: '08_ai_video/previews/ai-employee-sings.png', badge: 'DQA / AI Employee / MV', genre: 'Music', type: 'AI Employee', sortGenre: 'music', sortType: 'mv', tags: ['DQA', 'AI社員', 'MV'] },
     { title: 'Kuriemi AI Film Contest Challenge (Working Title)', url: 'https://x.com/ARrow25989974/status/2039022920853512213', thumbnail: '08_ai_video/previews/kuriemi-ai-film.jpg', badge: 'Challenge Log' },
     { title: 'May I Love AI? Episode 3', url: 'https://x.com/ARrow25989974/status/2071973696450031747', badge: 'Short Film' },
     { title: 'Crimson Mirror Pond', id: 'crimson-mirror-pond', url: driveVideoLinks.crimson.url, drivePreviewUrl: driveVideoLinks.crimson.preview, platform: 'local', localOnly: true, thumbnail: '08_ai_video/previews/crimson-mirror-pond.jpg', awardImage: '08_ai_video/previews/crimson-award.jpg', badge: 'SousakuAI Agent Creation Cup Vol.2', challenge: 'Special Effects Category / AI Animation', date: '2026-07-22', genre: 'Action', type: 'Short Animation', sortGenre: 'action', sortType: 'short', judgeComments: ['This was a challenging entry in the special-effects category, and we struggled with how to evaluate its animated approach. Animation is not a problem, but we wanted to see more special-effects-style direction for the contest theme.', 'The title and the opening music pulled us straight into the world of Crimson Mirror Pond. The monsters were charming and gave the work a distinctive appeal.', 'Some story turns felt abrupt. Smoother dialogue, BGM, and ambience would make the work even easier to follow.'] },
@@ -632,6 +768,8 @@ const additionalAIVideoData: Record<Language, AIVideoItem[]> = {
     { title: '水道彼方（Beyond the Waterway）', url: 'https://x.com/ARrow25989974/status/2090584633108996264', badge: 'DQA新闻片尾' },
     { title: '月夜沉没屋顶之战（暂定）', url: 'https://x.com/ARrow25989974/status/2084342226986115178', badge: 'AI动作' },
     { title: 'SousakuAI使用方法', url: 'https://x.com/ARrow25989974/status/2082301345034633579', badge: '教程' },
+    { title: 'DQA故事01', id: 'dqa-story-01', url: 'https://x.com/ARrow25989974/status/2033910500782969237', thumbnail: '08_ai_video/previews/dqa-story-01.png', badge: 'DQA故事01 / DQA', date: '2026-03-17', genre: 'DQA', type: '故事', sortGenre: 'dqa', sortType: 'story', storyNumber: 1 },
+    { title: '我的AI员工突然开始唱歌', id: 'dqa-ai-employee-song', url: 'https://x.com/ARrow25989974/status/2090096682457571534', thumbnail: '08_ai_video/previews/ai-employee-sings.png', badge: 'DQA / AI员工 / MV', genre: '音乐', type: 'AI员工', sortGenre: 'music', sortType: 'mv', tags: ['DQA', 'AI社員', 'MV'] },
     { title: 'Kuriemi AI电影大赛挑战（暂定）', url: 'https://x.com/ARrow25989974/status/2039022920853512213', thumbnail: '08_ai_video/previews/kuriemi-ai-film.jpg', badge: '挑战记录' },
     { title: '可以爱上AI吗？ 第3话', url: 'https://x.com/ARrow25989974/status/2071973696450031747', badge: '短片' },
     { title: '绯红镜池', id: 'crimson-mirror-pond', url: driveVideoLinks.crimson.url, drivePreviewUrl: driveVideoLinks.crimson.preview, platform: 'local', localOnly: true, thumbnail: '08_ai_video/previews/crimson-mirror-pond.jpg', awardImage: '08_ai_video/previews/crimson-award.jpg', badge: 'SousakuAI Agent Creation Cup Vol.2', challenge: '特摄类别 / AI动画', date: '2026-07-22', genre: '动作', type: '短篇动画', sortGenre: 'action', sortType: 'short', judgeComments: ['这是一部在特摄类别中挑战动画表现的作品，我们在评价上曾感到犹豫。动画本身并不是问题，但如果更加入特摄风格的演出，会更贴合比赛主题。', '作品标题与音乐一开始就把观众带入了绯红镜池的世界。登场怪物非常可爱，也形成了作品独有的魅力。', '部分故事展开略显突然。如果对白、BGM与环境音的平衡更顺畅，作品会更易观看。'] },
@@ -678,6 +816,8 @@ const getAIVideoData = (language: Language): AIVideoItem[] => {
 
   const awardVideo: AIVideoItem = {
     ...awardCopy,
+    id: 'dqa-story-02',
+    storyNumber: 2,
     url: sousakuAwardAssets.eventUrl,
     videoUrl: sousakuAwardAssets.videoUrl,
     thumbnail: sousakuAwardAssets.thumbnail,
@@ -1208,12 +1348,20 @@ const VibeCoding = ({ language }: { language: Language }) => {
   );
 };
 
-type AIVideoSortMode = 'newest' | 'oldest' | 'genre' | 'type';
+type AIVideoSortMode = 'newest' | 'oldest' | 'genre' | 'type' | 'tag';
 
 const compareAIVideos = (a: AIVideoItem, b: AIVideoItem, mode: AIVideoSortMode) => {
-  if (mode === 'genre' || mode === 'type') {
-    const aKey = mode === 'genre' ? (a.sortGenre || a.genre || 'other') : (a.sortType || a.type || 'other');
-    const bKey = mode === 'genre' ? (b.sortGenre || b.genre || 'other') : (b.sortType || b.type || 'other');
+  if (mode === 'genre' || mode === 'type' || mode === 'tag') {
+    const aKey = mode === 'genre'
+      ? (a.sortGenre || a.genre || 'other')
+      : mode === 'type'
+        ? (a.sortType || a.type || 'other')
+        : (a.tags?.[0] || 'other');
+    const bKey = mode === 'genre'
+      ? (b.sortGenre || b.genre || 'other')
+      : mode === 'type'
+        ? (b.sortType || b.type || 'other')
+        : (b.tags?.[0] || 'other');
     const groupOrder = aKey.localeCompare(bKey);
     if (groupOrder !== 0) return groupOrder;
   }
@@ -1235,9 +1383,47 @@ const AIVideos = ({ language }: { language: Language }) => {
   const t = translations.aiVideo[language];
   const [selectedVideo, setSelectedVideo] = useState<AIVideoItem | null>(null);
   const [sortMode, setSortMode] = useState<AIVideoSortMode>('newest');
+  const [tagFilter, setTagFilter] = useState('all');
   const tweetContainerRef = useRef<HTMLDivElement>(null);
   const aiVideoData = getAIVideoData(language);
-  const sortedVideos = [...aiVideoData].sort((a, b) => compareAIVideos(a, b, sortMode));
+  const videoKey = (video: AIVideoItem) => video.id || video.url || video.title;
+  const qOrderedVideos = [...aiVideoData].sort((a, b) => compareAIVideos(a, b, 'newest'));
+  const qNumberByVideoKey = new Map(
+    qOrderedVideos.map((video, index) => [videoKey(video), qOrderedVideos.length - index])
+  );
+  const taggedVideos = aiVideoData.map((video) => {
+    const qNumber = qNumberByVideoKey.get(videoKey(video));
+    const manualTags = video.tags || [];
+    const legacyQNumber = video.storyNumber === 1 || manualTags.length > 0 ? undefined : qNumber && qNumber > 27 ? qNumber - 2 : qNumber;
+    const tagKey = getAIVideoSourceId(video.url) || video.id || video.url || video.title;
+    const baseTags = aiVideoTagOverrides[tagKey]
+      || (legacyQNumber ? aiVideoTagsByQ[legacyQNumber] || [] : []);
+    const storyTags = video.storyNumber ? ['DQA物語', ...(video.storyNumber === 1 ? ['DQA'] : [])] : [];
+    return {
+      ...video,
+      qNumber,
+      tags: [...new Set([...storyTags, ...manualTags, ...baseTags])]
+    };
+  });
+  const availableTags = [...new Set(taggedVideos.flatMap((video) => video.tags || []))]
+    .filter((tag) => !hiddenAIVideoFilterTags.has(tag))
+    .sort((a, b) => {
+      const aIndex = aiVideoFilterTagOrder.indexOf(a);
+      const bIndex = aiVideoFilterTagOrder.indexOf(b);
+      const aRank = aIndex === -1 ? aiVideoFilterTagOrder.length : aIndex;
+      const bRank = bIndex === -1 ? aiVideoFilterTagOrder.length : bIndex;
+      return aRank - bRank || a.localeCompare(b, 'ja');
+    });
+  const filteredVideos = tagFilter === 'all'
+    ? taggedVideos
+    : taggedVideos.filter((video) => video.tags?.includes(tagFilter));
+  const sortedVideos = [...filteredVideos].sort((a, b) => {
+    if (tagFilter === 'DQA物語') {
+      const storyOrder = (a.storyNumber || Number.MAX_SAFE_INTEGER) - (b.storyNumber || Number.MAX_SAFE_INTEGER);
+      if (storyOrder !== 0) return storyOrder;
+    }
+    return compareAIVideos(a, b, sortMode);
+  });
 
   useEffect(() => {
     if (selectedVideo && !selectedVideo.videoUrl && !selectedVideo.embedUrl && !selectedVideo.localOnly && (window as any).twttr) {
@@ -1268,19 +1454,33 @@ const AIVideos = ({ language }: { language: Language }) => {
           <p className="text-gray-500 text-xs font-black uppercase tracking-[0.25em]">
             {sortedVideos.length} {t.countLabel}
           </p>
-          <label className="flex items-center gap-3 text-gray-400 text-xs font-black uppercase tracking-widest">
-            <span>{t.sortLabel}</span>
-            <select
-              value={sortMode}
-              onChange={(event) => setSortMode(event.target.value as AIVideoSortMode)}
-              className="min-w-40 rounded-full border border-gray-700 bg-gray-900 px-4 py-2 text-white outline-none focus:border-orange-500"
-            >
-              <option value="newest">{t.newest}</option>
-              <option value="oldest">{t.oldest}</option>
-              <option value="genre">{t.genre}</option>
-              <option value="type">{t.type}</option>
-            </select>
-          </label>
+          <div className="flex flex-wrap items-center justify-end gap-3">
+            <label className="flex items-center gap-3 text-gray-400 text-xs font-black uppercase tracking-widest">
+              <span>{t.sortLabel}</span>
+              <select
+                value={sortMode}
+                onChange={(event) => setSortMode(event.target.value as AIVideoSortMode)}
+                className="min-w-40 rounded-full border border-gray-700 bg-gray-900 px-4 py-2 text-white outline-none focus:border-orange-500"
+              >
+                <option value="newest">{t.newest}</option>
+                <option value="oldest">{t.oldest}</option>
+                <option value="genre">{t.genre}</option>
+                <option value="type">{t.type}</option>
+                <option value="tag">{t.tag}</option>
+              </select>
+            </label>
+            <label className="flex items-center gap-3 text-gray-400 text-xs font-black tracking-widest">
+              <span>{t.tagFilter}</span>
+              <select
+                value={tagFilter}
+                onChange={(event) => setTagFilter(event.target.value)}
+                className="min-w-40 rounded-full border border-gray-700 bg-gray-900 px-4 py-2 text-white outline-none focus:border-orange-500"
+              >
+                <option value="all">{t.allTags}</option>
+                {availableTags.map((tag) => <option key={tag} value={tag}>{tag}</option>)}
+              </select>
+            </label>
+          </div>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -1317,13 +1517,22 @@ const AIVideos = ({ language }: { language: Language }) => {
                 <p className="text-white text-[11px] md:text-xs font-bold leading-relaxed line-clamp-3 text-center">
                   {video.title}
                 </p>
+                {video.tags?.length ? (
+                  <div className="mt-3 flex flex-wrap justify-center gap-1">
+                    {video.tags.slice(0, 4).map((tag) => (
+                      <span key={tag} className="rounded-full border border-orange-400/30 bg-orange-500/10 px-2 py-1 text-[8px] font-black text-orange-300">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                ) : null}
                 <div className="mt-4 flex items-center gap-2 text-red-500 font-black text-[10px] uppercase tracking-widest">
                   {t.watchVideo} <Play size={10} fill="currentColor" />
                 </div>
               </div>
 
               <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center group-hover:opacity-0 transition-opacity duration-300">
-                <p className="text-white text-[10px] font-black uppercase tracking-widest opacity-60">{t.aiVideoLabel} #{i+1}</p>
+                <p className="text-white text-[10px] font-black uppercase tracking-widest opacity-60">{t.aiVideoLabel} #{video.qNumber ?? sortedVideos.length - i}</p>
                 <Maximize2 size={12} className="text-white opacity-40" />
               </div>
             </button>
@@ -1341,7 +1550,7 @@ const AIVideos = ({ language }: { language: Language }) => {
             <X size={40} strokeWidth={1} />
           </button>
           
-          <div className={`w-full ${selectedVideo.videoUrl ? 'max-w-[1500px]' : 'max-w-5xl'} bg-gray-900 rounded-[3rem] overflow-hidden shadow-2xl border border-gray-800 flex flex-col animate-in zoom-in-95 duration-300`}>
+          <div className={`w-full ${selectedVideo.videoUrl || selectedVideo.submissionNote ? 'max-w-[1500px]' : 'max-w-5xl'} bg-gray-900 rounded-[3rem] overflow-hidden shadow-2xl border border-gray-800 flex flex-col animate-in zoom-in-95 duration-300`}>
             <div className="p-6 md:px-10 border-b border-gray-800 flex justify-between items-center bg-gray-900/50 backdrop-blur-md">
               <div className="flex items-center gap-3">
                 <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
@@ -1503,13 +1712,38 @@ const AIVideos = ({ language }: { language: Language }) => {
                   </div>
                 </div>
               ) : (
-                <div className="p-4 flex flex-col items-center">
-                  <div ref={tweetContainerRef} className="w-full flex justify-center min-h-[300px]">
+                <div className={`p-4 md:p-8 bg-black ${selectedVideo.submissionNote ? 'grid lg:grid-cols-[minmax(0,1fr)_420px] gap-6 items-start' : ''}`}>
+                  <div className={selectedVideo.submissionNote ? 'min-w-0 flex flex-col items-center' : 'flex flex-col items-center'}>
+                    <div ref={tweetContainerRef} className="w-full flex justify-center min-h-[300px]">
                     <div className="flex flex-col items-center justify-center text-gray-600 gap-4">
                       <Play className="animate-spin" size={32} />
                       <p className="text-xs font-bold uppercase tracking-widest">Loading Video Content...</p>
                     </div>
+                    </div>
                   </div>
+                  {selectedVideo.submissionNote && (
+                    <aside className="space-y-5 rounded-2xl border border-gray-800 bg-gray-950 p-6 text-left">
+                      <div>
+                        <p className="text-[10px] font-black uppercase tracking-[0.25em] text-orange-400">コロテック応募情報</p>
+                        <h3 className="mt-3 text-xl font-black text-white">{selectedVideo.title}</h3>
+                        {selectedVideo.date && <p className="mt-2 text-xs font-bold tracking-widest text-gray-500">{selectedVideo.date}</p>}
+                        {selectedVideo.challenge && <p className="mt-3 text-sm font-bold leading-relaxed text-orange-300">{selectedVideo.challenge}</p>}
+                      </div>
+                      {selectedVideo.relatedLinks && (
+                        <div className="flex flex-wrap gap-2">
+                          {selectedVideo.relatedLinks.map((link) => (
+                            <a key={link.url} href={link.url} target="_blank" rel="noopener" className="inline-flex items-center gap-2 rounded-full border border-gray-700 px-3 py-2 text-[10px] font-black text-gray-300 transition-colors hover:border-orange-500 hover:text-white">
+                              {link.label} <ExternalLink size={12} />
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                      <div>
+                        <p className="mb-3 text-[10px] font-black uppercase tracking-[0.25em] text-gray-500">応募結果・運営通知</p>
+                        <p className="whitespace-pre-line text-sm leading-relaxed text-gray-300">{selectedVideo.submissionNote}</p>
+                      </div>
+                    </aside>
+                  )}
                 </div>
               )}
             </div>
