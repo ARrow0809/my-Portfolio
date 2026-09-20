@@ -706,8 +706,8 @@ const driveVideoLinks = {
     preview: 'https://drive.google.com/file/d/1IoYh5IjFO6QF5RCRBYVSMR1UTHpKtQ7F/preview'
   },
   wfaiaDrama: {
-    url: 'https://drive.google.com/file/d/1GrB8P9G5t38WMs1re2bvd-51gW9TYIqd/view',
-    preview: 'https://drive.google.com/file/d/1GrB8P9G5t38WMs1re2bvd-51gW9TYIqd/preview'
+    url: 'https://drive.google.com/file/d/1ZZEsTQHm78m2C9zPmNuQ1RWE8JHTgOTx/view',
+    preview: 'https://drive.google.com/file/d/1ZZEsTQHm78m2C9zPmNuQ1RWE8JHTgOTx/preview'
   },
   gainaCm: {
     url: 'https://drive.google.com/file/d/1zAsibyRMWWJ5Ib2aM9asLm7SvxwOU5K9/view',
