@@ -101,6 +101,11 @@ const translations = {
     en: { about: 'ABOUT', aiManga: 'AI MANGA', aiVideo: 'AI VIDEO', portfolio: 'PORTFOLIO', vibeCoding: 'VIBE CODING', blog: 'note' },
     zh: { about: '关于', aiManga: 'AI漫画', aiVideo: 'AI视频', portfolio: '作品集', vibeCoding: '氛围编程', blog: 'note' }
   },
+  theme: {
+    ja: { label: 'テーマ', auto: '自動', light: '昼', dark: '夜' },
+    en: { label: 'THEME', auto: 'AUTO', light: 'DAY', dark: 'NIGHT' },
+    zh: { label: '主题', auto: '自动', light: '日', dark: '夜' }
+  },
   hero: {
     ja: { title: 'Design Quest AI', subtitle: 'デザイン × AI で未来を創る', description: 'クリエイティブとテクノロジーの融合で、新しい価値を生み出すデザイナー' },
     en: { title: 'Design Quest AI', subtitle: 'Creating the Future with Design × AI', description: 'A designer creating new value through the fusion of creativity and technology' },
@@ -921,6 +926,56 @@ const getAIVideoData = (language: Language): AIVideoItem[] => {
 
 // --- コンポーネント ---
 
+type ThemeMode = 'auto' | 'light' | 'dark';
+
+const getThemeApi = () => (typeof window !== 'undefined' ? (window as any).DQATheme : undefined);
+
+const ThemeSwitch = ({ language, size = 'sm' }: { language: Language; size?: 'sm' | 'md' }) => {
+  const [mode, setMode] = useState<ThemeMode>('auto');
+
+  useEffect(() => {
+    const api = getThemeApi();
+    if (api) setMode(api.get() as ThemeMode);
+    const handle = (e: Event) => {
+      const detail = (e as CustomEvent).detail;
+      if (detail && detail.mode) setMode(detail.mode as ThemeMode);
+    };
+    window.addEventListener('dqa:themechange', handle);
+    return () => window.removeEventListener('dqa:themechange', handle);
+  }, []);
+
+  const t = translations.theme[language];
+  const items: { key: ThemeMode; label: string }[] = [
+    { key: 'auto', label: t.auto },
+    { key: 'light', label: t.light },
+    { key: 'dark', label: t.dark },
+  ];
+
+  const pick = (m: ThemeMode) => {
+    const api = getThemeApi();
+    if (api) api.set(m);
+    setMode(m);
+  };
+
+  const pad = size === 'md' ? 'px-3 py-1 text-sm' : 'px-2 py-1 text-[11px]';
+
+  return (
+    <div className="flex items-center gap-1" role="group" aria-label={t.label}>
+      {items.map((it) => (
+        <button
+          key={it.key}
+          type="button"
+          onClick={() => pick(it.key)}
+          aria-pressed={mode === it.key}
+          className={`${pad} font-bold uppercase tracking-wider transition-all whitespace-nowrap ${mode === it.key ? 'text-[#b1842b] border-b-2 border-[#b1842b]' : 'text-[#8c877e] hover:text-[#222222]'}`}
+        >
+          {it.label}
+        </button>
+      ))}
+    </div>
+  );
+};
+
 const Navigation = ({ language, setLanguage }: { language: Language, setLanguage: (lang: Language) => void }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -968,20 +1023,13 @@ const Navigation = ({ language, setLanguage }: { language: Language, setLanguage
           ))}
           
           {/* Language Switcher */}
-          <div className="flex items-center gap-2 ml-4 border-l border-[#222222]/15 pl-4">
-            {(['ja', 'en', 'zh'] as Language[]).map((lang) => (
-              <button
-                key={lang}
-                onClick={() => setLanguage(lang)}
-                className={`px-2 py-1 text-xs font-bold uppercase tracking-wider transition-all ${
-                  language === lang 
-                    ? 'text-[#b1842b] border-b-2 border-[#b1842b]'
-                    : 'text-[#8c877e] hover:text-[#222222]'
-                }`}
-              >
-                {lang}
-              </button>
-            ))}
+          <div className="flex items-center gap-3 ml-2 border-l border-[#222222]/15 pl-4">
+            <ThemeSwitch language={language} />
+            <div className="flex items-center gap-2 border-l border-[#222222]/15 pl-3">
+              {(['ja', 'en', 'zh'] as Language[]).map((lang) => (
+                <button key={lang} onClick={() => setLanguage(lang)} className={`px-2 py-1 text-xs font-bold uppercase tracking-wider transition-all ${language === lang ? 'text-[#b1842b] border-b-2 border-[#b1842b]' : 'text-[#8c877e] hover:text-[#222222]'}`}>{lang}</button>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -1010,20 +1058,13 @@ const Navigation = ({ language, setLanguage }: { language: Language, setLanguage
               {link.name}
             </a>
           ))}
-          <div className="flex justify-center gap-4 pt-4 border-t border-[#222222]/10">
-            {(['ja', 'en', 'zh'] as Language[]).map((lang) => (
-              <button
-                key={lang}
-                onClick={() => { setLanguage(lang); setIsOpen(false); }}
-                className={`px-3 py-1 text-sm font-bold uppercase tracking-wider transition-all ${
-                  language === lang 
-                    ? 'text-[#b1842b] border-b-2 border-[#b1842b]'
-                    : 'text-[#8c877e] hover:text-[#222222]'
-                }`}
-              >
-                {lang}
-              </button>
-            ))}
+          <div className="flex flex-col items-center gap-3 pt-4 border-t border-[#222222]/10">
+            <ThemeSwitch language={language} size="md" />
+            <div className="flex justify-center gap-4">
+              {(['ja', 'en', 'zh'] as Language[]).map((lang) => (
+                <button key={lang} onClick={() => { setLanguage(lang); setIsOpen(false); }} className={`px-3 py-1 text-sm font-bold uppercase tracking-wider transition-all ${language === lang ? 'text-[#b1842b] border-b-2 border-[#b1842b]' : 'text-[#8c877e] hover:text-[#222222]'}`}>{lang}</button>
+              ))}
+            </div>
           </div>
         </div>
       )}
@@ -1500,7 +1541,7 @@ const AIVideos = ({ language }: { language: Language }) => {
             <button 
               key={video.id || video.url || video.title}
               onClick={() => setSelectedVideo(video)}
-              className={`relative aspect-video bg-gray-900 border rounded-2xl hover:border-[#b1842b] transition-all group overflow-hidden shadow-xl ${video.featured ? 'border-[#b1842b]/70' : 'border-gray-800/50'}`}
+              className="dqa-video-card relative aspect-video bg-gray-900 border rounded-2xl transition-all group overflow-hidden shadow-xl"
             >
               {video.badge && (
                 <div className="absolute top-3 left-3 z-30 px-3 py-1.5 rounded-full bg-orange-500 text-black text-[9px] font-black tracking-wider shadow-xl">

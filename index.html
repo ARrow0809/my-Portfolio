@@ -137,8 +137,14 @@
         html.dark .dark-media [class~="bg-black"],
         html.dark .dark-media [class~="bg-gray-950"],
         html.dark .dark-media [class~="bg-gray-900"] { background-color:#0d1522 !important; }
-        html.dark .dark-media [class*="border-gray-800"],
-        html.dark .dark-media [class*="border-gray-700"] { border-color:var(--line) !important; }
+        html.dark .dark-media [class*="border-gray-800"]:not(:hover),
+        html.dark .dark-media [class*="border-gray-700"]:not(:hover) { border-color:var(--line) !important; }
+
+        /* --- 動画カード枠：ライト／ダークで一本化 --- */
+        :root      { --video-line:rgba(31,41,55,.5);  --video-line-hover:#b1842b; }
+        html.dark  { --video-line:rgba(58,69,92,.75); --video-line-hover:#D9B45F; }
+        .dqa-video-card       { border-color:var(--video-line) !important; }
+        .dqa-video-card:hover { border-color:var(--video-line-hover) !important; }
 
         /* --- Hero：夜空画像（素材は Luna が public/img/ へ配置） --- */
         html.dark .hero-paper-image {
@@ -154,23 +160,56 @@
           }
         }
 
-        /* --- 星：Hero 周辺のみ、ゆっくり控えめに --- */
-        html.dark .hero-paper-image::after {
-          content:""; position:absolute; inset:0; pointer-events:none;
-          background-image:
-            radial-gradient(1.4px 1.4px at 18% 22%, var(--star) 50%, transparent 51%),
-            radial-gradient(1.1px 1.1px at 34% 12%, var(--star) 50%, transparent 51%),
-            radial-gradient(1.6px 1.6px at 52% 30%, var(--star) 50%, transparent 51%),
-            radial-gradient(1.0px 1.0px at 68% 16%, var(--star) 50%, transparent 51%),
-            radial-gradient(1.5px 1.5px at 80% 34%, var(--star) 50%, transparent 51%),
-            radial-gradient(1.2px 1.2px at 91% 20%, var(--star) 50%, transparent 51%),
-            radial-gradient(1.0px 1.0px at 26% 46%, var(--star) 50%, transparent 51%),
-            radial-gradient(1.3px 1.3px at 74% 52%, var(--star) 50%, transparent 51%);
-          opacity:.42; animation: dqa-twinkle 9s ease-in-out infinite;
+        /* --- 夜の深み：多層グラデーション（月明かり＋空気遠近） --- */
+        html.dark .hero-paper-image::before {
+          content:""; position:absolute; inset:0; pointer-events:none; z-index:0;
+          background:
+            radial-gradient(56% 46% at 79% 17%, rgba(248,231,176,.13) 0%, rgba(248,231,176,.05) 26%, transparent 58%),
+            radial-gradient(86% 68% at 64% 38%, rgba(63,92,148,.26) 0%, transparent 64%),
+            radial-gradient(120% 105% at 8% 104%, rgba(7,12,22,.58) 0%, transparent 72%),
+            linear-gradient(183deg, rgba(9,14,26,.42) 0%, transparent 40%, rgba(9,14,26,.30) 100%);
+          animation: dqa-night-breathe 26s ease-in-out infinite;
         }
-        @keyframes dqa-twinkle { 0%,100% { opacity:.28 } 50% { opacity:.55 } }
+        /* --- 星：明るい大粒（ゆっくり） --- */
+        html.dark .hero-paper-copy::before {
+          content:""; position:absolute; inset:-4% -2% 30% -2%; pointer-events:none; z-index:0;
+          background-image:
+            radial-gradient(1.9px 1.9px at 71.4% 13.2%, rgba(248,231,176,.95), transparent 62%),
+            radial-gradient(1.7px 1.7px at 33.8% 27.6%, rgba(248,231,176,.88), transparent 62%),
+            radial-gradient(2.1px 2.1px at 88.6% 34.1%, rgba(255,250,230,.92), transparent 62%),
+            radial-gradient(1.6px 1.6px at 53.2% 8.7%, rgba(214,208,198,.80), transparent 62%),
+            radial-gradient(1.8px 1.8px at 18.3% 44.9%, rgba(248,231,176,.72), transparent 62%);
+          opacity:.55; animation: dqa-twinkle-a 13s ease-in-out infinite;
+        }
+        /* --- 星：細かい粒（別周期＋微ドリフト） --- */
+        html.dark .hero-paper-image::after {
+          content:""; position:absolute; inset:0; pointer-events:none; z-index:1;
+          background-image:
+            radial-gradient(1.1px 1.1px at 12.6% 19.4%, rgba(248,231,176,.70), transparent 60%),
+            radial-gradient(0.9px 0.9px at 26.1% 9.8%, rgba(230,226,216,.62), transparent 60%),
+            radial-gradient(1.2px 1.2px at 41.7% 33.5%, rgba(248,231,176,.66), transparent 60%),
+            radial-gradient(0.8px 0.8px at 58.4% 21.2%, rgba(214,208,198,.55), transparent 60%),
+            radial-gradient(1.0px 1.0px at 66.9% 41.8%, rgba(248,231,176,.60), transparent 60%),
+            radial-gradient(0.9px 0.9px at 77.2% 11.3%, rgba(230,226,216,.58), transparent 60%),
+            radial-gradient(1.3px 1.3px at 84.5% 48.6%, rgba(248,231,176,.64), transparent 60%),
+            radial-gradient(0.8px 0.8px at 94.1% 27.9%, rgba(214,208,198,.52), transparent 60%),
+            radial-gradient(1.0px 1.0px at 6.3% 38.2%, rgba(248,231,176,.56), transparent 60%),
+            radial-gradient(0.9px 0.9px at 48.8% 52.4%, rgba(230,226,216,.48), transparent 60%),
+            radial-gradient(1.1px 1.1px at 36.2% 61.7%, rgba(248,231,176,.44), transparent 60%),
+            radial-gradient(0.8px 0.8px at 72.6% 58.1%, rgba(214,208,198,.42), transparent 60%);
+          opacity:.42;
+          animation: dqa-twinkle-b 9s ease-in-out infinite, dqa-drift 72s linear infinite;
+        }
+        @keyframes dqa-twinkle-a  { 0%,100% { opacity:.38 } 50% { opacity:.72 } }
+        @keyframes dqa-twinkle-b  { 0%,100% { opacity:.30 } 43% { opacity:.55 } 78% { opacity:.36 } }
+        @keyframes dqa-drift      { 0% { transform:translate3d(0,0,0) } 50% { transform:translate3d(-7px,4px,0) } 100% { transform:translate3d(0,0,0) } }
+        @keyframes dqa-night-breathe { 0%,100% { opacity:.92 } 50% { opacity:1 } }
         @media (prefers-reduced-motion: reduce) {
-          html.dark .hero-paper-image::after { animation:none; opacity:.34; }
+          html.dark .hero-paper-image::after,
+          html.dark .hero-paper-copy::before,
+          html.dark .hero-paper-image::before { animation:none !important; }
+          html.dark .hero-paper-image::after { opacity:.34; }
+          html.dark .hero-paper-copy::before { opacity:.48; }
           html { scroll-behavior:auto; }
         }
     </style>
