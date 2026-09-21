@@ -3,8 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <script>
+    (function () {
+      var MODE_KEY = 'dqa-theme';           // 'auto' | 'light' | 'dark'
+      var DARK_FROM = 18, DARK_TO = 6;      // 18:00〜05:59 をダーク
+      function isNight() { var h = new Date().getHours(); return h >= DARK_FROM || h < DARK_TO; }
+      function resolve(mode) { return mode === 'dark' || (mode !== 'light' && isNight()); }
+      function apply(mode) {
+        var el = document.documentElement;
+        // Typekit が className を文字列連結するため classList のみ使用
+        if (resolve(mode)) el.classList.add('dark'); else el.classList.remove('dark');
+        el.setAttribute('data-theme-mode', mode);
+        try { window.dispatchEvent(new CustomEvent('dqa:themechange', { detail: { mode: mode, dark: resolve(mode) } })); } catch (e) {}
+      }
+      var saved = 'auto';
+      try { saved = localStorage.getItem(MODE_KEY) || 'auto'; } catch (e) {}
+      apply(saved);
+      window.DQATheme = {
+        get: function () { return document.documentElement.getAttribute('data-theme-mode') || 'auto'; },
+        isDark: function () { return document.documentElement.classList.contains('dark'); },
+        set: function (mode) { try { localStorage.setItem(MODE_KEY, mode); } catch (e) {} apply(mode); }
+      };
+      setInterval(function () { if (window.DQATheme.get() === 'auto') apply('auto'); }, 60000);
+    })();
+    </script>
     <title>Design Quest AI | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { darkMode: 'class' };</script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <script>
@@ -67,6 +93,86 @@
         footer { background:var(--paper) !important; border-top:1px solid var(--line) !important; color:var(--ink) !important; }
         footer img { max-height:44px !important; width:auto !important; }
         @media (max-width:800px){ nav > div{padding:10px 18px}.hero-paper{min-height:700px !important}.hero-paper-image{background:linear-gradient(180deg,rgba(247,244,236,.96) 0%,rgba(247,244,236,.78) 42%,rgba(247,244,236,.15) 100%),url('/img/hero-reference.png') 68% center/cover no-repeat}.hero-paper-copy{padding:128px 22px 70px !important}.hero-paper-copy h1{font-size:clamp(2.7rem,11.5vw,5rem) !important}main > section{padding:72px 20px}}
+
+        /* ===== DARK MODE ============================================== */
+        :root { --paper-2:#eeeae1; --panel:#ffffff; --sub:#5f5b54; --sub-2:#8c877e; --star:transparent; }
+        html.dark {
+          --paper:#101827; --paper-2:#0d1420; --panel:#162033;
+          --ink:#F3EDE3; --muted:#D6D0C6; --sub:#D6D0C6; --sub-2:#A8A296;
+          --line:#3A455C; --gold:#D9B45F; --star:#F8E7B0;
+          color-scheme: dark;
+        }
+        html.dark ::-webkit-scrollbar-track { background:#0b1220; }
+        html.dark ::-webkit-scrollbar-thumb { background:#2a3549; }
+        html.dark ::-webkit-scrollbar-thumb:hover { background:#3A455C; }
+
+        /* --- CSS側の直書きを夜へ --- */
+        html.dark nav { background:rgba(16,24,39,.94) !important; }
+        html.dark section#about > div > div { background:var(--panel) !important; border-color:var(--line) !important; }
+        html.dark .dark-media h3 { color:var(--ink) !important; }
+
+        /* --- TSX の任意値クラスを属性セレクタで捕捉 --- */
+        /* 順序が意味を持つ: gold → ink → sub → sub-2（hover:併記時に基底色を勝たせるため） */
+        html.dark [class*="text-[#b1842b]"],
+        html.dark [class*="text-[#8c671f]"]      { color:var(--gold) !important; }
+        html.dark [class*="text-[#222222]"]      { color:var(--ink) !important; }
+        html.dark [class*="text-[#5f5b54]"]      { color:var(--sub) !important; }
+        html.dark [class*="text-[#6f6a62]"],
+        html.dark [class*="text-[#8c877e]"]      { color:var(--sub-2) !important; }
+        html.dark [class*="hover:text-[#222222]"]:hover { color:var(--ink) !important; }
+        html.dark [class*="hover:text-[#b1842b]"]:hover { color:var(--gold) !important; }
+
+        html.dark [class*="bg-[#f7f6f2]"]        { background-color:var(--paper) !important; }
+        html.dark [class*="bg-[#eeeae1]"]        { background-color:var(--paper-2) !important; }
+        html.dark [class*="bg-[#1a1c22]"]        { background-color:var(--panel) !important; }
+        /* bg-white は ~= で完全一致のみ。bg-white/10 等の重ね用途と、dark-media の反転ボタンは除外 */
+        html.dark [class~="bg-white"]:not([class*="text-black"]) { background-color:var(--panel) !important; }
+        html.dark [class*="bg-[#222222]"]        { background-color:var(--ink) !important; color:var(--paper) !important; }
+        html.dark [class*="bg-[#222222]"]:hover  { background-color:var(--gold) !important; color:#101827 !important; }
+
+        html.dark [class*="border-[#222222]"]    { border-color:var(--line) !important; }
+        html.dark [class*="border-[#b1842b]"]    { border-color:var(--gold) !important; }
+
+        /* --- dark-media は演出として維持。純黒のみ夜空に沈まぬよう一段持ち上げ --- */
+        html.dark .dark-media [class~="bg-black"],
+        html.dark .dark-media [class~="bg-gray-950"],
+        html.dark .dark-media [class~="bg-gray-900"] { background-color:#0d1522 !important; }
+        html.dark .dark-media [class*="border-gray-800"],
+        html.dark .dark-media [class*="border-gray-700"] { border-color:var(--line) !important; }
+
+        /* --- Hero：夜空画像（素材は Luna が public/img/ へ配置） --- */
+        html.dark .hero-paper-image {
+          background:
+            linear-gradient(90deg, rgba(16,24,39,.97) 0%, rgba(16,24,39,.90) 33%, rgba(16,24,39,.18) 62%, rgba(16,24,39,.04) 100%),
+            url('/img/hero-reference-night.png') right center / cover no-repeat;
+        }
+        @media (max-width:800px) {
+          html.dark .hero-paper-image {
+            background:
+              linear-gradient(180deg, rgba(16,24,39,.96) 0%, rgba(16,24,39,.80) 42%, rgba(16,24,39,.20) 100%),
+              url('/img/hero-reference-night.png') 68% center / cover no-repeat;
+          }
+        }
+
+        /* --- 星：Hero 周辺のみ、ゆっくり控えめに --- */
+        html.dark .hero-paper-image::after {
+          content:""; position:absolute; inset:0; pointer-events:none;
+          background-image:
+            radial-gradient(1.4px 1.4px at 18% 22%, var(--star) 50%, transparent 51%),
+            radial-gradient(1.1px 1.1px at 34% 12%, var(--star) 50%, transparent 51%),
+            radial-gradient(1.6px 1.6px at 52% 30%, var(--star) 50%, transparent 51%),
+            radial-gradient(1.0px 1.0px at 68% 16%, var(--star) 50%, transparent 51%),
+            radial-gradient(1.5px 1.5px at 80% 34%, var(--star) 50%, transparent 51%),
+            radial-gradient(1.2px 1.2px at 91% 20%, var(--star) 50%, transparent 51%),
+            radial-gradient(1.0px 1.0px at 26% 46%, var(--star) 50%, transparent 51%),
+            radial-gradient(1.3px 1.3px at 74% 52%, var(--star) 50%, transparent 51%);
+          opacity:.42; animation: dqa-twinkle 9s ease-in-out infinite;
+        }
+        @keyframes dqa-twinkle { 0%,100% { opacity:.28 } 50% { opacity:.55 } }
+        @media (prefers-reduced-motion: reduce) {
+          html.dark .hero-paper-image::after { animation:none; opacity:.34; }
+          html { scroll-behavior:auto; }
+        }
     </style>
 <script type="importmap">
 {
