@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Menu, X, ExternalLink, Mail, ArrowRight, Video, ImageIcon, Cpu, Layout, Play, Maximize2, BookOpen } from 'lucide-react';
+import { Menu, X, ExternalLink, Mail, ArrowRight, Video, ImageIcon, Cpu, Layout, Monitor, Play, Maximize2, BookOpen } from 'lucide-react';
 
 // --- ヘルパー: パス正規化とリトライ機能 ---
 
@@ -109,19 +109,21 @@ const translations = {
   about: {
     ja: { 
       title: 'ABOUT ME', 
-      bio1: 'AI×デザインの力で、クリエイターの収益化を支援するデザイナーです。1,000件以上の案件を通じて培った経験で、あなたのアイデアを収益に変えるお手伝いをします。',
-      bio2: 'グラフィックデザインをはじめ、Kindle出版、YouTubeサムネイルなど、幅広いジャンルでの制作実績があります。AIツールを活用した効率的なワークフローで、高品質な作品を短期間で制作いたします。',
-      lab: 'Design Quest AIは、デザインとAIの共生を目指すクリエイティブ・ラボです。最高峰の生成AI技術を使いこなし、想像の限界を拡張します。',
+      bio1: 'フリーランスデザイナーとして、グラフィックデザインを中心に幅広い制作に携わってきました。これまで培ってきた経験とデザインの視点を土台に、表現の幅を広げ続けています。',
+      bio2: '現在は生成AIを学び、画像・動画・ゲームなどさまざまな制作に取り入れています。ただ作るだけではなく、デザインとAIをどう掛け合わせれば新しい表現や価値を生み出せるのかを探求し、日々挑戦を続けています。',
+      lab: 'Design Quest AIは、AIをただのツールとして使うのではなく、「AI社員」として一緒に考え、つくり、試しながら、楽しく共に働くクリエイティブ・ラボです。\n\n人とAI、それぞれの得意なことを活かしながら、新しい制作のかたちや表現の可能性を探求しています。\n\nIllustratorやPhotoshopなどのデザインツールから、画像生成・動画生成・AIエージェントまで。さまざまなツールを実際の制作に取り入れながら、自分たちらしいクリエイティブを日々アップデートしています。',
       mainTools: '主な使用ツール', 
       aiTools: '使用AI', 
       fonts: '使用フォント', 
       imageGen: '画像生成', 
       videoGen: '動画生成',
+      environment: '制作環境',
       toolsList: 'Illustrator / Photoshop / Premiere Proなど',
       aiToolsList: 'ChatGPT(Codex) / Antigravity / Hermes / Claude Code など',
       fontsList: 'Adobeフォントなど',
       imageGenList: 'ComfyUI Anima / StableDiffusion EasyRefogeなど',
-      videoGenList: 'Floyo MiniMax H3 / Tap Now / sousaku AI など'
+      videoGenList: 'Floyo MiniMax H3 / Tap Now / sousaku AI など',
+      environmentList: 'iMac 27" Retina 5K（Intel Mac / 40GB）\nASUS Zenbook Pro 14 Duo OLED（Core i9 / 32GB）+ eGPU GeForce RTX 3060 12GB'
     },
     en: { 
       title: 'ABOUT ME', 
@@ -133,11 +135,13 @@ const translations = {
       fonts: 'Fonts', 
       imageGen: 'Image Generation', 
       videoGen: 'Video Generation',
+      environment: 'Production Environment',
       toolsList: 'Illustrator / Photoshop / Premiere Pro etc.',
       aiToolsList: 'ChatGPT (Codex) / Antigravity / Hermes / Claude Code, etc.',
       fontsList: 'Adobe Fonts etc.',
       imageGenList: 'ComfyUI Anima / StableDiffusion EasyRefoge, etc.',
-      videoGenList: 'Floyo MiniMax H3 / Tap Now / Sousaku AI, etc.'
+      videoGenList: 'Floyo MiniMax H3 / Tap Now / Sousaku AI, etc.',
+      environmentList: 'iMac 27" Retina 5K (Intel Mac / 40GB)\nASUS Zenbook Pro 14 Duo OLED (Core i9 / 32GB) + eGPU GeForce RTX 3060 12GB'
     },
     zh: { 
       title: '关于我', 
@@ -149,11 +153,13 @@ const translations = {
       fonts: '字体', 
       imageGen: '图像生成', 
       videoGen: '视频生成',
+      environment: '制作环境',
       toolsList: 'Illustrator / Photoshop / Premiere Pro 等',
       aiToolsList: 'ChatGPT(Codex) / Antigravity / Hermes / Claude Code 等',
       fontsList: 'Adobe 字体等',
       imageGenList: 'ComfyUI Anima / StableDiffusion EasyRefoge 等',
-      videoGenList: 'Floyo MiniMax H3 / Tap Now / sousaku AI 等'
+      videoGenList: 'Floyo MiniMax H3 / Tap Now / sousaku AI 等',
+      environmentList: 'iMac 27" Retina 5K（Intel Mac / 40GB）\nASUS Zenbook Pro 14 Duo OLED（Core i9 / 32GB）+ eGPU GeForce RTX 3060 12GB'
     }
   },
   aiManga: {
@@ -1059,8 +1065,8 @@ const About = ({ language }: { language: Language }) => {
       <div className="bg-gray-900/40 p-10 md:p-20 rounded-[3rem] border border-gray-800 shadow-2xl relative overflow-hidden group">
         <div className="absolute top-0 right-0 w-80 h-80 bg-red-600/5 blur-[120px] -mr-40 -mt-40"></div>
         
-        <div className="flex flex-col items-center text-center">
-          <div className="flex flex-col md:flex-row items-center gap-6 mb-10">
+        <div className="flex flex-col items-stretch text-left">
+          <div className="flex flex-col md:flex-row items-start gap-6 mb-10">
             <h2 className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase leading-none">{t.title}</h2>
             <div className="w-16 h-16 md:w-24 md:h-24 shrink-0 rounded-full overflow-hidden border-4 border-red-600 shadow-[0_0_40px_rgba(220,38,38,0.5)] transition-all duration-500 hover:scale-110">
               <SmartImage 
@@ -1072,15 +1078,15 @@ const About = ({ language }: { language: Language }) => {
           </div>
           
           <div className="max-w-4xl space-y-8">
-            <p className="text-lg md:text-2xl text-white font-bold leading-snug tracking-tight">
+            <p className="text-lg md:text-2xl text-white font-bold leading-snug tracking-tight text-left">
               {t.bio1}
             </p>
-            <p className="text-sm md:text-lg text-gray-400 leading-relaxed font-light">
+            <p className="text-sm md:text-lg text-gray-400 leading-relaxed font-light text-left">
               {t.bio2}
             </p>
             
-            <div className="pt-8 max-w-3xl mx-auto">
-              <p className="text-gray-300 font-bold text-sm md:text-base leading-relaxed border-t border-gray-800 pt-8">
+            <div className="pt-8 max-w-3xl">
+              <p className="text-gray-300 font-bold text-sm md:text-base leading-relaxed border-t border-gray-800 pt-8 whitespace-pre-line text-left">
                 {t.lab}
               </p>
             </div>
@@ -1090,13 +1096,13 @@ const About = ({ language }: { language: Language }) => {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-16">
           <div className="space-y-6">
             <div>
-              <h4 className="flex items-center gap-3 justify-center lg:justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
+              <h4 className="flex items-center gap-3 justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
                  <Layout size={14} strokeWidth={3} /> {t.mainTools}
               </h4>
               <p className="text-white text-xs md:text-sm font-bold">{t.toolsList}</p>
             </div>
             <div>
-              <h4 className="flex items-center gap-3 justify-center lg:justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
+              <h4 className="flex items-center gap-3 justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
                  <Cpu size={14} strokeWidth={3} /> {t.aiTools}
               </h4>
               <p className="text-white text-xs md:text-sm leading-relaxed font-bold">{t.aiToolsList}</p>
@@ -1104,13 +1110,13 @@ const About = ({ language }: { language: Language }) => {
           </div>
           <div className="space-y-6">
             <div>
-              <h4 className="flex items-center gap-3 justify-center lg:justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
+              <h4 className="flex items-center gap-3 justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
                  <span className="text-lg font-black italic">F</span> {t.fonts}
               </h4>
               <p className="text-white text-xs md:text-sm font-bold">{t.fontsList}</p>
             </div>
             <div>
-              <h4 className="flex items-center gap-3 justify-center lg:justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
+              <h4 className="flex items-center gap-3 justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
                  <ImageIcon size={14} strokeWidth={3} /> {t.imageGen}
               </h4>
               <p className="text-white text-xs md:text-sm font-bold">{t.imageGenList}</p>
@@ -1118,10 +1124,16 @@ const About = ({ language }: { language: Language }) => {
           </div>
           <div className="space-y-6">
             <div>
-              <h4 className="flex items-center gap-3 justify-center lg:justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
+              <h4 className="flex items-center gap-3 justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
                  <Video size={14} strokeWidth={3} /> {t.videoGen}
               </h4>
               <p className="text-white text-xs md:text-sm font-bold">{t.videoGenList}</p>
+            </div>
+            <div>
+              <h4 className="flex items-center gap-3 justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
+                 <Monitor size={14} strokeWidth={3} /> {t.environment}
+              </h4>
+              <p className="text-white text-xs md:text-sm leading-relaxed font-bold whitespace-pre-line">{t.environmentList}</p>
             </div>
           </div>
         </div>
