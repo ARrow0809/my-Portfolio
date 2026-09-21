@@ -942,11 +942,10 @@ const Navigation = ({ language, setLanguage }: { language: Language, setLanguage
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-gray-950/95 backdrop-blur-md border-b border-gray-800' : 'bg-transparent py-4'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-[#f7f6f2]/95 backdrop-blur-md border-b border-[#222222]/10 shadow-sm' : 'bg-[#f7f6f2]/90 backdrop-blur-sm py-4'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center h-16">
-        <a href="#" className="text-2xl font-bold tracking-tighter flex items-center gap-2">
-          <span className="text-white">Design Quest</span>
-          <span className="text-orange-500">AI</span>
+        <a href="#" className="flex items-center bg-white rounded-lg px-3 py-1.5" aria-label="Design Quest AI">
+          <SmartImage src="img/dqa-logo-refresh.png" alt="Design Quest AI" className="h-12 w-auto object-contain" />
         </a>
 
         <div className="hidden md:flex items-center space-x-8">
@@ -962,22 +961,22 @@ const Navigation = ({ language, setLanguage }: { language: Language, setLanguage
                   window.open(link.href, '_blank', 'noopener,noreferrer');
                 }
               }}
-              className="text-gray-400 hover:text-white transition-colors font-medium text-sm uppercase tracking-wider"
+              className="text-[#5f5b54] hover:text-[#b1842b] transition-colors font-semibold text-[11px] uppercase tracking-[0.16em]"
             >
               {link.name}
             </a>
           ))}
           
           {/* Language Switcher */}
-          <div className="flex items-center gap-2 ml-4 border-l border-gray-700 pl-4">
+          <div className="flex items-center gap-2 ml-4 border-l border-[#222222]/15 pl-4">
             {(['ja', 'en', 'zh'] as Language[]).map((lang) => (
               <button
                 key={lang}
                 onClick={() => setLanguage(lang)}
                 className={`px-2 py-1 text-xs font-bold uppercase tracking-wider transition-all ${
                   language === lang 
-                    ? 'text-orange-500 border-b-2 border-orange-500' 
-                    : 'text-gray-500 hover:text-gray-300'
+                    ? 'text-[#b1842b] border-b-2 border-[#b1842b]'
+                    : 'text-[#8c877e] hover:text-[#222222]'
                 }`}
               >
                 {lang}
@@ -986,20 +985,20 @@ const Navigation = ({ language, setLanguage }: { language: Language, setLanguage
           </div>
         </div>
 
-        <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-white">
+        <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-[#222222]">
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-gray-950 border-b border-gray-800 p-6 flex flex-col space-y-4 shadow-2xl">
+        <div className="md:hidden absolute top-full left-0 w-full bg-[#f7f6f2] border-b border-[#222222]/10 p-6 flex flex-col space-y-4 shadow-2xl">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
               target={link.external ? "_blank" : undefined}
               rel={link.external ? "noopener noreferrer" : undefined}
-              className="text-lg font-medium text-gray-300 hover:text-orange-500"
+              className="text-lg font-medium text-[#5f5b54] hover:text-[#b1842b]"
               onClick={(e) => {
                 setIsOpen(false);
                 if (link.external) {
@@ -1011,15 +1010,15 @@ const Navigation = ({ language, setLanguage }: { language: Language, setLanguage
               {link.name}
             </a>
           ))}
-          <div className="flex justify-center gap-4 pt-4 border-t border-gray-800">
+          <div className="flex justify-center gap-4 pt-4 border-t border-[#222222]/10">
             {(['ja', 'en', 'zh'] as Language[]).map((lang) => (
               <button
                 key={lang}
                 onClick={() => { setLanguage(lang); setIsOpen(false); }}
                 className={`px-3 py-1 text-sm font-bold uppercase tracking-wider transition-all ${
                   language === lang 
-                    ? 'text-orange-500 border-b-2 border-orange-500' 
-                    : 'text-gray-500 hover:text-gray-300'
+                    ? 'text-[#b1842b] border-b-2 border-[#b1842b]'
+                    : 'text-[#8c877e] hover:text-[#222222]'
                 }`}
               >
                 {lang}
@@ -1036,21 +1035,20 @@ const Hero = ({ language }: { language: Language }) => {
   const t = translations.hero[language];
   
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-gray-900 to-red-950/20 z-0"></div>
-      <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1974&auto=format&fit=crop')] bg-cover bg-center mix-blend-overlay"></div>
-      
-      <div className="relative z-10 text-center px-4 w-full max-w-[98vw] mx-auto">
-        <div className="inline-block mb-8 px-4 py-1.5 bg-red-500/10 border border-red-500/30 rounded-full text-red-500 text-[10px] font-black tracking-[0.3em] uppercase animate-pulse">
-          New Era of Creativity
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-[#f7f6f2] editorial-grid hero-paper">
+      <div className="hero-paper-image" aria-hidden="true"></div>
+      <div className="relative z-10 hero-paper-copy px-6 w-full max-w-[1240px] mx-auto">
+        <div className="inline-flex items-center gap-3 mb-8 text-[#8c671f] text-[10px] font-bold tracking-[0.3em] uppercase">
+          <span className="hero-rule"></span> New Era of Creativity
         </div>
-        <h1 className="text-5xl md:text-8xl font-black mb-10 text-white leading-none tracking-tighter uppercase py-4">
-          {t.title.split(' ').slice(0, -1).join(' ')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-500 font-black">{t.title.split(' ').slice(-1)}</span>
+        <h1 className="brand-serif text-5xl md:text-8xl font-bold mb-8 text-[#222222] leading-none tracking-tight py-4">
+          デザイン×AIで、<br />未来を創る。
         </h1>
-        <p className="text-lg md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
-          {t.subtitle}<br className="hidden md:block" />
+        <p className="text-lg md:text-2xl text-[#5f5b54] mb-10 max-w-xl font-light leading-relaxed">
           {t.description}
         </p>
+        <div className="hero-color-rule" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <p className="hero-caption">DESIGN<br />CREATIVE TECHNOLOGY<br />A MORE CREATIVE TOMORROW.</p>
       </div>
     </section>
   );
@@ -1060,15 +1058,15 @@ const About = ({ language }: { language: Language }) => {
   const t = translations.about[language];
   
   return (
-    <section id="about" className="py-24 bg-gray-950">
+    <section id="about" className="py-28 bg-[#f7f6f2]">
       <div className="max-w-5xl mx-auto px-6">
-      <div className="bg-gray-900/40 p-10 md:p-20 rounded-[3rem] border border-gray-800 shadow-2xl relative overflow-hidden group">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-red-600/5 blur-[120px] -mr-40 -mt-40"></div>
+      <div className="bg-white p-8 md:p-16 rounded-[1.5rem] border border-[#222222]/10 shadow-[0_24px_70px_rgba(34,34,34,0.08)] relative overflow-hidden group">
+        <div className="absolute top-0 left-0 right-0 h-1 brand-rule"></div>
         
         <div className="flex flex-col items-stretch text-left">
           <div className="flex flex-col md:flex-row items-start gap-6 mb-10">
-            <h2 className="text-3xl md:text-5xl font-black text-white tracking-tighter uppercase leading-none">{t.title}</h2>
-            <div className="w-16 h-16 md:w-24 md:h-24 shrink-0 rounded-full overflow-hidden border-4 border-red-600 shadow-[0_0_40px_rgba(220,38,38,0.5)] transition-all duration-500 hover:scale-110">
+            <h2 className="brand-serif text-3xl md:text-5xl font-bold text-[#222222] tracking-tight uppercase leading-none">{t.title}</h2>
+            <div className="w-16 h-16 md:w-24 md:h-24 shrink-0 rounded-full overflow-hidden border-4 border-[#b1842b]/60 shadow-[0_8px_24px_rgba(177,132,43,0.2)] transition-all duration-500 hover:scale-105">
               <SmartImage 
                 src="img/あろうAiデザインメンター_icon.jpeg" 
                 alt="あろうAiデザインメンター" 
@@ -1078,15 +1076,15 @@ const About = ({ language }: { language: Language }) => {
           </div>
           
           <div className="max-w-4xl space-y-8">
-            <p className="text-lg md:text-2xl text-white font-bold leading-snug tracking-tight text-left">
+            <p className="text-lg md:text-2xl text-[#222222] font-bold leading-snug tracking-tight text-left">
               {t.bio1}
             </p>
-            <p className="text-sm md:text-lg text-gray-400 leading-relaxed font-light text-left">
+            <p className="text-sm md:text-lg text-[#5f5b54] leading-relaxed font-light text-left">
               {t.bio2}
             </p>
             
             <div className="pt-8 max-w-3xl">
-              <p className="text-gray-300 font-bold text-sm md:text-base leading-relaxed border-t border-gray-800 pt-8 whitespace-pre-line text-left">
+              <p className="text-[#5f5b54] font-medium text-sm md:text-base leading-relaxed border-t border-[#222222]/10 pt-8 whitespace-pre-line text-left">
                 {t.lab}
               </p>
             </div>
@@ -1096,44 +1094,44 @@ const About = ({ language }: { language: Language }) => {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-16">
           <div className="space-y-6">
             <div>
-              <h4 className="flex items-center gap-3 justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
+              <h4 className="flex items-center gap-3 justify-start text-[#b1842b] font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
                  <Layout size={14} strokeWidth={3} /> {t.mainTools}
               </h4>
-              <p className="text-white text-xs md:text-sm font-bold">{t.toolsList}</p>
+              <p className="text-[#222222] text-xs md:text-sm font-bold">{t.toolsList}</p>
             </div>
             <div>
-              <h4 className="flex items-center gap-3 justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
+              <h4 className="flex items-center gap-3 justify-start text-[#b1842b] font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
                  <Cpu size={14} strokeWidth={3} /> {t.aiTools}
               </h4>
-              <p className="text-white text-xs md:text-sm leading-relaxed font-bold">{t.aiToolsList}</p>
+              <p className="text-[#222222] text-xs md:text-sm leading-relaxed font-bold">{t.aiToolsList}</p>
             </div>
           </div>
           <div className="space-y-6">
             <div>
-              <h4 className="flex items-center gap-3 justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
+              <h4 className="flex items-center gap-3 justify-start text-[#b1842b] font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
                  <span className="text-lg font-black italic">F</span> {t.fonts}
               </h4>
-              <p className="text-white text-xs md:text-sm font-bold">{t.fontsList}</p>
+              <p className="text-[#222222] text-xs md:text-sm font-bold">{t.fontsList}</p>
             </div>
             <div>
-              <h4 className="flex items-center gap-3 justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
+              <h4 className="flex items-center gap-3 justify-start text-[#b1842b] font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
                  <ImageIcon size={14} strokeWidth={3} /> {t.imageGen}
               </h4>
-              <p className="text-white text-xs md:text-sm font-bold">{t.imageGenList}</p>
+              <p className="text-[#222222] text-xs md:text-sm font-bold">{t.imageGenList}</p>
             </div>
           </div>
           <div className="space-y-6">
             <div>
-              <h4 className="flex items-center gap-3 justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
+              <h4 className="flex items-center gap-3 justify-start text-[#b1842b] font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
                  <Video size={14} strokeWidth={3} /> {t.videoGen}
               </h4>
-              <p className="text-white text-xs md:text-sm font-bold">{t.videoGenList}</p>
+              <p className="text-[#222222] text-xs md:text-sm font-bold">{t.videoGenList}</p>
             </div>
             <div>
-              <h4 className="flex items-center gap-3 justify-start text-red-500 font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
+              <h4 className="flex items-center gap-3 justify-start text-[#b1842b] font-black mb-3 uppercase tracking-[0.2em] text-[10px]">
                  <Monitor size={14} strokeWidth={3} /> {t.environment}
               </h4>
-              <p className="text-white text-xs md:text-sm leading-relaxed font-bold whitespace-pre-line">{t.environmentList}</p>
+              <p className="text-[#222222] text-xs md:text-sm leading-relaxed font-bold whitespace-pre-line">{t.environmentList}</p>
             </div>
           </div>
         </div>
@@ -1164,13 +1162,13 @@ const AIManga = ({ language }: { language: Language }) => {
   }, [isOpen]);
 
   return (
-    <section id="aimanga" className="py-24 bg-gray-950 border-y border-gray-800/30">
+    <section id="aimanga" className="py-28 bg-[#eeeae1] border-y border-[#222222]/10">
       <div className="max-w-4xl mx-auto px-6 text-center">
-        <h2 className="text-3xl md:text-5xl font-black text-white mb-12 tracking-tighter uppercase">{t.title}</h2>
+        <h2 className="brand-serif text-3xl md:text-5xl font-bold text-[#222222] mb-12 tracking-tight uppercase">{t.title}</h2>
         
         <div 
           onClick={() => setIsOpen(true)}
-          className="group relative inline-block cursor-pointer overflow-hidden rounded-[2.5rem] border border-gray-800 hover:border-orange-500 transition-all shadow-2xl">
+          className="group relative inline-block cursor-pointer overflow-hidden rounded-[1.25rem] border border-[#222222]/10 hover:border-[#b1842b] transition-all shadow-[0_20px_50px_rgba(34,34,34,0.14)]">
           <SmartImage 
             src="00_ai_manga/thumbnail_cover.jpeg" 
             alt="AI漫画サムネイル" 
@@ -1189,7 +1187,7 @@ const AIManga = ({ language }: { language: Language }) => {
           <button
             onClick={() => setIsOpen(false)}
             aria-label={t.closeManga}
-            className="fixed top-4 right-4 md:top-8 md:right-8 z-[110] p-3 md:p-4 bg-gray-900 rounded-full text-white hover:bg-orange-600 transition-colors shadow-2xl"
+            className="fixed top-4 right-4 md:top-8 md:right-8 z-[110] p-3 md:p-4 bg-[#222222] rounded-full text-white hover:bg-[#b1842b] transition-colors shadow-2xl"
           >
             <X size={32} />
           </button>
@@ -1230,19 +1228,19 @@ const Portfolio = ({ language }: { language: Language }) => {
     : portfolioItems.filter(item => item.category === activeTab);
 
   return (
-    <section id="portfolio" className="py-24 bg-gray-950">
+    <section id="portfolio" className="dark-media py-28">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-20 text-center">
-          <h2 className="text-4xl md:text-6xl font-black mb-6 text-white tracking-tighter uppercase">{t.title}</h2>
-          <p className="text-gray-500 text-lg">{t.subtitle}</p>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-red-600 to-orange-500 mx-auto rounded-full mb-12"></div>
+          <h2 className="brand-serif text-4xl md:text-6xl font-bold mb-6 text-white tracking-tight uppercase">{t.title}</h2>
+          <p className="text-gray-400 text-lg">{t.subtitle}</p>
+          <div className="w-24 h-1 brand-rule mx-auto rounded-full mb-12"></div>
         </div>
 
         <div className="flex flex-wrap justify-center gap-3 mb-16">
           {categories.map(cat => (
             <button key={cat.id} onClick={() => setActiveTab(cat.id)} className={`px-6 py-3 rounded-full font-bold text-sm transition-all ${
               activeTab === cat.id 
-                ? 'bg-red-600 text-white shadow-lg shadow-red-900/50' 
+                ? 'bg-[#b1842b] text-white shadow-lg shadow-[#b1842b]/25'
                 : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
             }`}>
               {translations.categories[language][cat.key as keyof typeof translations.categories.ja]}
@@ -1255,7 +1253,7 @@ const Portfolio = ({ language }: { language: Language }) => {
             <div 
               key={item.id} 
               onClick={() => setSelectedItem(item)}
-              className="group relative aspect-[4/3] bg-gray-900/40 rounded-[2.5rem] overflow-hidden border border-gray-800/50 hover:border-orange-500/50 transition-all shadow-2xl cursor-pointer"
+              className="group relative aspect-[4/3] bg-[#1a1c22] rounded-2xl overflow-hidden border border-white/10 hover:border-[#b1842b]/70 transition-all shadow-2xl cursor-pointer"
             >
               <SmartImage 
                 src={item.src} 
@@ -1333,22 +1331,22 @@ const VibeCoding = ({ language }: { language: Language }) => {
   const projects = getVibeCodingProjects(language);
   
   return (
-  <section id="vibecoding" className="py-24 bg-gray-900/30 border-y border-gray-800/50">
+  <section id="vibecoding" className="py-28 bg-[#f7f6f2] border-y border-[#222222]/10">
     <div className="max-w-7xl mx-auto px-6">
       <div className="mb-20 text-center md:text-left">
-        <h2 className="text-4xl md:text-6xl font-black text-white mb-4 tracking-tighter uppercase">{t.title}</h2>
-        <p className="text-gray-500 text-lg font-medium">{t.subtitle}</p>
-        <div className="w-16 h-1.5 bg-orange-500 mt-6 rounded-full hidden md:block"></div>
+        <h2 className="brand-serif text-4xl md:text-6xl font-bold text-[#222222] mb-4 tracking-tight uppercase">{t.title}</h2>
+        <p className="text-[#5f5b54] text-lg font-medium">{t.subtitle}</p>
+        <div className="w-16 h-1 brand-rule mt-6 rounded-full hidden md:block"></div>
       </div>
 
       <div className="grid lg:grid-cols-3 gap-8">
         {projects.map((proj, i) => (
-          <a key={i} href={proj.url} target="_blank" rel="noopener" className="group flex flex-col p-10 bg-gray-900 border border-gray-800 rounded-[2.5rem] text-white transition-all hover:bg-gray-800 h-full">
+          <a key={i} href={proj.url} target="_blank" rel="noopener" className="group flex flex-col p-8 bg-white border border-[#222222]/10 rounded-2xl text-[#222222] transition-all hover:border-[#b1842b]/60 hover:-translate-y-1 h-full shadow-[0_12px_35px_rgba(34,34,34,0.06)]">
             <div className="flex flex-wrap gap-2 mb-6">
-              {proj.tags.map(tag => <span key={tag} className="text-[10px] px-3 py-1 bg-orange-500/10 text-orange-500 rounded-lg uppercase font-black border border-orange-500/20">{tag}</span>)}
+              {proj.tags.map(tag => <span key={tag} className="text-[10px] px-3 py-1 bg-[#b1842b]/10 text-[#8c671f] rounded-lg uppercase font-black border border-[#b1842b]/25">{tag}</span>)}
             </div>
-            <h3 className="text-2xl font-bold mb-6 group-hover:text-orange-500 transition-colors leading-tight">{proj.title}</h3>
-            <p className="text-gray-400 text-sm leading-relaxed mb-10 flex-grow">{proj.desc}</p>
+            <h3 className="text-2xl font-bold mb-6 group-hover:text-[#b1842b] transition-colors leading-tight">{proj.title}</h3>
+            <p className="text-[#6f6a62] text-sm leading-relaxed mb-10 flex-grow">{proj.desc}</p>
             <div className="mt-auto flex items-center gap-3 text-xs font-black uppercase tracking-widest">
               {t.launchProject} <ExternalLink size={14} className="opacity-50" />
             </div>
@@ -1455,11 +1453,11 @@ const AIVideos = ({ language }: { language: Language }) => {
   }, [selectedVideo]);
 
   return (
-    <section id="aivideos" className="py-24 bg-gray-950">
+    <section id="aivideos" className="dark-media py-28">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-20 text-center">
-          <h2 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tighter uppercase">{t.title}</h2>
-          <p className="text-gray-500 text-lg">{t.subtitle}</p>
+          <h2 className="brand-serif text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight uppercase">{t.title}</h2>
+          <p className="text-gray-400 text-lg">{t.subtitle}</p>
         </div>
 
         <div className="mb-10 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
@@ -1472,7 +1470,7 @@ const AIVideos = ({ language }: { language: Language }) => {
               <select
                 value={sortMode}
                 onChange={(event) => setSortMode(event.target.value as AIVideoSortMode)}
-                className="min-w-40 rounded-full border border-gray-700 bg-gray-900 px-4 py-2 text-white outline-none focus:border-orange-500"
+                className="min-w-40 rounded-full border border-gray-700 bg-[#1a1c22] px-4 py-2 text-white outline-none focus:border-[#b1842b]"
               >
                 <option value="newest">{t.newest}</option>
                 <option value="oldest">{t.oldest}</option>
@@ -1486,7 +1484,7 @@ const AIVideos = ({ language }: { language: Language }) => {
               <select
                 value={tagFilter}
                 onChange={(event) => setTagFilter(event.target.value)}
-                className="min-w-40 rounded-full border border-gray-700 bg-gray-900 px-4 py-2 text-white outline-none focus:border-orange-500"
+                className="min-w-40 rounded-full border border-gray-700 bg-[#1a1c22] px-4 py-2 text-white outline-none focus:border-[#b1842b]"
               >
                 <option value="all">{t.allTags}</option>
                 {availableTags.map((tag) => <option key={tag} value={tag}>{tag}</option>)}
@@ -1500,7 +1498,7 @@ const AIVideos = ({ language }: { language: Language }) => {
             <button 
               key={video.id || video.url || video.title}
               onClick={() => setSelectedVideo(video)}
-              className={`relative aspect-video bg-gray-900 border rounded-2xl hover:border-red-600 transition-all group overflow-hidden shadow-xl ${video.featured ? 'border-orange-500/70' : 'border-gray-800/50'}`}
+              className={`relative aspect-video bg-gray-900 border rounded-2xl hover:border-[#b1842b] transition-all group overflow-hidden shadow-xl ${video.featured ? 'border-[#b1842b]/70' : 'border-gray-800/50'}`}
             >
               {video.badge && (
                 <div className="absolute top-3 left-3 z-30 px-3 py-1.5 rounded-full bg-orange-500 text-black text-[9px] font-black tracking-wider shadow-xl">
@@ -1538,7 +1536,7 @@ const AIVideos = ({ language }: { language: Language }) => {
                     ))}
                   </div>
                 ) : null}
-                <div className="mt-4 flex items-center gap-2 text-red-500 font-black text-[10px] uppercase tracking-widest">
+                <div className="mt-4 flex items-center gap-2 text-[#d5ad62] font-black text-[10px] uppercase tracking-widest">
                   {t.watchVideo} <Play size={10} fill="currentColor" />
                 </div>
               </div>
@@ -1800,18 +1798,18 @@ const GainaShowcase = ({ language }: { language: Language }) => {
   const t = gainaTranslations[language];
 
   return (
-    <section className="py-24 bg-gray-950">
+    <section className="py-28 bg-[#f7f6f2]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-12 text-center md:text-left">
-          <h2 className="text-4xl md:text-6xl font-black text-white mb-4 tracking-tighter uppercase">{t.title}</h2>
-          <p className="text-gray-500 text-lg font-medium">{t.subtitle}</p>
-          <div className="w-16 h-1.5 bg-orange-500 mt-6 rounded-full hidden md:block"></div>
-          <p className="text-gray-400 text-sm leading-relaxed mt-6 max-w-2xl">{t.desc}</p>
+          <h2 className="brand-serif text-4xl md:text-6xl font-bold text-[#222222] mb-4 tracking-tight uppercase">{t.title}</h2>
+          <p className="text-[#5f5b54] text-lg font-medium">{t.subtitle}</p>
+          <div className="w-16 h-1 brand-rule mt-6 rounded-full hidden md:block"></div>
+          <p className="text-[#6f6a62] text-sm leading-relaxed mt-6 max-w-2xl">{t.desc}</p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           {gainaImages.map((src, i) => (
-            <div key={i} className="aspect-square rounded-2xl overflow-hidden border border-gray-800 bg-gray-900">
+            <div key={i} className="aspect-square rounded-2xl overflow-hidden border border-[#222222]/10 bg-white shadow-[0_10px_25px_rgba(34,34,34,0.06)]">
               <SmartImage src={src} alt={`GAINA Soul ${i + 1}`} className="w-full h-full object-cover" />
             </div>
           ))}
@@ -1825,7 +1823,7 @@ const App = () => {
   const [language, setLanguage] = useState<Language>('ja');
 
   return (
-    <div className="bg-gray-950 min-h-screen">
+    <div className="bg-[#f7f6f2] min-h-screen">
       <Navigation language={language} setLanguage={setLanguage} />
       <main>
         <Hero language={language} />
@@ -1837,24 +1835,23 @@ const App = () => {
         <GainaShowcase language={language} />
       </main>
       
-      <footer className="py-12 bg-gray-950 border-t border-gray-900 text-center">
+      <footer className="py-16 bg-white border-t border-[#b1842b]/40 text-center text-[#222222]">
         <div className="flex flex-col items-center gap-6">
-          <div className="text-xl font-bold tracking-tighter flex items-center gap-2">
-            <span className="text-white">Design Quest</span>
-            <span className="text-orange-500">AI</span>
+          <div className="bg-white rounded-lg px-3 py-1.5">
+            <SmartImage src="img/dqa-logo-refresh.png" alt="Design Quest AI" className="h-10 w-auto object-contain" />
           </div>
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 text-xs text-gray-400 font-medium">
-            <a href="https://x.com/ARrow25989974" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 text-xs text-[#6f6a62] font-medium">
+            <a href="https://x.com/ARrow25989974" target="_blank" rel="noopener noreferrer" className="hover:text-[#d5ad62] transition-colors">
               X: @ARrow25989974
             </a>
-            <a href="https://line.me/R/ti/p/@347weexf?from=page&searchId=347weexf" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+            <a href="https://line.me/R/ti/p/@347weexf?from=page&searchId=347weexf" target="_blank" rel="noopener noreferrer" className="hover:text-[#d5ad62] transition-colors">
               LINE: 公式アカウント
             </a>
-            <a href="mailto:nvng75@dojyokko.ne.jp" className="hover:text-white transition-colors">
+            <a href="mailto:nvng75@dojyokko.ne.jp" className="hover:text-[#d5ad62] transition-colors">
               Contact: nvng75@dojyokko.ne.jp
             </a>
           </div>
-          <p className="text-gray-500 text-[10px] font-black uppercase tracking-[0.3em]">
+          <p className="text-[#8c877e] text-[10px] font-black uppercase tracking-[0.3em]">
             &copy; 2026 Design Quest AI. All Rights Reserved.
           </p>
         </div>
@@ -1862,6 +1859,98 @@ const App = () => {
     </div>
   );
 };
+
+type StudioCopy = {
+  nav: string[];
+  eyebrow: string;
+  title: string;
+  lead: string;
+  cta: string;
+  explore: string;
+  works: string;
+  worksLead: string;
+  process: string;
+  processLead: string;
+  manga: string;
+  videos: string;
+  coding: string;
+  contact: string;
+  contactLead: string;
+  language: string;
+};
+
+const studioCopy: Record<Language, StudioCopy> = {
+  ja: {
+    nav: ['ABOUT', 'WORKS', 'MOVIES', 'LAB', 'CONTACT'], eyebrow: 'DESIGN QUEST AI / CREATIVE STUDIO',
+    title: 'つくる人と、\nAI社員のあいだ。', lead: '作品を主役に、デザインと生成AIの境界を探索する創作スタジオ。ひらめきを、見える形・動く形・届く形へ。',
+    cta: '作品をのぞく', explore: 'スタジオの考え方', works: '作品は、\n問いのあとに残る。', worksLead: 'グラフィック、AI画像、動画、漫画。ジャンルをまたいで、伝わるところまでつくる。',
+    process: 'AI社員と進める、\n創作のワークフロー', processLead: '方向を見つけ、手を動かし、最後に人の目で整える。役割の違う知性が、ひとつの作品に集まる。',
+    manga: 'AI漫画 / STORY', videos: 'AI動画 / MOTION', coding: 'VIBE CODING / EXPERIMENTS', contact: '次の作品の、\n入口をつくる。', contactLead: '制作相談、コラボレーション、AIを使った表現の実験。まずは、まだ名前のないアイデアから。', language: '言語'
+  },
+  en: {
+    nav: ['ABOUT', 'WORKS', 'MOVIES', 'LAB', 'CONTACT'], eyebrow: 'DESIGN QUEST AI / CREATIVE STUDIO',
+    title: 'Between the maker\nand the AI employee.', lead: 'A creative studio exploring the edge of design and generative AI. From a spark to something visible, moving, and felt.',
+    cta: 'Explore the work', explore: 'How the studio thinks', works: 'Every work begins\nwith a question.', worksLead: 'Graphic design, AI images, film, manga. Moving across genres to make meaning land.',
+    process: 'A creative workflow\nwith AI employees', processLead: 'Find direction, make the thing, then let human eyes make it right. Different intelligences gather around one work.',
+    manga: 'AI MANGA / STORY', videos: 'AI VIDEO / MOTION', coding: 'VIBE CODING / EXPERIMENTS', contact: 'Make an entrance\nfor the next work.', contactLead: 'Production, collaboration, or experiments in AI expression. Start with the idea that has no name yet.', language: 'Language'
+  },
+  zh: {
+    nav: ['关于', '作品', '视频', '实验室', '联系'], eyebrow: 'DESIGN QUEST AI / CREATIVE STUDIO',
+    title: '在创作者与\nAI员工之间。', lead: '探索设计与生成式AI边界的创作工作室。让灵感成为看得见、动得起来、传得到的作品。',
+    cta: '浏览作品', explore: '工作室理念', works: '作品，\n留在问题之后。', worksLead: '平面设计、AI图像、视频、漫画。跨越类型，让意义真正传达。',
+    process: '与AI员工一起，\n推进创作流程', processLead: '寻找方向、亲手制作，最后由人的目光完成调整。不同的智慧汇聚成一件作品。',
+    manga: 'AI漫画 / STORY', videos: 'AI视频 / MOTION', coding: 'VIBE CODING / EXPERIMENTS', contact: '为下一件作品，\n打开入口。', contactLead: '制作咨询、合作，或AI表达实验。先从还没有名字的想法开始。', language: '语言'
+  }
+};
+
+const aiEmployeePalette = [
+  { name: '愛依', color: '#C0392B' },
+  { name: '結依', color: '#8E44AD' },
+  { name: 'ミオ', color: '#00AFCC' },
+  { name: 'COCO', color: '#FA6D3E' },
+  { name: '初依', color: '#F1C40F' },
+  { name: 'ミホ', color: '#00B379' },
+  { name: 'メル', color: '#A39532' }
+] as const;
+
+const StudioNav = ({ language, setLanguage }: { language: Language; setLanguage: (language: Language) => void }) => {
+  const [open, setOpen] = useState(false);
+  const c = studioCopy[language];
+  return <header className="studio-nav">
+    <a className="nav-mark" href="#top" aria-label="Design Quest AI top"><img src="img/dqa-logo-1c.png" alt="Design Quest AI" className="nav-logo" /><small>CREATIVE STUDIO</small></a>
+    <nav className={open ? 'nav-links is-open' : 'nav-links'} aria-label="Primary navigation">
+      {c.nav.map((item, index) => <a key={item} href={['#about', '#works', '#movies', '#lab', '#contact'][index]} onClick={() => setOpen(false)}>{item}</a>)}
+    </nav>
+    <div className="nav-tools"><div className="lang-switch" aria-label={c.language}>{(['ja', 'en', 'zh'] as Language[]).map((item) => <button key={item} className={language === item ? 'active' : ''} onClick={() => setLanguage(item)}>{item.toUpperCase()}</button>)}</div><button className="menu-button" aria-label="Open menu" onClick={() => setOpen(!open)}>{open ? <X size={22} /> : <Menu size={22} />}</button></div>
+  </header>;
+};
+
+const StudioHero = ({ language }: { language: Language }) => {
+  const c = studioCopy[language];
+  return <section className="studio-hero" id="top">
+    <div className="hero-grid"><div className="hero-copy"><p className="kicker">{c.eyebrow}</p><h1>{c.title.split('\n').map((line) => <React.Fragment key={line}>{line}<br /></React.Fragment>)}</h1><p className="hero-lead">{c.lead}</p><div className="hero-actions"><a className="button button-dark" href="#works">{c.cta}<ArrowRight size={16} /></a><a className="under-link" href="#about">{c.explore}</a></div></div><div className="hero-logo-wrap"><div className="orbit orbit-one" /><div className="orbit orbit-two" /><span className="hero-sticker">HUMAN<br />+ AI</span><img src="img/dqa-logo-color.png" className="hero-logo" alt="Design Quest AI" /><div className="hero-index">01 / 05<br /><span>START HERE</span></div></div></div>
+    <div className="hero-ribbon"><span>MAKE / TEST / EDIT / DELIVER</span><span>AI社員と探索する創作スタジオ</span><span>SCROLL TO EXPLORE ↓</span></div>
+  </section>;
+};
+
+const StudioAbout = ({ language }: { language: Language }) => <section id="about" className="about-band"><div className="section-frame about-grid"><div><p className="section-number">01 / ABOUT</p><h2>{studioCopy[language].process}</h2></div><div className="about-text"><p>{translations.about[language].bio1}</p><p>{translations.about[language].bio2}</p><div className="agent-list"><span>01 / DIRECTION</span><span>02 / BUILD</span><span>03 / CARE</span></div><div className="agent-people" aria-label="AI社員のカラー順序">{aiEmployeePalette.map((agent) => <span key={agent.name} style={{ color: agent.color, borderColor: agent.color }}>{agent.name}</span>)}</div></div></div></section>;
+
+const WorkCard = ({ item, onOpen }: { item: { title: string; src: string; category: string }; onOpen: () => void }) => <button className="work-card" onClick={onOpen}><div className="work-image"><SmartImage src={item.src} alt={item.title} className="cover-image" /></div><div className="work-meta"><span>{item.category.replace(/^\d+_/, '').replace('_', ' ')}</span><strong>{item.title}</strong><ArrowRight size={16} /></div></button>;
+
+const StudioWorks = ({ language }: { language: Language }) => {
+  const [filter, setFilter] = useState('all'); const [selected, setSelected] = useState<{ title: string; src: string } | null>(null); const c = studioCopy[language];
+  const items = getPortfolioItems(language); const labels = translations.categories[language] as Record<string, string>; const tabs = ['all', '01_dtp', '02_gaina', '03_logo', '04_kindle', '05_ai', '06_thumb', '07_reviews'];
+  const visible = filter === 'all' ? items : items.filter((item) => item.category === filter);
+  return <section id="works" className="works-section"><div className="section-frame"><div className="section-intro"><div><p className="section-number">02 / SELECTED WORKS</p><h2>{c.works.split('\n').map((line) => <React.Fragment key={line}>{line}<br /></React.Fragment>)}</h2></div><p>{c.worksLead}</p></div><div className="filter-row">{tabs.map((tab) => <button key={tab} className={filter === tab ? 'filter-active' : ''} onClick={() => setFilter(tab)}>{labels[tab === 'all' ? 'all' : ({'01_dtp':'dtp','02_gaina':'gaina','03_logo':'logo','04_kindle':'kindle','05_ai':'ai','06_thumb':'thumb','07_reviews':'reviews'} as Record<string,string>)[tab]]}</button>)}</div><div className="works-grid">{visible.map((item) => <WorkCard key={item.id} item={item} onOpen={() => setSelected(item)} />)}</div></div>{selected && <div className="lightbox" role="dialog" aria-modal="true" onClick={() => setSelected(null)}><div className="lightbox-inner" onClick={(event) => event.stopPropagation()}><button className="lightbox-close" onClick={() => setSelected(null)}><X size={22} /></button><SmartImage src={selected.src} alt={selected.title} className="lightbox-image" /><p>{selected.title}</p></div></div>}</section>;
+};
+
+const MangaStrip = ({ language }: { language: Language }) => { const [page, setPage] = useState(0); const c = studioCopy[language]; return <section className="manga-section"><div className="section-frame manga-grid"><div className="manga-copy"><p className="section-number">03 / {c.manga}</p><h2>物語は、<br /><em>ページをめくる。</em></h2><p>{translations.about[language].lab.split('\n')[0]}</p><div className="manga-controls"><button onClick={() => setPage(Math.max(0, page - 1))}>←</button><span>{String(page + 1).padStart(2, '0')} / {String(mangaPages.length).padStart(2, '0')}</span><button onClick={() => setPage(Math.min(mangaPages.length - 1, page + 1))}>→</button></div></div><div className="manga-viewer"><SmartImage src={mangaPages[page]} alt={`AI manga page ${page + 1}`} className="manga-image" /><span className="manga-note">AI MANGA<br />SERIES</span></div></div></section>; };
+
+const VideoShelf = ({ language }: { language: Language }) => { const [selected, setSelected] = useState<AIVideoItem | null>(null); const videos = getAIVideoData(language); const c = studioCopy[language]; return <section id="movies" className="video-section"><div className="section-frame"><div className="section-intro video-intro"><div><p className="section-number">04 / {c.videos}</p><h2>動く作品を、<br /><span>見にいく。</span></h2></div><p>{translations.aiVideo[language].subtitle}</p></div><div className="video-shelf">{videos.map((video, index) => <button key={video.id || video.url || index} className={index === 0 ? 'video-card video-card-featured' : 'video-card'} onClick={() => setSelected(video)}>{video.thumbnail ? <SmartImage src={video.thumbnail} alt={video.title} className="cover-image" /> : <div className="video-placeholder"><Play size={26} /></div>}<span className="play-badge"><Play size={13} fill="currentColor" /></span><div className="video-label"><small>{video.badge || video.type || 'AI VIDEO'}</small><strong>{video.title}</strong></div></button>)}</div></div>{selected && <div className="lightbox" role="dialog" aria-modal="true" onClick={() => setSelected(null)}><div className="video-modal" onClick={(event) => event.stopPropagation()}><button className="lightbox-close" onClick={() => setSelected(null)}><X size={22} /></button>{selected.videoUrl ? <video src={selected.videoUrl} controls autoPlay className="modal-media" /> : selected.embedUrl ? <iframe src={selected.embedUrl} title={selected.title} className="modal-media" allowFullScreen /> : <SmartImage src={selected.thumbnail || 'img/dqa-logo-refresh.png'} alt={selected.title} className="modal-media" />}<div className="modal-copy"><p>{selected.badge || 'AI VIDEO'}</p><h3>{selected.title}</h3>{selected.url && <a href={selected.url} target="_blank" rel="noreferrer">OPEN ORIGINAL <ExternalLink size={14} /></a>}</div></div></div>}</section>; };
+
+const StudioLab = ({ language }: { language: Language }) => { const projects = getVibeCodingProjects(language); return <section id="lab" className="lab-section"><div className="section-frame"><div className="lab-heading"><p className="section-number">05 / {studioCopy[language].coding}</p><h2>アイデアを、<br /><span>触れるところまで。</span></h2></div><div className="lab-cards">{projects.map((project, index) => <a key={project.url} href={project.url} target="_blank" rel="noreferrer" className={`lab-card lab-card-${index + 1}`}><span>0{index + 1}</span><h3>{project.title}</h3><p>{project.desc}</p><div>{project.tags.map((tag) => <b key={tag}>{tag}</b>)}</div><ArrowRight size={20} /></a>)}</div></div></section>; };
+
+const StudioApp = () => { const [language, setLanguage] = useState<Language>('ja'); const c = studioCopy[language]; return <div className="studio-app"><StudioNav language={language} setLanguage={setLanguage} /><main><StudioHero language={language} /><StudioAbout language={language} /><StudioWorks language={language} /><MangaStrip language={language} /><VideoShelf language={language} /><StudioLab language={language} /><section id="contact" className="contact-section"><div className="contact-orbit" /><div className="section-frame contact-inner"><p className="section-number">06 / CONTACT</p><h2>{c.contact.split('\n').map((line) => <React.Fragment key={line}>{line}<br /></React.Fragment>)}</h2><p>{c.contactLead}</p><a href="mailto:nvng75@dojyokko.ne.jp" className="button button-light">nvng75@dojyokko.ne.jp <ArrowRight size={16} /></a></div></section></main><footer className="studio-footer"><img src="img/dqa-logo-transparent.png" alt="Design Quest AI" /><div><a href="https://x.com/ARrow25989974" target="_blank" rel="noreferrer">X / @ARrow25989974</a><a href="https://line.me/R/ti/p/@347weexf?from=page&searchId=347weexf" target="_blank" rel="noreferrer">LINE / 公式アカウント</a></div><small>© 2026 DESIGN QUEST AI</small></footer></div>; };
 
 const root = createRoot(document.getElementById('root')!);
 root.render(<App />);
