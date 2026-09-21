@@ -108,7 +108,7 @@ const translations = {
   },
   about: {
     ja: { 
-      title: 'ABOUT ME', 
+      title: '自己紹介',
       bio1: 'フリーランスデザイナーとして、グラフィックデザインを中心に幅広い制作に携わってきました。これまで培ってきた経験とデザインの視点を土台に、表現の幅を広げ続けています。',
       bio2: '現在は生成AIを学び、画像・動画・ゲームなどさまざまな制作に取り入れています。ただ作るだけではなく、デザインとAIをどう掛け合わせれば新しい表現や価値を生み出せるのかを探求し、日々挑戦を続けています。',
       lab: 'Design Quest AIは、AIをただのツールとして使うのではなく、「AI社員」として一緒に考え、つくり、試しながら、楽しく共に働くクリエイティブ・ラボです。\n\n人とAI、それぞれの得意なことを活かしながら、新しい制作のかたちや表現の可能性を探求しています。\n\nIllustratorやPhotoshopなどのデザインツールから、画像生成・動画生成・AIエージェントまで。さまざまなツールを実際の制作に取り入れながら、自分たちらしいクリエイティブを日々アップデートしています。',
@@ -163,7 +163,7 @@ const translations = {
     }
   },
   aiManga: {
-    ja: { title: 'AI MANGA SERIES', viewManga: 'View Manga', closeManga: 'Close Manga' },
+    ja: { title: 'AI漫画', viewManga: 'View Manga', closeManga: 'Close Manga' },
     en: { title: 'AI MANGA SERIES', viewManga: 'View Manga', closeManga: 'Close Manga' },
     zh: { title: 'AI漫画系列', viewManga: '查看漫画', closeManga: '关闭漫画' }
   },
@@ -944,8 +944,8 @@ const Navigation = ({ language, setLanguage }: { language: Language, setLanguage
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-[#f7f6f2]/95 backdrop-blur-md border-b border-[#222222]/10 shadow-sm' : 'bg-[#f7f6f2]/90 backdrop-blur-sm py-4'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center h-16">
-        <a href="#" className="flex items-center bg-white rounded-lg px-3 py-1.5" aria-label="Design Quest AI">
-          <SmartImage src="img/dqa-logo-refresh.png" alt="Design Quest AI" className="h-12 w-auto object-contain" />
+        <a href="#" className="flex items-center px-3 py-1.5" aria-label="Design Quest AI">
+          <SmartImage src="img/dqa-logo-official.png" alt="Design Quest AI" className="h-12 w-auto object-contain" />
         </a>
 
         <div className="hidden md:flex items-center space-x-8">
@@ -1042,7 +1042,9 @@ const Hero = ({ language }: { language: Language }) => {
           <span className="hero-rule"></span> New Era of Creativity
         </div>
         <h1 className="brand-serif text-5xl md:text-8xl font-bold mb-8 text-[#222222] leading-none tracking-tight py-4">
-          デザイン×AIで、<br />未来を創る。
+          <span className="hero-line">デザイン</span>
+          <span className="hero-line">×AIで、</span>
+          <span className="hero-line">未来を創る。</span>
         </h1>
         <p className="text-lg md:text-2xl text-[#5f5b54] mb-10 max-w-xl font-light leading-relaxed">
           {t.description}
@@ -1076,7 +1078,7 @@ const About = ({ language }: { language: Language }) => {
           </div>
           
           <div className="max-w-4xl space-y-8">
-            <p className="text-lg md:text-2xl text-[#222222] font-bold leading-snug tracking-tight text-left">
+            <p className={`text-lg md:text-2xl text-[#222222] font-bold leading-snug tracking-tight text-left ${language === 'ja' ? 'jp-ud-bold' : ''}`}>
               {t.bio1}
             </p>
             <p className="text-sm md:text-lg text-[#5f5b54] leading-relaxed font-light text-left">
@@ -1265,7 +1267,7 @@ const Portfolio = ({ language }: { language: Language }) => {
                 <p className="text-orange-500 text-[10px] font-black mb-2 uppercase tracking-[0.3em]">
                   {translations.categories[language][categories.find(c => c.id === item.category)?.key as keyof typeof translations.categories.ja]}
                 </p>
-                <h3 className="text-white font-bold text-xl tracking-tight leading-tight">{item.title}</h3>
+            <h3 className="text-white font-bold text-xl tracking-tight leading-tight">{item.title}</h3>
               </div>
             </div>
           ))}
@@ -1345,7 +1347,7 @@ const VibeCoding = ({ language }: { language: Language }) => {
             <div className="flex flex-wrap gap-2 mb-6">
               {proj.tags.map(tag => <span key={tag} className="text-[10px] px-3 py-1 bg-[#b1842b]/10 text-[#8c671f] rounded-lg uppercase font-black border border-[#b1842b]/25">{tag}</span>)}
             </div>
-            <h3 className="text-2xl font-bold mb-6 group-hover:text-[#b1842b] transition-colors leading-tight">{proj.title}</h3>
+            <h3 className={`text-2xl font-bold mb-6 group-hover:text-[#b1842b] transition-colors leading-tight ${language === 'ja' ? 'jp-ud-bold' : ''}`}>{proj.title}</h3>
             <p className="text-[#6f6a62] text-sm leading-relaxed mb-10 flex-grow">{proj.desc}</p>
             <div className="mt-auto flex items-center gap-3 text-xs font-black uppercase tracking-widest">
               {t.launchProject} <ExternalLink size={14} className="opacity-50" />
@@ -1524,7 +1526,7 @@ const AIVideos = ({ language }: { language: Language }) => {
               </div>
 
               <div className="absolute inset-0 bg-black/80 flex flex-col items-center justify-center p-4 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20">
-                <p className="text-white text-[11px] md:text-xs font-bold leading-relaxed line-clamp-3 text-center">
+                <p className="text-[#f7f4ec] text-[11px] md:text-xs font-bold leading-relaxed line-clamp-3 text-center">
                   {video.title}
                 </p>
                 {video.tags?.length ? (
@@ -1823,7 +1825,7 @@ const App = () => {
   const [language, setLanguage] = useState<Language>('ja');
 
   return (
-    <div className="bg-[#f7f6f2] min-h-screen">
+    <div className={`bg-[#f7f6f2] min-h-screen ${language === 'ja' ? 'jp-display' : ''}`}>
       <Navigation language={language} setLanguage={setLanguage} />
       <main>
         <Hero language={language} />
@@ -1837,8 +1839,8 @@ const App = () => {
       
       <footer className="py-16 bg-white border-t border-[#b1842b]/40 text-center text-[#222222]">
         <div className="flex flex-col items-center gap-6">
-          <div className="bg-white rounded-lg px-3 py-1.5">
-            <SmartImage src="img/dqa-logo-refresh.png" alt="Design Quest AI" className="h-10 w-auto object-contain" />
+          <div className="px-3 py-1.5">
+            <SmartImage src="img/dqa-logo-official.png" alt="Design Quest AI" className="h-10 w-auto object-contain" />
           </div>
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 text-xs text-[#6f6a62] font-medium">
             <a href="https://x.com/ARrow25989974" target="_blank" rel="noopener noreferrer" className="hover:text-[#d5ad62] transition-colors">
@@ -1847,8 +1849,8 @@ const App = () => {
             <a href="https://line.me/R/ti/p/@347weexf?from=page&searchId=347weexf" target="_blank" rel="noopener noreferrer" className="hover:text-[#d5ad62] transition-colors">
               LINE: 公式アカウント
             </a>
-            <a href="mailto:nvng75@dojyokko.ne.jp" className="hover:text-[#d5ad62] transition-colors">
-              Contact: nvng75@dojyokko.ne.jp
+            <a href="mailto:nvng75@gmail.com" className="hover:text-[#d5ad62] transition-colors">
+              Contact: nvng75@gmail.com
             </a>
           </div>
           <p className="text-[#8c877e] text-[10px] font-black uppercase tracking-[0.3em]">
