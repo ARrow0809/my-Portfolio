@@ -1094,7 +1094,7 @@ const Hero = ({ language }: { language: Language }) => {
           <span className="hero-line">×AIで、</span>
           <span className="hero-line">未来を創る。</span>
         </h1>
-        <p className="text-lg md:text-2xl text-[#5f5b54] mb-10 max-w-xl font-light leading-relaxed">
+        <p className="jp-light-display text-lg md:text-2xl text-[#5f5b54] mb-10 max-w-xl font-light leading-relaxed">
           {t.description}
         </p>
         <div className="hero-color-rule" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
@@ -1126,7 +1126,7 @@ const About = ({ language }: { language: Language }) => {
           </div>
           
           <div className="max-w-4xl space-y-8">
-            <p className={`text-lg md:text-2xl text-[#222222] font-bold leading-snug tracking-tight text-left ${language === 'ja' ? 'jp-ud-bold' : ''}`}>
+            <p className="jp-light-display text-lg md:text-2xl text-[#222222] font-bold leading-snug tracking-tight text-left">
               {t.bio1}
             </p>
             <p className="text-sm md:text-lg text-[#5f5b54] leading-relaxed font-light text-left">
@@ -1282,7 +1282,7 @@ const Portfolio = ({ language }: { language: Language }) => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-20 text-center">
           <h2 className="brand-serif text-4xl md:text-6xl font-bold mb-6 text-white tracking-tight uppercase">{t.title}</h2>
-          <p className="text-gray-400 text-lg">{t.subtitle}</p>
+          <p className="jp-light-display text-gray-400 text-lg">{t.subtitle}</p>
           <div className="w-24 h-1 brand-rule mx-auto rounded-full mb-12"></div>
         </div>
 
@@ -1390,7 +1390,7 @@ const VibeCoding = ({ language }: { language: Language }) => {
     <div className="max-w-7xl mx-auto px-6">
       <div className="mb-20 text-center md:text-left">
         <h2 className="brand-serif text-4xl md:text-6xl font-bold text-[#222222] mb-4 tracking-tight uppercase">{t.title}</h2>
-        <p className="text-[#5f5b54] text-lg font-medium">{t.subtitle}</p>
+        <p className="jp-light-display text-[#5f5b54] text-lg font-medium">{t.subtitle}</p>
         <div className="w-16 h-1 brand-rule mt-6 rounded-full hidden md:block"></div>
       </div>
 
@@ -1537,7 +1537,7 @@ const AIVideos = ({ language }: { language: Language }) => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-20 text-center">
           <h2 className="brand-serif text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight uppercase">{t.title}</h2>
-          <p className="text-gray-400 text-lg">{t.subtitle}</p>
+        <p className="jp-light-display text-gray-400 text-lg">{t.subtitle}</p>
         </div>
 
         <div className="mb-10 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
@@ -1940,9 +1940,11 @@ const GainaShowcase = ({ language }: { language: Language }) => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-12 text-center md:text-left">
           <h2 className="brand-serif text-4xl md:text-6xl font-bold text-[#222222] mb-4 tracking-tight uppercase">{t.title}</h2>
-          <p className="text-[#5f5b54] text-lg font-medium leading-tight">{t.subtitle}</p>
+          <div className="jp-light-display max-w-5xl space-y-3">
+            <p className="text-[#5f5b54] text-lg font-medium leading-tight">{t.subtitle}</p>
+            <p className="text-[#6f6a62] text-sm leading-tight">{t.desc}</p>
+          </div>
           <div className="w-16 h-1 brand-rule mt-6 rounded-full hidden md:block"></div>
-          <p className="text-[#6f6a62] text-sm leading-tight mt-4 max-w-5xl">{t.desc}</p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
