@@ -83,7 +83,7 @@
         .hero-rule { display:inline-block; width:72px; height:1px; background:var(--ink); vertical-align:middle; }
         .hero-color-rule { display:flex; gap:18px; margin:28px 0 16px; }
         .hero-color-rule i { display:block; width:30px; height:3px; background:#bd2727; }
-        .hero-color-rule i:nth-child(2){background:#5c2aa6}.hero-color-rule i:nth-child(3){background:#19a5cb}.hero-color-rule i:nth-child(4){background:#e36b27}.hero-color-rule i:nth-child(5){background:#e6b72d}.hero-color-rule i:nth-child(6){background:#5f9c45}
+        .hero-color-rule i:nth-child(2){background:#5c2aa6}.hero-color-rule i:nth-child(3){background:#19a5cb}.hero-color-rule i:nth-child(4){background:#e36b27}.hero-color-rule i:nth-child(5){background:#e6b72d}.hero-color-rule i:nth-child(6){background:#5f9c45}.hero-color-rule i:nth-child(7){background:#A39532}
         .hero-caption { font-size:10px; letter-spacing:.22em; text-transform:uppercase; }
         section#about > div > div { background:#fff !important; border:1px solid var(--line); border-radius:0 !important; box-shadow:none !important; }
         section#about h2, main > section h2 { letter-spacing:-.06em; }
@@ -145,6 +145,15 @@
         html.dark  { --video-line:rgba(58,69,92,.75); --video-line-hover:#D9B45F; }
         .dqa-video-card       { border-color:var(--video-line) !important; }
         .dqa-video-card:hover { border-color:var(--video-line-hover) !important; }
+        html.dark .dqa-video-card { border-color:var(--gold) !important; }
+
+        /* 昼のセクション見出し：AI社員7色の基準に合わせる */
+        :root:not(.dark) #about h2 { color:#C0392B !important; }
+        :root:not(.dark) #aimanga h2 { color:#00B379 !important; }
+        :root:not(.dark) #aivideos h2 { color:#FA6D3E !important; }
+        :root:not(.dark) #portfolio h2 { color:#00AFCC !important; }
+        :root:not(.dark) #vibecoding h2 { color:#8E44AD !important; }
+        :root:not(.dark) .gaina-section h2 { color:#A39532 !important; }
 
         /* --- Hero：夜空画像（素材は Luna が public/img/ へ配置） --- */
         html.dark .hero-paper-image {

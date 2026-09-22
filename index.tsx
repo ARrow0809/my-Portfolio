@@ -666,7 +666,13 @@ const hiddenAIVideoFilterTags = new Set([
   '実写',
   '実写編集',
   '実績・案件',
-  '受賞作品'
+  '受賞作品',
+  'AI Creative Contest COLOTEK',
+  'Animon 2026 新春創作祭 感謝賞',
+  'SousakuAI Agent Creation Cup 2026',
+  'SousakuAI Agent Creation Cup Vol.2',
+  'ViduGameShow',
+  'くりえみAIフィルムコンテスト失敗'
 ]);
 
 // 追加作品でQ番号がずれても、作品そのものに対する分類を維持する。
@@ -1091,7 +1097,7 @@ const Hero = ({ language }: { language: Language }) => {
         <p className="text-lg md:text-2xl text-[#5f5b54] mb-10 max-w-xl font-light leading-relaxed">
           {t.description}
         </p>
-        <div className="hero-color-rule" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div className="hero-color-rule" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
         <p className="hero-caption">DESIGN<br />CREATIVE TECHNOLOGY<br />A MORE CREATIVE TOMORROW.</p>
       </div>
     </section>
@@ -1924,7 +1930,7 @@ const GainaShowcase = ({ language }: { language: Language }) => {
   const t = gainaTranslations[language];
 
   return (
-    <section className="py-28 bg-[#f7f6f2]">
+    <section className="gaina-section py-28 bg-[#f7f6f2]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-12 text-center md:text-left">
           <h2 className="brand-serif text-4xl md:text-6xl font-bold text-[#222222] mb-4 tracking-tight uppercase">{t.title}</h2>
