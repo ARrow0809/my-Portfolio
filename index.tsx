@@ -680,7 +680,8 @@ const aiVideoTagOverrides: Record<string, string[]> = {
   // 4. WFAIA広告: AI動画・チュートリアルを外し、動画コンテストへ
   'wfaia-ad': ['動画コンテスト', 'WFAIA 2026', '広告・CM'],
   // 5. クリムゾンミラーポンド: GAINA魂ではなくDQA物語（storyNumberで付与）
-  'crimson-mirror-pond': [],
+  'crimson-mirror-pond': ['動画コンテスト', 'SousakuAI Agent Creation Cup Vol.2'],
+  '2039022920853512213': ['動画コンテスト'],
   // 6. 第3話: GAINA魂ではなく動画コンテスト
   '2071973696450031747': ['動画コンテスト'],
   // 7. DQA単体は外す。DQA物語は storyNumber から保持する。
@@ -743,7 +744,7 @@ const additionalAIVideoData: Record<Language, AIVideoItem[]> = {
     { title: 'うちのAI社員が仕事もせず急に歌いだした', id: 'dqa-ai-employee-song', url: 'https://x.com/ARrow25989974/status/2090096682457571534', thumbnail: '08_ai_video/previews/ai-employee-sings.png', badge: 'DQA / AI社員 / MV', genre: '音楽', type: 'AI社員', sortGenre: 'music', sortType: 'mv', tags: ['DQA', 'AI社員', 'MV'] },
     { title: 'くりえみAIフィルムコンテスト制作映像（仮）', url: 'https://x.com/ARrow25989974/status/2039022920853512213', thumbnail: '08_ai_video/previews/kuriemi-ai-film.jpg', badge: 'チャレンジ記録' },
     { title: 'AIしてもいいですか？ 第3話', id: 'dqa-story-03', url: 'https://x.com/ARrow25989974/status/2071973696450031747', badge: 'ショートフィルム', challenge: 'コロテック応募作品 / AIしてもいいですか？ 第3話', storyNumber: 3, relatedLinks: [{ label: 'コロテック公式サイト', url: 'https://colo-tek.com/' }, { label: 'X投稿', url: 'https://x.com/ARrow25989974/status/2071973696450031747' }], submissionNote: `コロテック運営事務局でございます。\nこの度は、本コンテストに作品をご応募いただき、誠にありがとうございました。\n\n今回は、約350作品ものご応募をいただきました。いずれの作品からも、クリエイターの皆様の熱意と創造性が感じられ、審査は非常に難しいものとなりました。慎重に選考を重ねた結果、誠に残念ながら、今回はノミネート作品への選出を見送らせていただくこととなりました。\n\n今回の結果は、本コンテストの審査基準に基づき総合的に判断したものであり、作品そのものの価値や、皆様の創造性を否定するものではございません。\n\n魅力ある作品をご応募いただきましたことに、改めて心より御礼申し上げます。` },
-    { title: 'クリムゾンミラーポンド', id: 'crimson-mirror-pond', url: driveVideoLinks.crimson.url, drivePreviewUrl: driveVideoLinks.crimson.preview, platform: 'local', localOnly: true, thumbnail: '08_ai_video/previews/crimson-mirror-pond.jpg', awardImage: '08_ai_video/previews/crimson-award.jpg', badge: 'SousakuAI Agent Creation Cup Vol.2', challenge: '特撮カテゴリ / AIアニメーション', date: '2026-07-22', genre: 'アクション', type: '短編アニメ', sortGenre: 'action', sortType: 'short', judgeComments: ['特撮カテゴリでアニメ映像への挑戦で評価に悩んだ作品です。アニメがダメなわけではないですが、コンテストの主旨として特撮らしい演出をもっと盛り込んで欲しかったです。', '「クリムゾンミラーポンド」というタイトルと、音楽の入りから一気に作品の世界観へ引き込まれました。登場するモンスターもとても愛らしく、作品ならではの魅力を感じました。', '物語の展開がやや唐突に感じられる場面があり、セリフの訛りや、BGM・環境音のバランスが整うことで、作品全体がさらに自然で見やすくなりそうです。'] },
+    { title: 'クリムゾンミラーポンド', id: 'crimson-mirror-pond', url: driveVideoLinks.crimson.url, drivePreviewUrl: driveVideoLinks.crimson.preview, platform: 'local', localOnly: true, thumbnail: 'thumbnails/sousakuai-agent-cup-vol2.png', awardImage: '08_ai_video/previews/crimson-award.jpg', badge: 'SousakuAI Agent Creation Cup Vol.2', challenge: '特撮カテゴリ / AIアニメーション', date: '2026-07-22', genre: 'アクション', type: '短編アニメ', sortGenre: 'action', sortType: 'short', judgeComments: ['特撮カテゴリでアニメ映像への挑戦で評価に悩んだ作品です。アニメがダメなわけではないですが、コンテストの主旨として特撮らしい演出をもっと盛り込んで欲しかったです。', '「クリムゾンミラーポンド」というタイトルと、音楽の入りから一気に作品の世界観へ引き込まれました。登場するモンスターもとても愛らしく、作品ならではの魅力を感じました。', '物語の展開がやや唐突に感じられる場面があり、セリフの訛りや、BGM・環境音のバランスが整うことで、作品全体がさらに自然で見やすくなりそうです。'] },
     { title: 'WFAIA 2026 広告部門', id: 'wfaia-ad', url: driveVideoLinks.wfaiaAd.url, drivePreviewUrl: driveVideoLinks.wfaiaAd.preview, platform: 'local', localOnly: true, thumbnail: '08_ai_video/previews/wfaia-ad.jpg', supportingImage: '08_ai_video/previews/wfaia-context.jpg', supportingImageLabel: 'WFAIA 2026 大会情報', badge: 'WFAIA 2026 / 広告部門', challenge: '2026年7月31日提出', date: '2026-07-31', genre: '広告', type: 'CM', sortGenre: 'advertising', sortType: 'cm' },
     { title: 'WFAIA 2026 ショートドラマ部門', id: 'wfaia-drama', url: driveVideoLinks.wfaiaDrama.url, drivePreviewUrl: driveVideoLinks.wfaiaDrama.preview, platform: 'local', localOnly: true, thumbnail: '08_ai_video/previews/wfaia-drama.jpg', supportingImage: '08_ai_video/previews/wfaia-context.jpg', supportingImageLabel: 'WFAIA 2026 大会情報', badge: 'WFAIA 2026 / ショートドラマ部門', challenge: '2026年8月14日提出', date: '2026-08-14', genre: 'ドラマ', type: 'ショートドラマ', sortGenre: 'drama', sortType: 'short' },
     { title: '2026 GAINA魂 15秒CM', id: 'gaina-cm', url: driveVideoLinks.gainaCm.url, drivePreviewUrl: driveVideoLinks.gainaCm.preview, platform: 'local', localOnly: true, thumbnail: '08_ai_video/previews/gaina-cm-user.jpg', badge: '広告 / CM', challenge: '納品版と関連映像を1作品として掲載', date: '2026-06-21', genre: '広告', type: 'CM', sortGenre: 'advertising', sortType: 'cm' },
@@ -763,7 +764,7 @@ const additionalAIVideoData: Record<Language, AIVideoItem[]> = {
     { title: 'My AI Employee Suddenly Started Singing', id: 'dqa-ai-employee-song', url: 'https://x.com/ARrow25989974/status/2090096682457571534', thumbnail: '08_ai_video/previews/ai-employee-sings.png', badge: 'DQA / AI Employee / MV', genre: 'Music', type: 'AI Employee', sortGenre: 'music', sortType: 'mv', tags: ['DQA', 'AI社員', 'MV'] },
     { title: 'Kuriemi AI Film Contest Challenge (Working Title)', url: 'https://x.com/ARrow25989974/status/2039022920853512213', thumbnail: '08_ai_video/previews/kuriemi-ai-film.jpg', badge: 'Challenge Log' },
     { title: 'May I Love AI? Episode 3', url: 'https://x.com/ARrow25989974/status/2071973696450031747', badge: 'Short Film' },
-    { title: 'Crimson Mirror Pond', id: 'crimson-mirror-pond', url: driveVideoLinks.crimson.url, drivePreviewUrl: driveVideoLinks.crimson.preview, platform: 'local', localOnly: true, thumbnail: '08_ai_video/previews/crimson-mirror-pond.jpg', awardImage: '08_ai_video/previews/crimson-award.jpg', badge: 'SousakuAI Agent Creation Cup Vol.2', challenge: 'Special Effects Category / AI Animation', date: '2026-07-22', genre: 'Action', type: 'Short Animation', sortGenre: 'action', sortType: 'short', judgeComments: ['This was a challenging entry in the special-effects category, and we struggled with how to evaluate its animated approach. Animation is not a problem, but we wanted to see more special-effects-style direction for the contest theme.', 'The title and the opening music pulled us straight into the world of Crimson Mirror Pond. The monsters were charming and gave the work a distinctive appeal.', 'Some story turns felt abrupt. Smoother dialogue, BGM, and ambience would make the work even easier to follow.'] },
+    { title: 'Crimson Mirror Pond', id: 'crimson-mirror-pond', url: driveVideoLinks.crimson.url, drivePreviewUrl: driveVideoLinks.crimson.preview, platform: 'local', localOnly: true, thumbnail: 'thumbnails/sousakuai-agent-cup-vol2.png', awardImage: '08_ai_video/previews/crimson-award.jpg', badge: 'SousakuAI Agent Creation Cup Vol.2', challenge: 'Special Effects Category / AI Animation', date: '2026-07-22', genre: 'Action', type: 'Short Animation', sortGenre: 'action', sortType: 'short', judgeComments: ['This was a challenging entry in the special-effects category, and we struggled with how to evaluate its animated approach. Animation is not a problem, but we wanted to see more special-effects-style direction for the contest theme.', 'The title and the opening music pulled us straight into the world of Crimson Mirror Pond. The monsters were charming and gave the work a distinctive appeal.', 'Some story turns felt abrupt. Smoother dialogue, BGM, and ambience would make the work even easier to follow.'] },
     { title: 'WFAIA 2026 Advertising Category', id: 'wfaia-ad', url: driveVideoLinks.wfaiaAd.url, drivePreviewUrl: driveVideoLinks.wfaiaAd.preview, platform: 'local', localOnly: true, thumbnail: '08_ai_video/previews/wfaia-ad.jpg', supportingImage: '08_ai_video/previews/wfaia-context.jpg', supportingImageLabel: 'WFAIA 2026 event information', badge: 'WFAIA 2026 / Advertising', challenge: 'Submitted July 31, 2026', date: '2026-07-31', genre: 'Advertising', type: 'Commercial', sortGenre: 'advertising', sortType: 'cm' },
     { title: 'WFAIA 2026 Short Drama Category', id: 'wfaia-drama', url: driveVideoLinks.wfaiaDrama.url, drivePreviewUrl: driveVideoLinks.wfaiaDrama.preview, platform: 'local', localOnly: true, thumbnail: '08_ai_video/previews/wfaia-drama.jpg', supportingImage: '08_ai_video/previews/wfaia-context.jpg', supportingImageLabel: 'WFAIA 2026 event information', badge: 'WFAIA 2026 / Short Drama', challenge: 'Submitted August 14, 2026', date: '2026-08-14', genre: 'Drama', type: 'Short Drama', sortGenre: 'drama', sortType: 'short' },
     { title: '2026 GAINA Soul 15s Commercial', id: 'gaina-cm', url: driveVideoLinks.gainaCm.url, drivePreviewUrl: driveVideoLinks.gainaCm.preview, platform: 'local', localOnly: true, thumbnail: '08_ai_video/previews/gaina-cm-user.jpg', badge: 'Advertising / Commercial', challenge: 'Two related delivery videos represented as one work', date: '2026-06-21', genre: 'Advertising', type: 'Commercial', sortGenre: 'advertising', sortType: 'cm' },
@@ -783,7 +784,7 @@ const additionalAIVideoData: Record<Language, AIVideoItem[]> = {
     { title: '我的AI员工突然开始唱歌', id: 'dqa-ai-employee-song', url: 'https://x.com/ARrow25989974/status/2090096682457571534', thumbnail: '08_ai_video/previews/ai-employee-sings.png', badge: 'DQA / AI员工 / MV', genre: '音乐', type: 'AI员工', sortGenre: 'music', sortType: 'mv', tags: ['DQA', 'AI社員', 'MV'] },
     { title: 'Kuriemi AI电影大赛挑战（暂定）', url: 'https://x.com/ARrow25989974/status/2039022920853512213', thumbnail: '08_ai_video/previews/kuriemi-ai-film.jpg', badge: '挑战记录' },
     { title: '可以爱上AI吗？ 第3话', url: 'https://x.com/ARrow25989974/status/2071973696450031747', badge: '短片' },
-    { title: '绯红镜池', id: 'crimson-mirror-pond', url: driveVideoLinks.crimson.url, drivePreviewUrl: driveVideoLinks.crimson.preview, platform: 'local', localOnly: true, thumbnail: '08_ai_video/previews/crimson-mirror-pond.jpg', awardImage: '08_ai_video/previews/crimson-award.jpg', badge: 'SousakuAI Agent Creation Cup Vol.2', challenge: '特摄类别 / AI动画', date: '2026-07-22', genre: '动作', type: '短篇动画', sortGenre: 'action', sortType: 'short', judgeComments: ['这是一部在特摄类别中挑战动画表现的作品，我们在评价上曾感到犹豫。动画本身并不是问题，但如果更加入特摄风格的演出，会更贴合比赛主题。', '作品标题与音乐一开始就把观众带入了绯红镜池的世界。登场怪物非常可爱，也形成了作品独有的魅力。', '部分故事展开略显突然。如果对白、BGM与环境音的平衡更顺畅，作品会更易观看。'] },
+    { title: '绯红镜池', id: 'crimson-mirror-pond', url: driveVideoLinks.crimson.url, drivePreviewUrl: driveVideoLinks.crimson.preview, platform: 'local', localOnly: true, thumbnail: 'thumbnails/sousakuai-agent-cup-vol2.png', awardImage: '08_ai_video/previews/crimson-award.jpg', badge: 'SousakuAI Agent Creation Cup Vol.2', challenge: '特摄类别 / AI动画', date: '2026-07-22', genre: '动作', type: '短篇动画', sortGenre: 'action', sortType: 'short', judgeComments: ['这是一部在特摄类别中挑战动画表现的作品，我们在评价上曾感到犹豫。动画本身并不是问题，但如果更加入特摄风格的演出，会更贴合比赛主题。', '作品标题与音乐一开始就把观众带入了绯红镜池的世界。登场怪物非常可爱，也形成了作品独有的魅力。', '部分故事展开略显突然。如果对白、BGM与环境音的平衡更顺畅，作品会更易观看。'] },
     { title: 'WFAIA 2026 广告类别', id: 'wfaia-ad', url: driveVideoLinks.wfaiaAd.url, drivePreviewUrl: driveVideoLinks.wfaiaAd.preview, platform: 'local', localOnly: true, thumbnail: '08_ai_video/previews/wfaia-ad.jpg', supportingImage: '08_ai_video/previews/wfaia-context.jpg', supportingImageLabel: 'WFAIA 2026 大赛信息', badge: 'WFAIA 2026 / 广告', challenge: '2026年7月31日提交', date: '2026-07-31', genre: '广告', type: 'CM', sortGenre: 'advertising', sortType: 'cm' },
     { title: 'WFAIA 2026 短剧类别', id: 'wfaia-drama', url: driveVideoLinks.wfaiaDrama.url, drivePreviewUrl: driveVideoLinks.wfaiaDrama.preview, platform: 'local', localOnly: true, thumbnail: '08_ai_video/previews/wfaia-drama.jpg', supportingImage: '08_ai_video/previews/wfaia-context.jpg', supportingImageLabel: 'WFAIA 2026 大赛信息', badge: 'WFAIA 2026 / 短剧', challenge: '2026年8月14日提交', date: '2026-08-14', genre: '剧情', type: '短剧', sortGenre: 'drama', sortType: 'short' },
     { title: '2026 GAINA魂 15秒CM', id: 'gaina-cm', url: driveVideoLinks.gainaCm.url, drivePreviewUrl: driveVideoLinks.gainaCm.preview, platform: 'local', localOnly: true, thumbnail: '08_ai_video/previews/gaina-cm-user.jpg', badge: '广告 / CM', challenge: '两份相关交付视频作为一件作品展示', date: '2026-06-21', genre: '广告', type: 'CM', sortGenre: 'advertising', sortType: 'cm' },
@@ -843,7 +844,7 @@ const getAIVideoData = (language: Language): AIVideoItem[] => {
 
   const videoData = {
     ja: [
-      { title: "Animon動画チャレンジ「2026年の願い」", url: "https://x.com/ARrow25989974/status/2013537013883097376", thumbnail: "thumbnails/2013537013883097376.jpg", badge: "Animon感謝賞 受賞作品" },
+      { title: "AI VIDEO #24 Animon感謝賞受賞", url: "https://x.com/Animon_Ai/status/2014533550100316603", thumbnail: "thumbnails/2013537013883097376.jpg", badge: "Animon感謝賞 受賞作品" },
       { title: "アニモン動画チャレンジ:フレーム抽出・切り抜き機能登場!", url: "https://x.com/ARrow25989974/status/2000872251089105122/video/1", thumbnail: "thumbnails/2000872251089105122.jpg" },
       { title: "アニモン動画チャレンジ:15秒CM「新モデル＆大型アップデート」", url: "https://x.com/ARrow25989974/status/1996874239379673494?s=20", thumbnail: "thumbnails/1996874239379673494.jpg" },
       { title: "あなたの市場価値、もうゼロになりますよ?―デザイナーの気づき", url: "https://x.com/i/status/1993896080162029641", thumbnail: "thumbnails/1993896080162029641.jpg" },
@@ -869,7 +870,7 @@ const getAIVideoData = (language: Language): AIVideoItem[] => {
       { title: "ダンス元画像比較", url: "https://x.com/i/status/1762150135101096436", thumbnail: "thumbnails/1762150135101096436.jpg", objectPosition: 'center 12%' }
     ],
     en: [
-      { title: "Animon Video Challenge: A Wish for 2026", url: "https://x.com/ARrow25989974/status/2013537013883097376", thumbnail: "thumbnails/2013537013883097376.jpg", badge: "Animon Appreciation Award Winner" },
+      { title: "AI VIDEO #24 Animon Appreciation Award Winner", url: "https://x.com/Animon_Ai/status/2014533550100316603", thumbnail: "thumbnails/2013537013883097376.jpg", badge: "Animon Appreciation Award Winner" },
       { title: "Animon Video Challenge: Frame Extraction & Cutout Feature!", url: "https://x.com/ARrow25989974/status/2000872251089105122/video/1", thumbnail: "thumbnails/2000872251089105122.jpg" },
       { title: "Animon Video Challenge: 15s CM 'New Model & Major Update'", url: "https://x.com/ARrow25989974/status/1996874239379673494?s=20", thumbnail: "thumbnails/1996874239379673494.jpg" },
       { title: "Your Market Value Will Be Zero - Designer's Realization", url: "https://x.com/i/status/1993896080162029641", thumbnail: "thumbnails/1993896080162029641.jpg" },
@@ -895,7 +896,7 @@ const getAIVideoData = (language: Language): AIVideoItem[] => {
       { title: "Original Dance Image Comparison", url: "https://x.com/i/status/1762150135101096436", thumbnail: "thumbnails/1762150135101096436.jpg", objectPosition: 'center 12%' }
     ],
     zh: [
-      { title: "Animon视频挑战：2026年的愿望", url: "https://x.com/ARrow25989974/status/2013537013883097376", thumbnail: "thumbnails/2013537013883097376.jpg", badge: "Animon感谢奖 获奖作品" },
+      { title: "AI VIDEO #24 Animon感谢奖获奖作品", url: "https://x.com/Animon_Ai/status/2014533550100316603", thumbnail: "thumbnails/2013537013883097376.jpg", badge: "Animon感谢奖 获奖作品" },
       { title: "Animon视频挑战：帧提取·剪切功能登场！", url: "https://x.com/ARrow25989974/status/2000872251089105122/video/1", thumbnail: "thumbnails/2000872251089105122.jpg" },
       { title: "Animon视频挑战：15秒CM「新模型&大型更新」", url: "https://x.com/ARrow25989974/status/1996874239379673494?s=20", thumbnail: "thumbnails/1996874239379673494.jpg" },
       { title: "你的市场价值将归零——设计师的觉悟", url: "https://x.com/i/status/1993896080162029641", thumbnail: "thumbnails/1993896080162029641.jpg" },
@@ -1438,6 +1439,27 @@ const AIVideos = ({ language }: { language: Language }) => {
   const [sortMode, setSortMode] = useState<AIVideoSortMode>('newest');
   const [tagFilter, setTagFilter] = useState('all');
   const tweetContainerRef = useRef<HTMLDivElement>(null);
+  const ANIMON_AWARD_TWEET_ID = '2014533550100316603';
+  const ANIMON_ENTRY_TWEET_ID = '2013537013883097376';
+  const isAnimonAward = !!selectedVideo?.url?.includes(ANIMON_AWARD_TWEET_ID);
+  const VIDU_TWEET_ID = '1944091331946791330';
+  const isVidu = !!selectedVideo?.url?.includes(VIDU_TWEET_ID);
+  const KURIEMI_TWEET_ID = '2039022920853512213';
+  const isKuriemi = !!selectedVideo?.url?.includes(KURIEMI_TWEET_ID);
+  const contestBadges: Record<string, { label: string; className: string }> = {
+    '2014533550100316603': { label: 'Animon 2026 新春創作祭 感謝賞', className: 'bg-[#C0392B] text-[#F1C40F]' },
+    '1944091331946791330': { label: 'ViduGameShow', className: 'bg-orange-500 text-black' },
+    '2071973696450031747': { label: 'AI Creative Contest COLOTEK', className: 'bg-orange-500 text-black' },
+    'dqa-story-02': { label: 'SousakuAI Agent Creation Cup 2026', className: 'bg-orange-500 text-black' },
+    '2039022920853512213': { label: 'くりえみAIフィルムコンテスト失敗', className: 'bg-gray-500 text-black' }
+  };
+  const getContestBadge = (video: AIVideoItem & { tags?: string[] }) => {
+    if (!video?.tags?.includes('動画コンテスト')) return null;
+    const key = getAIVideoSourceId(video.url) || video.id || video.url || video.title;
+    const label = contestBadges[key]?.label || video.badge;
+    if (!label) return null;
+    return { label, className: contestBadges[key]?.className || 'bg-orange-500 text-black' };
+  };
   const aiVideoData = getAIVideoData(language);
   const videoKey = (video: AIVideoItem) => video.id || video.url || video.title;
   const qOrderedVideos = [...aiVideoData].sort((a, b) => compareAIVideos(a, b, 'newest'));
@@ -1449,13 +1471,18 @@ const AIVideos = ({ language }: { language: Language }) => {
     const manualTags = video.tags || [];
     const legacyQNumber = video.storyNumber === 1 || manualTags.length > 0 ? undefined : qNumber && qNumber > 27 ? qNumber - 2 : qNumber;
     const tagKey = getAIVideoSourceId(video.url) || video.id || video.url || video.title;
-    const baseTags = aiVideoTagOverrides[tagKey]
+    const rawBaseTags = aiVideoTagOverrides[tagKey]
       || (legacyQNumber ? aiVideoTagsByQ[legacyQNumber] || [] : []);
+    const legacyTagAliases: Record<string, string> = {
+      'SousakuAI Agent Creation Cup': 'SousakuAI Agent Creation Cup Vol.2'
+    };
+    const baseTags = rawBaseTags.map((tag) => legacyTagAliases[tag] || tag);
     const storyTags = video.storyNumber ? ['DQA物語', ...(video.storyNumber === 1 ? ['DQA'] : [])] : [];
+    const contestTags = contestBadges[tagKey] ? ['動画コンテスト', contestBadges[tagKey].label] : [];
     return {
       ...video,
       qNumber,
-      tags: [...new Set([...storyTags, ...manualTags, ...baseTags])]
+      tags: [...new Set([...storyTags, ...manualTags, ...baseTags, ...contestTags])]
     };
   });
   const availableTags = [...new Set(taggedVideos.flatMap((video) => video.tags || []))]
@@ -1482,7 +1509,7 @@ const AIVideos = ({ language }: { language: Language }) => {
     if (selectedVideo && !selectedVideo.videoUrl && !selectedVideo.embedUrl && !selectedVideo.localOnly && (window as any).twttr) {
       if (tweetContainerRef.current) {
         tweetContainerRef.current.innerHTML = '';
-        const tweetId = getAIVideoSourceId(selectedVideo.url);
+        const tweetId = isAnimonAward ? ANIMON_ENTRY_TWEET_ID : getAIVideoSourceId(selectedVideo.url);
         if (tweetId) {
           (window as any).twttr.widgets.createTweet(tweetId, tweetContainerRef.current, {
             theme: 'dark',
@@ -1543,9 +1570,9 @@ const AIVideos = ({ language }: { language: Language }) => {
               onClick={() => setSelectedVideo(video)}
               className="dqa-video-card relative aspect-video bg-gray-900 border rounded-2xl transition-all group overflow-hidden shadow-xl"
             >
-              {video.badge && (
-                <div className="absolute top-3 left-3 z-30 px-3 py-1.5 rounded-full bg-orange-500 text-black text-[9px] font-black tracking-wider shadow-xl">
-                  {video.badge}
+              {getContestBadge(video) && (
+                <div className={`absolute top-3 left-3 z-30 px-3 py-1.5 rounded-full text-[9px] font-black tracking-wider shadow-xl ${getContestBadge(video)!.className}`}>
+                  {getContestBadge(video)!.label}
                 </div>
               )}
               {video.thumbnail ? (
@@ -1603,14 +1630,14 @@ const AIVideos = ({ language }: { language: Language }) => {
             <X size={40} strokeWidth={1} />
           </button>
           
-          <div className={`w-full ${selectedVideo.videoUrl || selectedVideo.submissionNote ? 'max-w-[1500px]' : 'max-w-5xl'} bg-gray-900 rounded-[3rem] overflow-hidden shadow-2xl border border-gray-800 flex flex-col animate-in zoom-in-95 duration-300`}>
+          <div className={`w-full ${selectedVideo.videoUrl || selectedVideo.submissionNote || isAnimonAward ? 'max-w-[1500px]' : 'max-w-5xl'} bg-gray-900 rounded-[3rem] overflow-hidden shadow-2xl border border-gray-800 flex flex-col animate-in zoom-in-95 duration-300`}>
             <div className="p-6 md:px-10 border-b border-gray-800 flex justify-between items-center bg-gray-900/50 backdrop-blur-md">
               <div className="flex items-center gap-3">
                 <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
                 <span className="font-black text-xs uppercase tracking-[0.2em] text-gray-400">Exclusive Video Preview</span>
-                {selectedVideo.badge && !selectedVideo.videoUrl && (
-                  <span className="hidden sm:inline-flex px-3 py-1 rounded-full bg-orange-500 text-black text-[9px] font-black tracking-wider">
-                    {selectedVideo.badge}
+                {getContestBadge(selectedVideo) && !selectedVideo.videoUrl && (
+                  <span className={`hidden sm:inline-flex px-3 py-1 rounded-full text-[9px] font-black tracking-wider ${getContestBadge(selectedVideo)!.className}`}>
+                    {getContestBadge(selectedVideo)!.label}
                   </span>
                 )}
               </div>
@@ -1765,8 +1792,8 @@ const AIVideos = ({ language }: { language: Language }) => {
                   </div>
                 </div>
               ) : (
-                <div className={`p-4 md:p-8 bg-black ${selectedVideo.submissionNote ? 'grid lg:grid-cols-[minmax(0,1fr)_420px] gap-6 items-start' : ''}`}>
-                  <div className={selectedVideo.submissionNote ? 'min-w-0 flex flex-col items-center' : 'flex flex-col items-center'}>
+                <div className={`p-4 md:p-8 bg-black ${selectedVideo.submissionNote || isAnimonAward || isVidu || isKuriemi ? 'grid lg:grid-cols-[minmax(0,1fr)_420px] gap-6 items-start' : ''}`}>
+                  <div className={selectedVideo.submissionNote || isAnimonAward || isVidu || isKuriemi ? 'min-w-0 flex flex-col items-center' : 'flex flex-col items-center'}>
                     <div ref={tweetContainerRef} className="w-full flex justify-center min-h-[300px]">
                     <div className="flex flex-col items-center justify-center text-gray-600 gap-4">
                       <Play className="animate-spin" size={32} />
@@ -1795,6 +1822,62 @@ const AIVideos = ({ language }: { language: Language }) => {
                         <p className="mb-3 text-[10px] font-black uppercase tracking-[0.25em] text-gray-500">応募結果・運営通知</p>
                         <p className="whitespace-pre-line text-sm leading-relaxed text-gray-300">{selectedVideo.submissionNote}</p>
                       </div>
+                    </aside>
+                  )}
+                  {isAnimonAward && (
+                    <aside className="space-y-5 rounded-2xl border border-gray-800 bg-gray-950 p-6 text-left">
+                      <p className="text-[10px] font-black uppercase tracking-[0.25em] text-orange-400">Animon 2026 新春創作祭 感謝賞</p>
+                      <SmartImage
+                        src="thumbnails/animon-kansha.jpg"
+                        alt="Animon 2026 新春創作祭 感謝賞 受賞結果"
+                        className="w-full h-auto rounded-2xl border border-orange-500/30 shadow-2xl"
+                      />
+                      <a
+                        href="https://x.com/Animon_Ai/status/2014533550100316603"
+                        target="_blank"
+                        rel="noopener"
+                        className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-xs font-black text-black transition-colors hover:bg-orange-500"
+                      >
+                        受賞発表をXで見る <ExternalLink size={14} />
+                      </a>
+                    </aside>
+                  )}
+                  {isVidu && (
+                    <aside className="space-y-5 rounded-2xl border border-gray-800 bg-gray-950 p-6 text-left">
+                      <SmartImage
+                        src="thumbnails/vidu-gameshow.jpeg"
+                        alt="ViduGameShow"
+                        className="w-full h-auto rounded-2xl border border-gray-800"
+                      />
+                      <div>
+                        <p className="mb-3 text-[10px] font-black uppercase tracking-[0.25em] text-gray-500">コンテストの内容</p>
+                        <p className="text-sm leading-relaxed text-gray-300">ViduGameShow参加作品。Viduを中心に制作した、王道ダークファンタジーRPGのコマンドバトル映像です。</p>
+                      </div>
+                      <a
+                        href="https://www.vidu.com/activity/2797599719867510"
+                        target="_blank"
+                        rel="noopener"
+                        className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-xs font-black text-black hover:bg-orange-500 transition-colors"
+                      >
+                        ViduGameShowを見る <ExternalLink size={14} />
+                      </a>
+                    </aside>
+                  )}
+                  {isKuriemi && (
+                    <aside className="space-y-5 rounded-2xl border border-gray-800 bg-gray-950 p-6 text-left">
+                      <SmartImage
+                        src="thumbnails/kuriemi-ai-film-contest.jpeg"
+                        alt="くりえみ AIフィルムコンテスト | Creators' Wonderland"
+                        className="w-full h-auto rounded-2xl border border-gray-800"
+                      />
+                      <a
+                        href="https://www.creators-wonderland.com/ja/contests/kuriemi-contest001"
+                        target="_blank"
+                        rel="noopener"
+                        className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-xs font-black text-black transition-colors hover:bg-orange-500"
+                      >
+                        くりえみ AIフィルムコンテスト | Creators&apos; Wonderland <ExternalLink size={14} />
+                      </a>
                     </aside>
                   )}
                 </div>
@@ -1989,7 +2072,7 @@ const StudioWorks = ({ language }: { language: Language }) => {
 
 const MangaStrip = ({ language }: { language: Language }) => { const [page, setPage] = useState(0); const c = studioCopy[language]; return <section className="manga-section"><div className="section-frame manga-grid"><div className="manga-copy"><p className="section-number">03 / {c.manga}</p><h2>物語は、<br /><em>ページをめくる。</em></h2><p>{translations.about[language].lab.split('\n')[0]}</p><div className="manga-controls"><button onClick={() => setPage(Math.max(0, page - 1))}>←</button><span>{String(page + 1).padStart(2, '0')} / {String(mangaPages.length).padStart(2, '0')}</span><button onClick={() => setPage(Math.min(mangaPages.length - 1, page + 1))}>→</button></div></div><div className="manga-viewer"><SmartImage src={mangaPages[page]} alt={`AI manga page ${page + 1}`} className="manga-image" /><span className="manga-note">AI MANGA<br />SERIES</span></div></div></section>; };
 
-const VideoShelf = ({ language }: { language: Language }) => { const [selected, setSelected] = useState<AIVideoItem | null>(null); const videos = getAIVideoData(language); const c = studioCopy[language]; return <section id="movies" className="video-section"><div className="section-frame"><div className="section-intro video-intro"><div><p className="section-number">04 / {c.videos}</p><h2>動く作品を、<br /><span>見にいく。</span></h2></div><p>{translations.aiVideo[language].subtitle}</p></div><div className="video-shelf">{videos.map((video, index) => <button key={video.id || video.url || index} className={index === 0 ? 'video-card video-card-featured' : 'video-card'} onClick={() => setSelected(video)}>{video.thumbnail ? <SmartImage src={video.thumbnail} alt={video.title} className="cover-image" /> : <div className="video-placeholder"><Play size={26} /></div>}<span className="play-badge"><Play size={13} fill="currentColor" /></span><div className="video-label"><small>{video.badge || video.type || 'AI VIDEO'}</small><strong>{video.title}</strong></div></button>)}</div></div>{selected && <div className="lightbox" role="dialog" aria-modal="true" onClick={() => setSelected(null)}><div className="video-modal" onClick={(event) => event.stopPropagation()}><button className="lightbox-close" onClick={() => setSelected(null)}><X size={22} /></button>{selected.videoUrl ? <video src={selected.videoUrl} controls autoPlay className="modal-media" /> : selected.embedUrl ? <iframe src={selected.embedUrl} title={selected.title} className="modal-media" allowFullScreen /> : <SmartImage src={selected.thumbnail || 'img/dqa-logo-refresh.png'} alt={selected.title} className="modal-media" />}<div className="modal-copy"><p>{selected.badge || 'AI VIDEO'}</p><h3>{selected.title}</h3>{selected.url && <a href={selected.url} target="_blank" rel="noreferrer">OPEN ORIGINAL <ExternalLink size={14} /></a>}</div></div></div>}</section>; };
+const VideoShelf = ({ language }: { language: Language }) => { const [selected, setSelected] = useState<AIVideoItem | null>(null); const videos = getAIVideoData(language); const c = studioCopy[language]; const ANIMON_AWARD_TWEET_ID = '2014533550100316603'; const ANIMON_ENTRY_TWEET_ID = '2013537013883097376'; const VIDU_TWEET_ID = '1944091331946791330'; const isAward = !!selected?.url?.includes(ANIMON_AWARD_TWEET_ID); const isVidu = !!selected?.url?.includes(VIDU_TWEET_ID); const contestBadges: Record<string, { label: string; bg: string; fg: string }> = { [ANIMON_AWARD_TWEET_ID]: { label: 'Animon 2026 新春創作祭 感謝賞', bg: '#F1C40F', fg: '#C0392B' }, [VIDU_TWEET_ID]: { label: 'ViduGameShow', bg: '#F97316', fg: '#000000' }, '2082301345034633579': { label: 'SousakuAI Agent Creation Cup Vol.2', bg: '#F97316', fg: '#000000' } }; const getContestBadge = (v: AIVideoItem) => { const key = Object.keys(contestBadges).find((id) => v.url?.includes(id)); return key ? contestBadges[key] : null; }; const tagStyle = (b: { bg: string; fg: string }) => ({ display: 'inline-block', background: b.bg, color: b.fg, padding: '4px 10px', borderRadius: '999px', fontWeight: 900, letterSpacing: '0.08em', lineHeight: 1.4 } as React.CSSProperties); return <section id="movies" className="video-section"><div className="section-frame"><div className="section-intro video-intro"><div><p className="section-number">04 / {c.videos}</p><h2>動く作品を、<br /><span>見にいく。</span></h2></div><p>{translations.aiVideo[language].subtitle}</p></div><div className="video-shelf">{videos.map((video, index) => <button key={video.id || video.url || index} className={index === 0 ? 'video-card video-card-featured' : 'video-card'} onClick={() => setSelected(video)}>{video.thumbnail ? <SmartImage src={video.thumbnail} alt={video.title} className="cover-image" /> : <div className="video-placeholder"><Play size={26} /></div>}<span className="play-badge"><Play size={13} fill="currentColor" /></span><div className="video-label">{getContestBadge(video) && <small style={tagStyle(getContestBadge(video)!)}>{getContestBadge(video)!.label}</small>}<strong>{video.title}</strong></div></button>)}</div></div>{selected && <div className="lightbox" role="dialog" aria-modal="true" onClick={() => setSelected(null)}><div className="video-modal" onClick={(event) => event.stopPropagation()}><button className="lightbox-close" onClick={() => setSelected(null)}><X size={22} /></button>{isVidu ? <div className="grid lg:grid-cols-[minmax(0,1fr)_420px] bg-gray-950 w-full"><div className="flex items-center justify-center bg-black p-4 md:p-8"><div className="w-full aspect-video overflow-hidden rounded-2xl border border-gray-800 bg-gray-950"><iframe src={`https://platform.twitter.com/embed/Tweet.html?id=${VIDU_TWEET_ID}&theme=dark`} title={selected.title} className="w-full h-full" loading="lazy" scrolling="no" allowFullScreen /></div></div><div className="space-y-6 p-6 md:p-8 text-left border-t lg:border-t-0 lg:border-l border-gray-800"><SmartImage src="thumbnails/vidu-gameshow.jpeg" alt="ViduGameShow" className="w-full h-auto rounded-2xl border border-gray-800" /><div><p className="text-[10px] text-gray-500 font-black uppercase tracking-[0.3em] mb-3">コンテストの内容</p><p className="text-sm text-gray-300 leading-relaxed">ViduGameShow参加作品。王道ダークファンタジーRPGのコマンドバトル映像「ドラグーンクエストzero」を、Viduを中心に制作した作品です。</p></div><a href="https://www.vidu.com/activity/2797599719867510" target="_blank" rel="noopener" className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white text-black text-xs font-black hover:bg-orange-500 transition-colors">ViduGameShowを見る <ExternalLink size={14} /></a></div></div> : isAward ? <div className="grid lg:grid-cols-[minmax(0,1fr)_420px] gap-6 items-start p-4 md:p-8 bg-black w-full box-border"><div className="min-w-0 flex flex-col items-center"><iframe src={`https://platform.twitter.com/embed/Tweet.html?id=${ANIMON_ENTRY_TWEET_ID}&theme=dark`} title={selected.title} className="w-full h-[440px] lg:h-[560px] rounded-2xl border border-gray-800" scrolling="no" loading="lazy" allowFullScreen /></div><aside className="space-y-5 rounded-2xl border border-gray-800 bg-gray-950 p-6 text-left"><p className="text-[10px] font-black uppercase tracking-[0.25em] text-orange-400">Animon 2026 新春創作祭 感謝賞</p><SmartImage src="thumbnails/animon-kansha.jpg" alt="Animon 2026 新春創作祭 感謝賞 受賞結果" className="w-full h-auto rounded-2xl border border-orange-500/30 shadow-2xl" /><a href={`https://x.com/Animon_Ai/status/${ANIMON_AWARD_TWEET_ID}`} target="_blank" rel="noopener" className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-xs font-black text-black transition-colors hover:bg-orange-500">受賞発表をXで見る <ExternalLink size={14} /></a></aside></div> : selected.videoUrl ? <video src={selected.videoUrl} controls autoPlay className="modal-media" /> : selected.embedUrl ? <iframe src={selected.embedUrl} title={selected.title} className="modal-media" allowFullScreen /> : <SmartImage src={selected.thumbnail || 'img/dqa-logo-refresh.png'} alt={selected.title} className="modal-media" />}<div className="modal-copy">{getContestBadge(selected) && <p><span style={tagStyle(getContestBadge(selected)!)}>{getContestBadge(selected)!.label}</span></p>}<h3>{selected.title}</h3>{selected.url && <a href={selected.url} target="_blank" rel="noreferrer">OPEN ORIGINAL <ExternalLink size={14} /></a>}</div></div></div>}</section>; };
 
 const StudioLab = ({ language }: { language: Language }) => { const projects = getVibeCodingProjects(language); return <section id="lab" className="lab-section"><div className="section-frame"><div className="lab-heading"><p className="section-number">05 / {studioCopy[language].coding}</p><h2>アイデアを、<br /><span>触れるところまで。</span></h2></div><div className="lab-cards">{projects.map((project, index) => <a key={project.url} href={project.url} target="_blank" rel="noreferrer" className={`lab-card lab-card-${index + 1}`}><span>0{index + 1}</span><h3>{project.title}</h3><p>{project.desc}</p><div>{project.tags.map((tag) => <b key={tag}>{tag}</b>)}</div><ArrowRight size={20} /></a>)}</div></div></section>; };
 
