@@ -215,9 +215,9 @@ const translations = {
     zh: { title: '氛围编程', subtitle: '无代码开发 × 生成AI的下一代产品', viewProject: '查看项目', launchProject: '启动项目' }
   },
   aiVideo: {
-    ja: { title: '動画コレクション', subtitle: '生成AIが織りなす映像美のフロンティア', watchVideo: 'Watch Video', aiVideoLabel: 'AI Video', sortLabel: '並べ替え', newest: '新しい順', oldest: '古い順', genre: 'ジャンル順', type: '種類順', tag: 'タグ順', tagFilter: 'タグ', allTags: 'すべて', countLabel: '作品' },
-    en: { title: 'AI VIDEO COLLECTION', subtitle: 'Frontier of Visual Beauty Woven by Generative AI', watchVideo: 'Watch Video', aiVideoLabel: 'AI Video', sortLabel: 'Sort', newest: 'Newest', oldest: 'Oldest', genre: 'By Genre', type: 'By Type', tag: 'By Tag', tagFilter: 'Tag', allTags: 'All', countLabel: 'works' },
-    zh: { title: 'AI视频集', subtitle: '生成AI编织的视觉美学前沿', watchVideo: '观看视频', aiVideoLabel: 'AI视频', sortLabel: '排序', newest: '最新', oldest: '最早', genre: '按类别', type: '按类型', tag: '按标签', tagFilter: '标签', allTags: '全部', countLabel: '件作品' }
+    ja: { title: '動画コレクション', subtitle: '生成AIが織りなす映像美のフロンティア', watchVideo: 'Watch Video', aiVideoLabel: 'AI Video', tagFilter: 'タグ', allTags: 'すべて', countLabel: '作品' },
+    en: { title: 'AI VIDEO COLLECTION', subtitle: 'Frontier of Visual Beauty Woven by Generative AI', watchVideo: 'Watch Video', aiVideoLabel: 'AI Video', tagFilter: 'Tag', allTags: 'All', countLabel: 'works' },
+    zh: { title: 'AI视频集', subtitle: '生成AI编织的视觉美学前沿', watchVideo: '观看视频', aiVideoLabel: 'AI视频', tagFilter: '标签', allTags: '全部', countLabel: '件作品' }
   },
   portfolioDetail: {
     ja: { detail: 'Portfolio Detail', category: 'Category', projectTitle: 'Project Title', closeWindow: 'Close Window' },
@@ -1286,16 +1286,21 @@ const Portfolio = ({ language }: { language: Language }) => {
           <div className="w-24 h-1 brand-rule mx-auto rounded-full mb-12"></div>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-3 mb-16">
-          {categories.map(cat => (
-            <button key={cat.id} onClick={() => setActiveTab(cat.id)} className={`px-6 py-3 rounded-full font-bold text-sm transition-all ${
-              activeTab === cat.id 
-                ? 'bg-[#b1842b] text-white shadow-lg shadow-[#b1842b]/25'
-                : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-            }`}>
-              {translations.categories[language][cat.key as keyof typeof translations.categories.ja]}
-            </button>
-          ))}
+        <div className="mb-16 flex justify-center">
+          <label className="flex items-center gap-4 text-gray-400 text-xs font-black uppercase tracking-widest">
+            <span>作品カテゴリ</span>
+            <select
+              value={activeTab}
+              onChange={(event) => setActiveTab(event.target.value)}
+              className="min-w-56 rounded-full border border-gray-700 bg-gray-800 px-5 py-3 text-white outline-none focus:border-[#b1842b]"
+            >
+              {categories.map(cat => (
+                <option key={cat.id} value={cat.id}>
+                  {translations.categories[language][cat.key as keyof typeof translations.categories.ja]}
+                </option>
+              ))}
+            </select>
+          </label>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -1442,7 +1447,6 @@ const compareAIVideos = (a: AIVideoItem, b: AIVideoItem, mode: AIVideoSortMode) 
 const AIVideos = ({ language }: { language: Language }) => {
   const t = translations.aiVideo[language];
   const [selectedVideo, setSelectedVideo] = useState<AIVideoItem | null>(null);
-  const [sortMode, setSortMode] = useState<AIVideoSortMode>('newest');
   const [tagFilter, setTagFilter] = useState('all');
   const tweetContainerRef = useRef<HTMLDivElement>(null);
   const ANIMON_AWARD_TWEET_ID = '2014533550100316603';
@@ -1508,7 +1512,7 @@ const AIVideos = ({ language }: { language: Language }) => {
       const storyOrder = (a.storyNumber || Number.MAX_SAFE_INTEGER) - (b.storyNumber || Number.MAX_SAFE_INTEGER);
       if (storyOrder !== 0) return storyOrder;
     }
-    return compareAIVideos(a, b, sortMode);
+    return compareAIVideos(a, b, 'newest');
   });
 
   useEffect(() => {
@@ -1541,20 +1545,6 @@ const AIVideos = ({ language }: { language: Language }) => {
             {sortedVideos.length} {t.countLabel}
           </p>
           <div className="flex flex-wrap items-center justify-end gap-3">
-            <label className="flex items-center gap-3 text-gray-400 text-xs font-black uppercase tracking-widest">
-              <span>{t.sortLabel}</span>
-              <select
-                value={sortMode}
-                onChange={(event) => setSortMode(event.target.value as AIVideoSortMode)}
-                className="min-w-40 rounded-full border border-gray-700 bg-[#1a1c22] px-4 py-2 text-white outline-none focus:border-[#b1842b]"
-              >
-                <option value="newest">{t.newest}</option>
-                <option value="oldest">{t.oldest}</option>
-                <option value="genre">{t.genre}</option>
-                <option value="type">{t.type}</option>
-                <option value="tag">{t.tag}</option>
-              </select>
-            </label>
             <label className="flex items-center gap-3 text-gray-400 text-xs font-black tracking-widest">
               <span>{t.tagFilter}</span>
               <select
@@ -1902,16 +1892,19 @@ const AIVideos = ({ language }: { language: Language }) => {
 
 const gainaTranslations = {
   ja: {
-    title: 'GAINA魂 2022', subtitle: 'キックボクシング大会記録',
-    desc: '米子ジム主催のキックボクシング興行「Gaina魂」の大会記録映像。選手の熱気と会場の興奮を伝える作品。'
+    title: 'GAINA魂 2022', subtitle: 'キックボクシング大会ロゴ・パンフレットなど・対戦表・煽りVを制作。',
+    desc: '当日はPCから煽りVや対戦表を切り替え、会場プロジェクターへ投影する映像オペレーションも担当しました。',
+    archiveNote: '※掲載映像は武尊選手側スタッフより提供された大会記録映像です。'
   },
   en: {
     title: 'GAINA Soul 2022', subtitle: 'Kickboxing Event Record',
-    desc: 'Event footage from "Gaina Soul," a kickboxing event hosted by Yonago Gym, capturing the fighters’ intensity and the venue’s excitement.'
+    desc: 'Event footage from "Gaina Soul," a kickboxing event hosted by Yonago Gym, capturing the fighters’ intensity and the venue’s excitement.',
+    archiveNote: 'The featured footage was provided by staff on Takeru’s side as an event record.'
   },
   zh: {
     title: 'GAINA魂 2022', subtitle: '搏击大会记录',
-    desc: '米子健身房主办的搏击赛事「Gaina魂」的大会记录影像，传达选手的热情与会场的兴奋感。'
+    desc: '米子健身房主办的搏击赛事「Gaina魂」的大会记录影像，传达选手的热情与会场的兴奋感。',
+    archiveNote: '※所展示的影像由武尊选手团队工作人员提供，作为赛事记录影像使用。'
   }
 };
 
@@ -1926,6 +1919,19 @@ const gainaImages = [
   '02_gaina_soul/08_business_card.jpeg'
 ];
 
+const gainaRecordImages = [
+  {
+    src: '02_gaina_soul/gaina-soul-event-record.jpg',
+    href: 'https://www.youtube.com/watch?v=oTS0_ApWmE4',
+    alt: 'GAINA魂 2022 全試合生配信記録'
+  },
+  {
+    src: '02_gaina_soul/gaina-soul-match-commentary.jpg',
+    href: 'https://www.youtube.com/watch?v=X12GBj_-W0Y',
+    alt: 'GAINA魂 武尊vs晃貴 試合解説'
+  }
+];
+
 const GainaShowcase = ({ language }: { language: Language }) => {
   const t = gainaTranslations[language];
 
@@ -1934,9 +1940,9 @@ const GainaShowcase = ({ language }: { language: Language }) => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-12 text-center md:text-left">
           <h2 className="brand-serif text-4xl md:text-6xl font-bold text-[#222222] mb-4 tracking-tight uppercase">{t.title}</h2>
-          <p className="text-[#5f5b54] text-lg font-medium">{t.subtitle}</p>
+          <p className="text-[#5f5b54] text-lg font-medium leading-tight">{t.subtitle}</p>
           <div className="w-16 h-1 brand-rule mt-6 rounded-full hidden md:block"></div>
-          <p className="text-[#6f6a62] text-sm leading-relaxed mt-6 max-w-2xl">{t.desc}</p>
+          <p className="text-[#6f6a62] text-sm leading-tight mt-4 max-w-5xl">{t.desc}</p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
@@ -1945,6 +1951,21 @@ const GainaShowcase = ({ language }: { language: Language }) => {
               <SmartImage src={src} alt={`GAINA Soul ${i + 1}`} className="w-full h-full object-cover" />
             </div>
           ))}
+        </div>
+
+        <div className="mt-10">
+          <p className="text-[#6f6a62] text-xs font-black uppercase tracking-[0.25em] mb-4">{t.archiveNote}</p>
+          <div className="mx-auto flex max-w-4xl flex-wrap justify-center gap-4">
+            {gainaRecordImages.map((record) => (
+              <a key={record.src} href={record.href} target="_blank" rel="noopener noreferrer" className="group block w-full md:w-[calc(50%-0.5rem)] overflow-hidden rounded-xl border border-[#222222]/10 bg-white shadow-[0_8px_20px_rgba(34,34,34,0.05)]">
+                <SmartImage src={record.src} alt={record.alt} className="w-full aspect-video object-cover transition-transform duration-500 group-hover:scale-105" />
+              </a>
+            ))}
+          </div>
+          <div className="mx-auto mt-4 grid max-w-4xl grid-cols-1 gap-4 text-[#6f6a62] text-xs leading-relaxed md:grid-cols-2">
+            <p>11月6日(日) GAINA魂 ～ガイナソウル～ 全試合生配信<br /><span className="text-[11px]">引用・参照：武尊 / TAKERU @takeru7424</span></p>
+            <p>【GAINA魂 武尊vs晃貴】晃貴/龍矢と3人で試合解説しました！</p>
+          </div>
         </div>
       </div>
     </section>
